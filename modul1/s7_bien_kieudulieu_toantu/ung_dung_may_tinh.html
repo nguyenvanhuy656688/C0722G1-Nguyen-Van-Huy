@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td colspan="2"><input type="number" id="number1"></td>
+        <td colspan="2"><input type="number" id="number2"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Addition(+)" onclick="addition()"></td>
+        <td><input type="button" value="Subtraction(-)" onclick="subtration()"></td>
+        <td><input type="button" value="Multiplication(*)" onclick="multiplication()"></td>
+        <td><input type="button" value="Division(/)" onclick="division()"></td>
+    </tr>
+</table>
+<p id="Display">Kết quả:</p>
+</form>
+
+</body>
+<script>
+    function addition() {
+        let number1 = parseFloat(document.getElementById("number1").value);
+        let number2 = parseFloat(document.getElementById("number2").value);
+        let addition = number1 + number2;
+        document.getElementById("Display").innerHTML = 'Result (+) :' + addition;
+    }
+
+    function subtration() {
+        let number1 = parseFloat(document.getElementById("number1").value);
+        let number2 = parseFloat(document.getElementById("number2").value);
+        let subtration = number1 - number2;
+        document.getElementById("Display").innerHTML = 'Result (-) :' + subtration;
+    }
+
+    function multiplication() {
+        let number1 = parseFloat(document.getElementById("number1").value);
+        let number2 = parseFloat(document.getElementById("number2").value);
+        let multiplication = number1 * number2;
+        document.getElementById("Display").innerHTML = 'Result (*):' + multiplication;
+    }
+
+    function division() {
+        let number1 = parseFloat(document.getElementById("number1").value);
+        let number2 = parseFloat(document.getElementById("number2").value);
+        let division = number1 / number2;
+        document.getElementById("Display").innerHTML = 'Result (/) :' + division;
+    }
+</script>
+</body>
+</html>
