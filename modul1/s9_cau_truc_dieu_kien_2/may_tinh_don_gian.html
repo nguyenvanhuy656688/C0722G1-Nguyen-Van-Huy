@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    button{
+        width: 30px;
+        height: 30px;
+    }
+
+</style>
+<body>
+<form>
+    <table>
+        <tr>
+            <td colspan="4"> <input type="number"; id="number" width="100px">
+        </tr>
+        <tr>
+            <td><input type="button" onclick="add1()" value="1"></td>
+            <td><input type="button" onclick="add2()" value="2"></td>
+            <td><input type="button" onclick="add3()" value="3"></td>
+            <td><input type="button" onclick="add4()" value="+"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="add5()"></td>
+            <td><input type="button" value="5" onclick="add6()"></td>
+            <td><input type="button" value="6" onclick="add7()"></td>
+            <td><input type="button" value="-" onclick="add8()"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="add9()"></td>
+            <td><input type="button" value="8" onclick="add10()"></td>
+            <td><input type="button" value="9" onclick="add11()"></td>
+            <td><input type="button" value="*" onclick="add12()"></td>
+        </tr>
+        <tr>
+            <td><input type="reset" value="C" ></td>
+            <td><input type="button" value="0" onclick="add14()"></td>
+            <td><input type="button" value="=" onclick="add15"></td>
+            <td><input type="button" value="/" onclick="add16()"></td>
+        </tr>
+    </table>
+</form>
+<script>
+    function add1() {
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "1";
+    }
+    function add2(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "2";
+        }
+    function add3(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "3";
+    }
+    function add4(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "+";
+    }
+    function add5(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "4";
+    }
+    function add6(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "5";
+    }
+    function add7(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "6";
+    }
+    function add8(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "-";
+    }
+    function add9(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "7";
+    }
+    function add10(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "8";
+    }
+    function add11(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "9";
+    }
+    function add12(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "*";
+    }
+    function add14(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "0";
+    }
+    function add16(){
+        let str = document.getElementById("number").value;
+        document.getElementById("input").value = str + "/";
+    }
+    function add15() {
+        let str = document.getElementById("number").value;
+        let kq = (eval(str));
+        document.getElementById("number").value = kq
+    }
+</script>
+</tr>
+</body>
+</html>
