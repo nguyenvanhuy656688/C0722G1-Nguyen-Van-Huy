@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let thunhap=parseFloat(prompt('Thue thu nhap ca nhan'));
+    if(thunhap>5000000){
+        alert('thue thu nhap:'+thunhap*5/100);
+    }else if(thunhap<5000000 && thunhap>3000000){
+        alert('thue thu nhap:'+thunhap*3/100-200000);
+    }else if(thunhap<3000000 && thunhap>1000000){
+        alert('thue thu nhap:' +thunhap*1.5/100-25000);
+    }
+    else {
+        alert('khong co thue thu nhap:');
+    }
+</script>
+</body>
+</html>
