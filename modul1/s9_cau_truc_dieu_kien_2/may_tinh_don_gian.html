@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <style>
-    button{
+    button {
         width: 30px;
         height: 30px;
     }
@@ -15,91 +15,137 @@
 <form>
     <table>
         <tr>
-            <td colspan="4"> <input type="number"; id="number" width="100px">
+            <td colspan="4"><input type="text" id="number" width="100px">
         <tr>
-            <td><button type="button" onclick="add1()">1</button></td>
-            <td><button type="button" onclick="add2()">2</button></td>
-            <td><button type="button" onclick="add3()">3</button></td>
-            <td><button type="button" onclick="add4()">+</button></td>
-        </tr>
-        <tr>
-            <td><button type="button" onclick="add5()">4</button></td>
-            <td><button type="button" onclick="add6()">5</button></td>
-            <td><button type="button" onclick="add7()">6</button></td>
-            <td><button type="button" onclick="add8()">-</button></td>
-        </tr>
-        <tr>
-            <td><button type="button" onclick="add9()">7</button></td>
-            <td><button type="button" onclick="add10()">8</button></td>
-            <td><button type="button" onclick="add11()">9</button></td>
-            <td><button type="button" onclick="add12()">*</button></td>
+            <td>
+                <button type="button" onclick="add1()">1</button>
+            </td>
+            <td>
+                <button type="button" onclick="add2()">2</button>
+            </td>
+            <td>
+                <button type="button" onclick="add3()">3</button>
+            </td>
+            <td>
+                <button type="button" onclick="add4()">+</button>
             </td>
         </tr>
-        <tr><td><button type="reset" >C</button></td>
-            <td><button type="button" onclick="add14()">0</button></td>
-            <td><button type="button" onclick="add15()">=</button></td>
-            <td><button type="button" onclick="add16()">/</button></td>
+        <tr>
+            <td>
+                <button type="button" onclick="add5()">4</button>
+            </td>
+            <td>
+                <button type="button" onclick="add6()">5</button>
+            </td>
+            <td>
+                <button type="button" onclick="add7()">6</button>
+            </td>
+            <td>
+                <button type="button" onclick="add8()">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick="add9()">7</button>
+            </td>
+            <td>
+                <button type="button" onclick="add10()">8</button>
+            </td>
+            <td>
+                <button type="button" onclick="add11()">9</button>
+            </td>
+            <td>
+                <button type="button" onclick="add12()">*</button>
+            </td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="reset">C</button>
+            </td>
+            <td>
+                <button type="button" onclick="add14()">0</button>
+            </td>
+            <td>
+                <button type="button" onclick="add15()">=</button>
+            </td>
+            <td>
+                <button type="button" onclick="add16()">/</button>
+            </td>
         </tr>
     </table>
 </form>
 <script>
     function add1() {
-        let str = document.getElementById("number").value;
-        document.getElementById("number").value = str += "1";
+        document.getElementById("number").value += "1";
     }
-    function add2(){
+
+    function add2() {
         let str = document.getElementById("number").value;
-        document.getElementById("number").value = str  += "2";
-        }
-    function add3(){
+        document.getElementById("number").value = str + "2";
+    }
+
+    function add3() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "3";
     }
-    function add4(){
+
+    function add4() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "+";
     }
-    function add5(){
+
+    function add5() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "4";
     }
-    function add6(){
+
+    function add6() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "5";
     }
-    function add7(){
+
+    function add7() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "6";
     }
-    function add8(){
+
+    function add8() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "-";
     }
-    function add9(){
+
+    function add9() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "7";
     }
-    function add10(){
+
+    function add10() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "8";
     }
-    function add11(){
+
+    function add11() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "9";
     }
-    function add12(){
+
+    function add12() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "*";
     }
-    function add14(){
+
+    function add14() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "0";
     }
-    function add15(){
+
+    function add15() {
         let str = document.getElementById("number").value;
-        let ketqua  = (eval(str));
-        document.getElementById("number").value = ketqua
+        let kq = (eval(str));
+        document.getElementById("number").value = kq;
     }
+
     function add16() {
         let str = document.getElementById("number").value;
         document.getElementById("number").value = str += "/";
