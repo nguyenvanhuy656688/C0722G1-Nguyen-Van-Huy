@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    button{
+        width: 100px;
+        height: 100px;
+        size: 50px;
+    }
+</style>
+<body>
+<h2 style="text-align: center;background-color:orange;color: blueviolet;font-size: 50px"><b>Game đón số </b></h2>
+<button type="button" onclick="hihi()" >Chơi game</button>
+<button type="reset" onclick="haha()">Chơi lại</button>
+<script>
+        let sobatdau = parseInt(prompt("Nhap so"));
+        let sotrongkhoang = parseInt(Math.random()*sobatdau +1 );
+        let count =0;
+        function hihi() {
+            do{
+                luaChon = parseInt(prompt("nhap so bạn chọn"));
+                if(luaChon>sotrongkhoang){
+                    alert("number less than");
+                    count++;
+                } else if(luaChon===sotrongkhoang){
+                    alert("you are right");
+                    break;
+                } else {
+                    alert("number more than");
+                    count++;
+                }
+            }while (count==1);
+            document.write("Kết quả : "+sotrongkhoang +'<hr>');
+        }
+
+        function haha() {
+            do{
+                luaChon = parseInt(prompt("Nhập số "));
+                if(luaChon>sotrongkhoang){
+                    alert("number less than");
+                    count++;
+                } else if(luaChon===sotrongkhoang){
+                    alert("you are right");
+                    break;
+                } else {
+                    alert("number more than");
+                    count++;
+                }
+            }while (count==1);
+            document.write("Kết quả chơi lại: "+sotrongkhoang +'<hr>');
+         }
+</script>
+</body>
+</html>
