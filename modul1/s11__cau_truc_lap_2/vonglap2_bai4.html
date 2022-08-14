@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Em hỏng bik làm</h1>
+<h1>Hinh chu nhat</h1>
 </body>
+<script>
+    for (let i = 1; i <= 7; i++) {
+        for (let j = 1; j <= 21; j++) {
+            if (j === 1 || i === 1 || j === 21 || i === 7) {
+                document.write("*");
+            } else {
+                document.write("&nbsp&nbsp");
+            }
+        }
+        document.write("<br>");
+    }
+</script>
 </html>
