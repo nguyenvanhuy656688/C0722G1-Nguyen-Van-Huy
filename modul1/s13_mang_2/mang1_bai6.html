@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let n = +prompt('nhap do dai mang');
+    let array = new Array(n);
+    let count = 0;
+    let phanTu;
+    for (let i = 0; i < array.length; i++) {
+        phanTu = +prompt('Nhập phần tử thứ ' +i);
+        array[i] = phanTu;
+    }
+    alert(array);
+    let v = prompt("nhập pt cần tìm")
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] == v) {
+            count++;
+        }
+    }
+    if (count !== 0) {
+        alert('đã ok__' + 'số số chia hết cho 5 la' + count)
+    } else {
+        alert('không có')
+    }
+</script>
+</body>
+</html>

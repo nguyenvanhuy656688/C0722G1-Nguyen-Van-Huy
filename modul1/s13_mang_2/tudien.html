@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<h2 style="text-align: center;background-color:orange;color: blueviolet;font-size: 50px"><b>Từ điển hoa quả </b></h2>
+<input type="text" id="input">😊😊</input>
+<button type="button" onclick="hihi">Dịch từ tiếng anh sang</button>
+<button type="button" onclick="haha">Dịch từ tiếng Việt sang</button>
+<p id="result">Kết quả:</p>
+</body>
+<script>
+    let count = 0
+    let dichNghia;
+    let trangslate;
+    let vietNames = ['Chuối', 'Táo', 'Cam ', 'Mận', 'Nho', 'Đào'];
+    let englishs = ['Banana', 'Apple', 'Orange', 'Plum', 'Grape', 'Peach'];
+
+    function hihi() {
+        dichNghia = document.getElementById("input").value;
+        for (let i = 0; i < vietNames.length; i++) {
+            if (vietNames[i] = dichNghia) {
+                dichNghia = englishs[i];
+            } else {
+                count++;
+            }
+            document.getElementById('result').innerHTML = dichNghia;
+        }
+        if (count>4){
+            document.getElementById('result').innerHTML = "Bạn đã quá số lần sai "
+        }
+    }
+
+    function haha() {
+        trangslate = document.getElementById("input").value;
+        for (let i = 0; i < englishs.length; i++) {
+            if (englishs[i] = trangslate) {
+                trangslate = vietNames[i];
+            }else {
+                count++;
+            }
+            document.getElementById('result').innerHTML = trangslate;
+        }
+
+    }
+
+</script>
+</html>
