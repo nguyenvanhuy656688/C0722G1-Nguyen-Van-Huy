@@ -5,19 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+
+</body>
 <script>
-    //arr.sort( callbackFn (a, b))(Lấy lần lượt các số trong mảng ban đầu, sau đó gán vào hai biến a và b
-    //Dùng hàm callback để nhận hai giá trị này, sau đó tính toán và trả về hiệu của a và b)
-    //Nếu callbackFn (a, b) trả về giá trị nhỏ hơn 0 (ví dụ như -1) thì xếp b trước a
-    //Nếu callbackFn (a, b) trả về giá bằng 0 thì giữ nguyên
-    //Nếu callbackFn (a, b) trả về giá trị lớn hơn 0 (ví dụ như 1) thì xếp a trước b
-    // độ dài.length
-    //giảm dần
+    //Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử.
+    // Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.
+    //Cách 1:
     let daySo =[5,9,6,11,-3,-4,-6,-8,0,22];
     daySo.sort(function (a, b) {
         return b-a;//return -1
     });document.write(daySo)
-    //tăng dần
+    //Cách 2:
+    let daySo = +prompt("Nhập độ dài của mảng:");
+    let arrayNumber = new Array(daySo);
+    for (let i = 0; i < arrayNumber.length; i++) {
+        arrayNumber[i] = +prompt("Nhập phần tử của mảng:" + i);
+    }
+    document.write(arrayNumber + "<br>");
+
+    let tang;
+    for (let i = 0; i < arrayNumber.length ; i++) {
+        for (let j = i ; j < arrayNumber.length; j++) {
+            if (arrayNumber[i] < arrayNumber[j]) {
+                tang = arrayNumber[i];
+                arrayNumber[i] = arrayNumber[j];
+                arrayNumber[j] = tang;
+            }
+        }
+    }document.write('giá trị thay đổi là'+arrayNumber);
 </script>
-</body>
 </html>
