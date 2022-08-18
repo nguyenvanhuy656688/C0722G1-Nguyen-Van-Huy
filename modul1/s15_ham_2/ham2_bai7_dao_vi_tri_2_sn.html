@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó
+    function daoNguoc(numberA,numberB) {
+        let swap = numberA
+         numberA = numberB
+         numberB = swap ;
+        alert(numberA)
+        alert(numberB)
+    }
+    let soA=+prompt("nhap so a");
+    let soB=+prompt('nhap so b')
+    daoNguoc(soA,soB)
+</script>
+</body>
+</html>

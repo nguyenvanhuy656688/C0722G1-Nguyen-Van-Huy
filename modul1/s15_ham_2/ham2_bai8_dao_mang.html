@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.
+    let array = [1, 2, 5, 6, 8, 9, 77, 44, 55, 7];
+
+    function daoSo(array) {
+        let batDau = 0;
+        let veSau = array.length - 1;
+        for (let i = 0; i < array.length; i++) {
+            if (veSau > batDau) {
+                let a = array[batDau];
+                array[batDau] = array[veSau];
+                array[veSau] = a;
+                batDau++;
+                veSau--;
+            }
+        }
+        alert(array);
+    }
+
+    daoSo(array);
+</script>
+</body>
+</html>
