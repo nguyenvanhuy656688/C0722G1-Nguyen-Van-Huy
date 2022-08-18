@@ -6,6 +6,8 @@
 </head>
 <body>
 <script>
+    // Viết hàm kiểm tra xem ký tự nhập vào có phải là ký
+    // tự số không. Nếu là ký tự số hàm trả về true, ngược lại trả về false
     function myFunction(numberA) {
         if (numberA > 0 || numberA <= 0) {
             alert('Đây là kí tự dạng số, số =' + numberA);
@@ -13,8 +15,9 @@
             alert('Đây là kí tự dạng khác');
         }
     }
+
     let nhapSo = prompt('Số nhập vào');
-    myFunction(nhapSo)
+    myFunction(nhapSo);
 </script>
 </body>
 </html>
