@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let feet = parseFloat(prompt('Nhập số feet'));
+    let met = parseFloat(prompt('Nhập số mét'));
+
+    function feetSangMet() {
+        met = 0.305 * feet;
+        return met;
+    }
+
+    function metSangFeet() {
+        feet = 3.279 * met;
+        return feet;
+    }
+
+    feetSangMet(feet)
+    metSangFeet(met)
+    alert('Mét đổi sang feet là:'+met)
+    alert('mét đổi sang feet là:'+feet)
+</script>
+</body>
+</html>
