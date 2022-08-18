@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 style="text-align: center;background-color:orange;color: #8a2be2;font-size: 50px"><b>Chòm sao </b></h2>
+<input type="text" id="nhap">😊😊</input>
+<button type="button" onclick="traiCay()">Chuyển rời</button>
+<p id="ketQua">Kết quả:</p>
+</body>
+<script>
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let chomSao = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function timChomSao(starName) {
+        let viTriChomSao = "";
+        for (i = 0; i < ngoiSao.length; i++) {
+            if (starName === ngoiSao[i]) {
+                viTriChomSao = i;
+            }
+        }
+        if (viTriChomSao === "") {
+            alert(" Không tìm thấy chòm sao phù hợp");
+        } else {
+            alert(chomSao[viTriChomSao]);
+        }
+
+    }
+
+    let tenNgoiSao = prompt("Nhập tên ngôi sao: ");
+    timChomSao(tenNgoiSao);
+
+</script>
+</html>

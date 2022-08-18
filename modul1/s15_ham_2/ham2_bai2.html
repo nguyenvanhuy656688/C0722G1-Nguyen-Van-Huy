@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhHinhTron(numberA) {
+        chuVi = 2 * 3.14 * numberA;
+        alert('Chu vi là' + chuVi.toFixed(1))
+        dienTich = 3.14 * numberA * numberA
+        alert('Diện tích là' + dienTich);
+        return [chuVi, dienTich];
+    }
+
+    let banKinh = parseFloat(prompt('Nhập bán kính hinh tròn'))
+    tinhHinhTron(banKinh)
+</script>
+</body>
+</html>
