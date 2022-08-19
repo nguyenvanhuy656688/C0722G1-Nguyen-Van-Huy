@@ -7,21 +7,22 @@
 <body>
 <script>
     //Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
+
+
+    function giaTriLonNhAT(numberA, numberB, numberC) {
+        let min = numberA
+        if (numberB < numberA) {
+            min = numberB;
+        }
+        if (numberC < numberB) {
+            min = numberC;
+        }
+        return min
+    }
+
     let soA = +prompt('Nhập số A');
     let soB = +prompt('Nhập số B');
     let soC = +prompt('Nhập số C');
-
-    function giaTriLonNhAT(numberA, numberB, numberC) {
-        if (numberA > numberB && numberA > numberC) {
-            return numberA;
-
-        } else if (numberB > numberC && numberB > numberA) {
-            return numberB;
-
-        } else if (numberA === numberB && numberC > numberA)
-            return numberC;
-    }
-
     alert(giaTriLonNhAT(soA, soB, soC));
 </script>
 </body>

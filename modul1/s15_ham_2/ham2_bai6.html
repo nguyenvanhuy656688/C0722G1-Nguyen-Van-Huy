@@ -8,19 +8,18 @@
 <script>
     // Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là
     // nguyên dương không. Nếu là nguyên dương trả về true, ngược lại trả về false
-function nhapSo(numberA) {
-    if(numberA>0){
-        alert("số"+numberA+"là số nguyên dương");
-        return numberA;
-    }else if(numberA===0){
-        alert("không phải số nguyên dương, số nguyên âm"+numberA);
-        return ;
-    }else {
-        alert("Không phải số nguyên dương"+numberA);
-        return ;
+    function nhapSo(numberA) {
+        if (numberA > 0) {
+            alert("số" + numberA + "là số nguyên dương");
+            return numberA;
+        } else if (numberA === 0) {
+            alert("không phải số nguyên dương, số nguyên âm" + numberA);
+        } else {
+            alert("Không phải số nguyên dương" + numberA);
+        }
     }
-}
-let number = +prompt('Nhập số ');
+
+    let number = +prompt('Nhập số ');
     alert(nhapSo(number));
 </script>
 </body>

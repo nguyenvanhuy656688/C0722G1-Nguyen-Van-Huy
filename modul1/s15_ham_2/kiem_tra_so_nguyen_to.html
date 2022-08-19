@@ -8,14 +8,8 @@
 <script>
     //Cách 1
     function soNguyen(number) {
-        for (let i = 2; i < number; i++) {
+        for (let i = 2; i <= Math.sqrt(number); i++) {
             if (number % i === 0) {
-                return false;
-            }
-                //for (let i = 2; i <Math.sqrt(num); i++) {
-                //     if (num% i ===0){
-            //         return "không phải là số nguyên tố";
-            else if (number % Math.sqrt(number) == 0) {
                 return false;
             }
         }

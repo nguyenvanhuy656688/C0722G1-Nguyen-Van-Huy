@@ -6,20 +6,19 @@
 </head>
 <body>
 <script>
-    let feet = parseFloat(prompt('Nhập số feet'));
-    let met = parseFloat(prompt('Nhập số mét'));
 
-    function feetSangMet() {
-        met = 0.305 * feet;
-        return met;
+    function chuyenDoi(numberA, numberB) {
+        met *= foot;
+        foot *= met;
+        return [met, foot]
     }
 
-    function metSangFeet() {
-        feet = 3.279 * met;
-        return feet;
-    }
-    alert(feetSangMet());
-    alert(metSangFeet());
+    let met = 0.35
+    let foot = 3.279
+    let feet = parseFloat(prompt('Nhập số foot'));
+    let mett = parseFloat(prompt('Nhập số mét'));
+    alert(chuyenDoi(feet, mett));
+
 </script>
 </body>
 </html>

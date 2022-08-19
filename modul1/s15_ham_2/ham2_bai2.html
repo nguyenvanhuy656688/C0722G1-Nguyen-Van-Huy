@@ -8,14 +8,12 @@
 <script>
     function tinhHinhTron(numberA) {
         let chuVi = 2 * 3.14 * numberA;
-        alert('Chu vi là' + chuVi.toFixed(1));
         let dienTich = 3.14 * numberA * numberA;
-        alert('Diện tích là' + dienTich);
-        return [chuVi, dienTich];
+        return [chuVi.toFixed(1), dienTich.toFixed(1)];
     }
 
     let banKinh = parseFloat(prompt('Nhập bán kính hinh tròn'));
-    tinhHinhTron(banKinh);
+    alert(tinhHinhTron(banKinh.toFixed(1)));
 </script>
 </body>
 </html>

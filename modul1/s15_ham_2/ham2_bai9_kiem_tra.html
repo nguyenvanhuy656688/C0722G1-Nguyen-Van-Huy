@@ -5,12 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+</body>
 <script>
     //Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
-    // Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1
-    let array = [5, 10, 15, 11, 16, 18, 17, 19, 20, 26];
-    let nhapVao = prompt('Nhập vào số bạn kiểm tra');
-
+    //Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1
 
     function kiemTra(mang, kyTu) {
         let count = 0;
@@ -25,8 +23,11 @@
             return -1;
         }
 
-    }alert(kiemTra(array,nhapVao));
+    }
+
+    let array = [5, 10, 15, 11, 16, 18, 17, 19, 20, 26];
+    let nhapVao = prompt('Nhập vào số bạn kiểm tra');
+    alert(kiemTra(array, nhapVao));
 
 </script>
-</body>
 </html>
