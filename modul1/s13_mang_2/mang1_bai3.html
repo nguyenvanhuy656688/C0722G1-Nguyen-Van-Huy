@@ -8,16 +8,18 @@
 
 </body>
 <script>
-    let numbers =[5,7,9,11,21,22,23,24,66,44];
+    let numbers = [5, 7, 9, 11, 21, 22, 23, 24, 66, 44];
     let max = numbers[0];
-    let count =0;
-    let sum=0;
-    for (let i = 0; i < numbers.length ; i++) {
-        if(numbers[i]>max){
+    let count = 0;
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] > max) {
             max = numbers[i];
             count++;
-        } ; sum += numbers[i]
-    }document.write('so lon nhat'+max+'vi tri'+count +'<br>');
-    document.write('so trung binh'+ sum/numbers.length+'<br>');
+        }
+        sum += numbers[i];
+    }
+    document.write('so lon nhat' + max + 'vi tri' + count + '<br>');
+    document.write('so trung binh' + sum / numbers.length + '<br>');
 </script>
 </html>

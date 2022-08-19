@@ -5,20 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-<script >
+<script>
     let daySo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let phanTuDauTien = 0;
-    let phanTuCuoiCung = daySo.length-1;
-    do{
-        let z = daySo[phanTuDauTien];
-        daySo[phanTuDauTien] = arrINT[phanTuCuoiCung];
-        daySo[phanTuCuoiCung] = z;
-
-        phanTuDauTien++;
-        phanTuCuoiCung--;
-    }    while (phanTuDauTien<phanTuCuoiCung)
-    alert("mảng sau khi đảo ngược: "+daySo);
-
+    let phanTuCuoiCung = daySo.length - 1;
+    // do{
+    //     let z = daySo[phanTuDauTien];
+    //     daySo[phanTuDauTien] = daySo[phanTuCuoiCung];
+    //     daySo[phanTuCuoiCung] = z;
+    //
+    //     phanTuDauTien++;
+    //     phanTuCuoiCung--;
+    // }    while (phanTuDauTien<phanTuCuoiCung)
+    // alert("mảng sau khi đảo ngược: "+daySo);
+    for (let i = 0; i < daySo.length; i++) {
+        if (phanTuCuoiCung > phanTuDauTien) {
+            let z = daySo[phanTuDauTien];
+            daySo[phanTuDauTien] = daySo[phanTuCuoiCung];
+            daySo[phanTuCuoiCung] = z;
+            phanTuDauTien++;
+            phanTuCuoiCung--;
+        }
+    }alert('mang sau khi dao nguoc la:'+daySo);
 </script>
 </body>
 </html>

@@ -6,7 +6,8 @@
 </head>
 <body>
 <script>
-    let arr = [ 'c', 's', 'c', '2', '6', '1' ];
+    //Đảo số thứ tự
+    let arr = ['c', 's', 'c', '2', '6', '1'];
     let first = 0;
     let last = arr.length - 1;
     while (first < last) {
@@ -15,7 +16,8 @@
         arr[last] = b;
         first++;
         last--;
-    }document.write('Số đảo ngược là'+arr.join(","))
+    }
+    document.write('Số đảo ngược là' + arr.join(","));
 </script>
 </body>
 </html>
