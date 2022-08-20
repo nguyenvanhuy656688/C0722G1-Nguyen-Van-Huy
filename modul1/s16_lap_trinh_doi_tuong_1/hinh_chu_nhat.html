@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="DemoCanvas" width="500" height="600"></canvas>
+
+</body>
+<script>
+    class hinhChuNhat {
+        constructor(chieuDai, chieuRong) {
+            this.chieuDai = chieuDai;
+            this.chieuRong = chieuRong;
+        }
+        dienTich() {
+            return this.chieuDai * this.chieuRong;
+        }
+
+        chuVi() {
+            return (this.chieuDai + this.chieuRong) * 2;
+        }
+
+        tinhHinhChuNhat() {
+            return "Chiều dài="+this.chieuDai + ' ' +'Chiều rộng=' + this.chieuRong + ' ' + "Diện tích =" + this.dienTich() + ' ' + 'ChuVi=' + this.chuVi();
+        }
+    }
+
+
+    let chieuDai = +prompt("nhập chiều dài");
+    let chieuRong = +prompt("nhap chiều rộng");
+    let ketQua = new hinhChuNhat(chieuDai, chieuRong);
+    alert(ketQua.tinhHinhChuNhat());
+    let canvas = document.getElementById("DemoCanvas");
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+    ctx.fillRect(20, 10, chieuDai, chieuRong);
+</script>
+</html>
