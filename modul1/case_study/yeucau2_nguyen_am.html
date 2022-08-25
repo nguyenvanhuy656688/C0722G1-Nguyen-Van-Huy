@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text" id="text"/>
+    <input type="button" onclick="xem()" value="Tim chu nguyen am"/>
+    <p id="display">Hien Thi:</p>
+</form>
+</body>
+<script>
+    //Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm.
+    // Ký tự là bất kỳ được nhập từ bàn phím
+    function xem() {
+        let nhapChuCai = document.getElementById('text').value;
+        switch (nhapChuCai) {
+            case 'o':
+            case 'O':
+            case 'u':
+            case 'U':
+            case 'i':
+            case 'I':
+            case 'a':
+            case 'A':
+            case 'e':
+            case 'E':
+                document.getElementById('display').innerHTML = "chu nguyen am la:" + nhapChuCai;
+                break;
+            default:
+                document.getElementById('display').innerHTML = "phu am";
+        }
+    }
+</script>
+</html>

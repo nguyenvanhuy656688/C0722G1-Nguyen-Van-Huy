@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = prompt("Nhập tên ");
+    function chuyenDoi(string) {
+        let tenGhiDung = string.toLowerCase().split(" ");
+
+        for(let i = 0; i< tenGhiDung.length; i++){
+            tenGhiDung[i] = tenGhiDung[i][0].toUpperCase() + tenGhiDung[i].slice(1);
+        }
+        document.write( tenGhiDung.join(" "));
+    }
+    chuyenDoi(str);
+</script>
+</html>

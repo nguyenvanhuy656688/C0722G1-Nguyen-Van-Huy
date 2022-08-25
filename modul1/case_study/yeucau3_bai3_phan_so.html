@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let tuSo = [10, 5, 2, 8];
+    let mauSo = [3, 4, 5, 6];
+    let phanSo = [];
+    for (let i = 0; i <tuSo.length ; i++) {
+        let chia = tuSo[i]/mauSo[i];
+        for (let j = 0; j <mauSo.length ; j++) {
+            if(j===i){
+                phanSo.push(chia.toFixed(2))
+            }
+        }
+    }
+    for (let i = 0; i <phanSo.length ; i++) {
+        document.write("Phân số số:"+ i +"_giá trị:"+ phanSo[i]+"<br>")
+    }
+    function xem(phanSo) {
+        let count = 0
+        let max=phanSo[0];
+        for(let i = 1; i < phanSo.length; i++){
+            if(phanSo[i] > max){
+                max = phanSo[i]
+                count++;
+            }
+        }document.write("phân số lớn nhất là: "+ max +" "+"vị trí:"+count)
+    }xem(phanSo)
+
+</script>
+</html>
