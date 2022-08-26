@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let mangA = "abcdlliu";
+    let mangB = "asjkcliu";
+    let tachMangA = mangA.split(' ')
+    let tachMangB = mangB.split(' ')
+    let mangC = []
+    for (let i = 0; i < tachMangA.length; i++) {
+        for (let j = 0; j < tachMangB.length; j++) {
+            if (tachMangA[i] == tachMangB[j]) {
+                mangC.push(tachMangA[i]);
+                tachMangA.splice(j,1);
+            }
+        }
+    }document.write("các giá trị trùng nhau:"+mangC);
+
+</script>
+</html>
