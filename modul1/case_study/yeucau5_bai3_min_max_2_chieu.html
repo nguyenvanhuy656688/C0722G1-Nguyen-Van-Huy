@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let array = [[4, 5, 8,], [9, 2, 44]];
+
+    function checkinMax(array) {
+        let max = array[0][0];
+        for (let i = 0; i < array.length; i++) {
+            for (let j = 0; j < array[i].length; j++) {
+                if (array[i][j] > max) {
+                    max = array[i][j];
+                }
+            }
+        }
+        return max + "_là giá trị lớn nhất";
+    }
+
+    alert(checkinMax(array));
+
+
+    function checkinMin(arrayA) {
+        let min = arrayA[0][0];
+        for (let i = 0; i < arrayA.length; i++) {
+            for (let j = 0; j < arrayA[i].length; j++) {
+                if (arrayA[i][j] < min) {
+                    min = arrayA[i][j];
+                }
+            }
+        }
+        return min + "_là giá trị nhỏ nhất";
+    }
+
+    alert(checkinMin(array));
+</script>
+</html>
