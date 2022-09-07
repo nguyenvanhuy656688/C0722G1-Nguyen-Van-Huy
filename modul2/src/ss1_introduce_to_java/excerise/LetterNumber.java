@@ -76,7 +76,7 @@ public class LetterNumber {
                     break;
             }
             System.out.println(result);
-        }else if (number > 20 && number < 100) {
+        } else if (number > 20 && number < 100) {
             int tens = number / 10;
             int ones = number % 10;
             String tenS = "";
@@ -271,8 +271,7 @@ public class LetterNumber {
 
                 }
                 System.out.println(hunS + tenS);
-            }
-            else if (huns1 == 0){
+            } else if (huns1 == 0) {
                 switch (huns) {
                     case 1:
                         hunS = "Hundred";
@@ -303,8 +302,7 @@ public class LetterNumber {
                         break;
                 }
                 System.out.println(hunS);
-            }
-            else if (tens1 == 0){
+            } else if (tens1 == 0) {
                 switch (ones) {
                     case 1:
                         oneS = "One";
