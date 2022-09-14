@@ -1,13 +1,7 @@
-package ss7_abstract_interface.comparator.exercise.colorable;
+package ss7_abstract_interface.exercise.colorable;
 
-public class Square extends Shape implements Colorable {
-    public Square() {
-    }
+public class Square extends Rectangle implements Colorable {
 
-    @Override
-    public double getArea() {
-
-    }
 
     public Square(double edge) {
         super();
@@ -26,6 +20,7 @@ public class Square extends Shape implements Colorable {
         super.setHeight(edge);
         super.setWidth(edge);
     }
+
 
 
     @Override

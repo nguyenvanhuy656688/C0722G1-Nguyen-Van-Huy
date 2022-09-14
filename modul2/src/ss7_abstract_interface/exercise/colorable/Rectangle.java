@@ -1,15 +1,14 @@
-package ss7_abstract_interface.comparator.exercise.colorable;
+package ss7_abstract_interface.exercise.colorable;
 
 public class Rectangle extends Shape {
     private double width;
     private double height;
 
 
-    public Rectangle() {
-    }
+   public Rectangle(){};
 
-    public Rectangle(double width, double height) {
-        super();
+    public Rectangle(String color, String name, double width, double height) {
+        super(color, name);
         this.width = width;
         this.height = height;
     }
@@ -28,6 +27,10 @@ public class Rectangle extends Shape {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + this.height);
     }
 
     @Override

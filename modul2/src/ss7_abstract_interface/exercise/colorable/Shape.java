@@ -1,16 +1,23 @@
-package ss7_abstract_interface.comparator.exercise.colorable;
+package ss7_abstract_interface.exercise.colorable;
 
 public abstract class Shape {
     private String color = "green";
-    private double height;
-    private double width;
-
+    private String name;
 
     public Shape() {
     }
 
-    public Shape(String color) {
+    public Shape(String color,String name) {
         this.color = color;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getColor() {
@@ -20,6 +27,6 @@ public abstract class Shape {
     public void setColor(String color) {
         this.color = color;
     }
-    public abstract double getArea();
 
+    public abstract double getArea();
 }

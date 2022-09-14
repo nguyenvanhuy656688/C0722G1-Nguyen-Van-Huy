@@ -1,19 +1,12 @@
-package ss7_abstract_interface.comparator.exercise.colorable;
+package ss7_abstract_interface.exercise.colorable;
+
 
 public class Circle extends Shape {
     private double radius;
 
-    public Circle(double radius) {
+    public Circle(String color,String name, double radius) {
+        super(color,name);
         this.radius = radius;
-    }
-
-    public Circle(String color, double radius) {
-        super(color);
-        this.radius = radius;
-    }
-
-    public Circle() {
-
     }
 
     public double getRadius() {
