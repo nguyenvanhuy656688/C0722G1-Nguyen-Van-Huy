@@ -1,62 +1,86 @@
 package ss8_clean_code.exercise;
 
 public class TennisGame {
-    public static String getScore(String player1Name, String player2Name, int score1, int score2) {
-        String score = "";
-        int tempScore=0;
-        if (score1==score2)
-        {
-            switch (score1)
-            {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                case 3:
-                    score = "Forty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
+    public static final int SCORE_ZERO = 0;
+    public static final int SCORE_ONE = 1;
+    public static final int SCORE_TWO = 2;
+    public static final int SCORE_THREE = 3;
 
+    public static String getScore(String player1Name, String player2Name, int player1Score, int player2Score) {
+        if (player1Score == player2Score) {
+            return result(player1Score);
+        } else {
+            boolean player1ScoreElderEqual4 = player1Score >= 4;
+            boolean player2ScoreElderEqual4 = player2Score >= 4;
+            if (player1ScoreElderEqual4 || player2ScoreElderEqual4) {
+                return winPlayer(player1Score, player2Score);
+            } else {
+                return checkScore(player1Score, player2Score);
             }
         }
-        else if (score1>=4 || score2>=4)
-        {
-            int minusResult = score1-score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
+    }
+
+    public static String result(int player1Score) {
+        switch (player1Score) {
+            case SCORE_ZERO:
+                return "Love-All";
+            case SCORE_ONE:
+                return "Fifteen-All";
+            case SCORE_TWO:
+                return "Thirty-All";
+            case SCORE_THREE:
+                return "Forty-All";
+            default:
+                return "Deuce";
+
         }
-        else
-        {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = score1;
-                else { score+="-"; tempScore = score2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
+    }
+
+    public static String winPlayer(int player1Score, int player2Score) {
+        int minusResult = player1Score - player2Score;
+        boolean resultMinusEqual1 = minusResult == 1;
+        if (resultMinusEqual1) {
+            return "Advantage player1";
+        } else {
+            boolean resultMinusEqualMinus1 = minusResult == -1;
+            if (resultMinusEqualMinus1) {
+                return "Advantage player2";
+            } else {
+                boolean resultMinusElderEqual2 = minusResult >= 2;
+                if (resultMinusElderEqual2) {
+                    return "Win for player1";
+                } else {
+                    return "Win for player2";
                 }
             }
         }
-        return score;
+    }
+
+    public static String checkScore(int player1Score, int player2Score) {
+        StringBuilder score = new StringBuilder();
+        int tempScore = 0;
+        for (int i = 1; i < 3; i++) {
+            if (i == 1) {
+                tempScore = player1Score;
+            } else {
+                score.append("-");
+                tempScore = player2Score;
+            }
+            switch (tempScore) {
+                case SCORE_ZERO:
+                    score.append("Love");
+                    break;
+                case SCORE_ONE:
+                    score.append("Fifteen");
+                    break;
+                case SCORE_TWO:
+                    score.append("Thirty");
+                    break;
+                case SCORE_THREE:
+                    score.append("Forty");
+                    break;
+            }
+        }
+        return score.toString();
     }
 }
