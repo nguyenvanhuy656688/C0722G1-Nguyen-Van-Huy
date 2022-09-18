@@ -1,17 +1,14 @@
 package mvc.controller;
 
-import mvc.service.implStudent.IStudentService;
-import mvc.service.implStudent.StudentService;
-import mvc.service.implTeacher.ITeacherService;
+
 
 import java.util.Scanner;
 
 public class ClassController {
     private static Scanner scanner = new Scanner(System.in);
-    private static IStudentService iStudentService = new StudentService();
-    private static ITeacherService iTeacherService = (ITeacherService) new TeacherController();
 
-    public static void menuPerson() {
+
+    public static void menuClass() {
         while (true) {
             System.out.println("Chào mừng bạn đến với chương trình quản lý Codegym");
             System.out.println("1. Học sinh");
@@ -29,7 +26,7 @@ public class ClassController {
                     System.exit(3);
                     break;
                 default:
-                    System.out.println("Bạn nhập sai. Vui lòng nhập lại!");
+                    System.out.println("Mời chọn lại");
 
             }
         }

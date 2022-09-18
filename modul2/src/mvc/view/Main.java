@@ -1,9 +1,10 @@
 package mvc.view;
 
-import mvc.controller.StudentController;
+import mvc.controller.ClassController;
+
 
 public class Main {
     public static void main(String[] args) {
-        StudentController.menuStudent();
+        ClassController.menuClass();
     }
 }

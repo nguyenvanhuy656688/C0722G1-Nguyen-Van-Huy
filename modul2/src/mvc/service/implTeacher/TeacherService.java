@@ -11,11 +11,11 @@ public class TeacherService implements ITeacherService {
     private static List<Teacher> teacherList = new ArrayList<>();
 
     public Teacher infoTeacher() {
-        System.out.print("Mời bạn nhập mã học sinh: ");
+        System.out.print("Mời bạn nhập mã giáo viên: ");
         String code = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên học sinh: ");
+        System.out.print("Mời bạn nhập tên giáo viên: ");
         String name = scanner.nextLine();
-        System.out.print("Mời bạn nhập giới tính học sinh: ");
+        System.out.print("Mời bạn nhập giới tính giáo viên: ");
         String tempGender = scanner.nextLine();
         Boolean gender = null;
         if (tempGender.equals("Nam")) {
@@ -27,14 +27,12 @@ public class TeacherService implements ITeacherService {
             gender = true;
             System.out.println("Gioi tinh 3");
         }
-        System.out.print("Mời bạn nhập tên lớp: ");
-        String nameClass = scanner.nextLine();
-        System.out.print("Mời bạn nhập điểm của học sinh: ");
-        double score = Double.parseDouble(scanner.nextLine());
         System.out.println("Mời bạn nhập ngày sinh");
         int dayBirth = scanner.nextInt();
-        mvc.model.Student student = new mvc.model.Student(code, name, gender,dayBirth, nameClass, score);
-        return ;
+        System.out.println("Mời bạn chuyên nghành");
+        String specialize = scanner.nextLine();
+        Teacher teacher = new Teacher(code, name, gender,dayBirth, specialize);
+        return teacher;
     }
 
     public void displayAllTeacher() {
@@ -50,7 +48,7 @@ public class TeacherService implements ITeacherService {
     }
 
     public void removeTeacher() {
-        System.out.print("Mời bạn nhập mã học sinh cần xóa: ");
+        System.out.print("Mời bạn nhập mã giáo viên cần xóa: ");
         String code = scanner.nextLine();
         boolean flagDelete = false;
         for (int i = 0; i < teacherList.size(); i++) {
@@ -76,9 +74,9 @@ public class TeacherService implements ITeacherService {
         String studentT = scanner.nextLine();
         System.out.println("Mời bạn nhập id cần tìm");
         String id = scanner.nextLine();
-        for (mvc.model.Student student : teacherList) {
-            if (student.getName().contains(studentT) || student.getCode().equals(id)) {
-                System.out.println(student);
+        for (Teacher teacher : teacherList) {
+            if (teacher.getName().contains(studentT) || teacher.getCode().equals(id)) {
+                System.out.println(teacher);
             }
         }
 
@@ -98,8 +96,9 @@ public class TeacherService implements ITeacherService {
                 System.out.println("1.thay đổi id");
                 System.out.println("2.thay đổi Tên");
                 System.out.println("3.thay đổi Gioi tinh");
-                System.out.println("4.thay đổi Điểm");
-                System.out.println("5.exit");
+                System.out.println("4.thay đổi ngày sinh");
+                System.out.println("5.thay đổi chuyên nghành");
+                System.out.println("6.exit");
                 System.out.println("________");
                 System.out.println("Mời bạn nhập thông tin cần thay đổi");
                 choice = scanner.nextInt();
@@ -117,11 +116,14 @@ public class TeacherService implements ITeacherService {
                         teacherList.get(choice - 1).setGender(editGender);
                         break;
                     case 4:
-                        double editScore = scanner.nextDouble();
-                        teacherList.get(choice - 1).setScore(editScore);
+                        int dayBirth = scanner.nextInt();
+                        teacherList.get(choice - 1).setDateBirth(dayBirth);
                         break;
                     case 5:
-                        System.exit(5);
+                        String specialize = scanner.nextLine();
+                        teacherList.get(choice-1).setSpecialize(specialize);
+                    case 6:
+                        System.exit(6);
                     default:
                         System.out.println("Không tìm thấy sinh viên cần edit");
                 }
