@@ -9,7 +9,7 @@ public class StringMax {
         LinkedList<Character> list = new LinkedList<>();
         LinkedList<Character> max = new LinkedList<>();
 
-        System.out.println("nhập chuỗi đê bạn êiii");
+        System.out.println("Mời nhập chuỗi ");
         String string = scanner.nextLine();
 
         for (int i = 0; i < string.length(); i++) {
