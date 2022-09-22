@@ -1,5 +1,7 @@
 package mvc.service.implStudent;
 
+import mvc.model.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,8 +31,8 @@ public class StudentService implements IStudentService {
         String nameClass = scanner.nextLine();
         System.out.print("Mời bạn nhập điểm của học sinh: ");
         double score = Double.parseDouble(scanner.nextLine());
-        System.out.println("Mời bạn nhập ngày sinh");
-        int dayBirth = scanner.nextInt();
+        System.out.print("Mời bạn nhập ngày sinh:");
+        int dayBirth = Integer.parseInt(scanner.nextLine());
         mvc.model.Student student = new mvc.model.Student(code, name, gender,dayBirth, nameClass, score);
         return student;
     }
@@ -84,48 +86,80 @@ public class StudentService implements IStudentService {
 
     @Override
     public void editStudent() {
-        System.out.println("Mời bạn nhập id sinh viên  cần edit");
-        String id = scanner.nextLine();
-        int choice;
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getName().equals(id)) {
-                System.out.println("Sinh viên bạn muốn edit là" + studentList.get(i).getName());
-                System.out.println("__");
-                ;
-                System.out.println("Bạn muốn thay đổi gì");
-                System.out.println("1.thay đổi id");
-                System.out.println("2.thay đổi Tên");
-                System.out.println("3.thay đổi Gioi tinh");
-                System.out.println("4.thay đổi Điểm");
-                System.out.println("5.exit");
-                System.out.println("________");
-                System.out.println("Mời bạn nhập thông tin cần thay đổi");
-                choice = scanner.nextInt();
-                switch (choice) {
+        Student studentEdit = this.findStudent1();
+        if (studentEdit == null) {
+            System.out.println("Không tìm thấy học sinh muốn sửa thông tin");
+        } else {
+            while (true) {
+                int positionEdit = studentList.indexOf(studentEdit);
+                System.out.print("Bạn muốn thay đổi thông tin gì?\n" +
+                        "1. Tên học sinh\n" +
+                        "2. Id học sinh\n" +
+                        "3. Ngày sinh học sinh\n" +
+                        "4. Điểm học sinh\n" +
+                        "5. Tên lớp học sinh\n" +
+                        "6. Giới tính\n" +
+                        "7. Kết thúc\n" +
+                        "--> Xin mời nhập ở đây: ");
+                int choiceEdit = Integer.parseInt(scanner.nextLine());
+
+                switch (choiceEdit) {
                     case 1:
-                        String editId = scanner.nextLine();
-                        studentList.get(choice - 1).setCode(editId);
+                        System.out.println("Bạn muốn sửa tên học sinh lại như thế nào");
+                        String newName = scanner.nextLine();
+                        studentList.get(positionEdit).setName(newName);
+                        System.out.println("Đã sửa tên thành công");
                         break;
                     case 2:
-                        String editName = scanner.nextLine();
-                        studentList.get(choice - 1).setName(editName);
+                        System.out.println("Bạn muốn sửa id học sinh lại như thế nào");
+                        String newId = scanner.nextLine();
+                        studentList.get(positionEdit).setCode(newId);
+                        System.out.println("Đã sửa id thành công");
                         break;
                     case 3:
-                        Boolean editGender = scanner.nextBoolean();
-                        studentList.get(choice - 1).setGender(editGender);
+                        System.out.println("Bạn muốn sửa ngày sinh học sinh lại như thế nào");
+                        int newBirthday = Integer.parseInt(scanner.nextLine());
+                        studentList.get(positionEdit).setDateBirth(newBirthday);
+                        System.out.println("Đã sửa ngày sinh thành công");
                         break;
                     case 4:
-                        double editScore = scanner.nextDouble();
-                        studentList.get(choice - 1).setScore(editScore);
+                        System.out.println("Bạn muốn sửa điểm học sinh lại như thế nào");
+                        double newPoint = Double.parseDouble(scanner.nextLine());
+                        studentList.get(positionEdit).setScore(newPoint);
+                        System.out.println("Đã sửa điểm thành công");
                         break;
                     case 5:
-                        System.exit(5);
+                        System.out.println("Bạn muốn sửa tên lớp lại như thế nào");
+                        String newClassname = scanner.nextLine();
+                        studentList.get(positionEdit).setNameClass(newClassname);
+                        System.out.println("Đã sửa tên lớp thành công");
+                        break;
+                    case 6:
+                        System.out.println("Bạn muốn sửa giới tính lại như thế nào");
+                        boolean newGender = Boolean.parseBoolean(scanner.nextLine());
+                        studentList.get(positionEdit).setGender(newGender);
+                        System.out.println("Đã sửa giới tính thành công");
+                        break;
+                    case 7:
+                        return;
                     default:
-                        System.out.println("Không tìm thấy sinh viên cần edit");
+                        System.out.println("Số nhập vào không hợp lệ");
                 }
             }
-            break;
         }
+    }
+
+
+    public Student findStudent1() {
+        System.out.print("Nhập id học sinh bạn muốn thao tác: ");
+        String findChoice = scanner.nextLine();
+
+        for (Student student : studentList) {
+            if (student.getCode().equals(findChoice)) {
+                return student;
+            }
+        }
+        return null;
     }
 
 }

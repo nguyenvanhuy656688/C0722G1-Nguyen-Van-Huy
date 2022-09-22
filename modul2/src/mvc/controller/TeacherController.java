@@ -10,14 +10,15 @@ public class TeacherController {
     static Scanner scanner = new Scanner(System.in);
     public static void menuTeacher() {
         while (true) {
-            System.out.println("___________");
-            System.out.println("chọn Danh sách học sinh");
-            System.out.println("1.Thêm học sinh ");
-            System.out.println("2.Hiển thị học sinh ");
-            System.out.println("3.Xóa học sinh ");
-            System.out.println("4.Tìm học sinh ");
-            System.out.println("5.chỉnh sửa thông học sinh ");
-            System.out.println("6.Thoát");
+            System.out.print("Chọn danh sách học sinh\n" +
+                    "1.Thêm gv\n" +
+                    "2.Hiển Thị \n" +
+                    "3.Xóa gv\n" +
+                    "4.Tìm gvhọc sinh\n" +
+                    "5.Chỉnh sửa thông tin gv\n" +
+                    "6.Thoát\n" +
+                    "Mời bạn chọn:");
+
 
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
@@ -34,9 +35,7 @@ public class TeacherController {
                     iTeacherService.searchTeacher();
                     break;
                 case 5:
-                    iTeacherService.editTeacher();
-                case 6:
-                    System.exit(6);
+                    System.exit(5);
                     break;
             }
 

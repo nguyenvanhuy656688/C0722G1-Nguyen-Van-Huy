@@ -9,5 +9,5 @@ public interface ITeacherService {
 
     void searchTeacher();
 
-    void editTeacher();
+
 }

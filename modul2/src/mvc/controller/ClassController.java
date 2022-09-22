@@ -10,10 +10,11 @@ public class ClassController {
 
     public static void menuClass() {
         while (true) {
-            System.out.println("Chào mừng bạn đến với chương trình quản lý Codegym");
-            System.out.println("1. Học sinh");
-            System.out.println("2. Giáo viên");
-            System.out.println("3.Thoát");
+            System.out.print("Chào mừng bạn đến với chương trình quản lý Codegym\n" +
+                    "1. Học sinh\n" +
+                    "2. Giáo viên\n" +
+                    "3. thoát\n" +
+                    "Xin mời nhập vào đây: ");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:

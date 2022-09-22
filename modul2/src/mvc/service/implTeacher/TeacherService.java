@@ -27,11 +27,11 @@ public class TeacherService implements ITeacherService {
             gender = true;
             System.out.println("Gioi tinh 3");
         }
-        System.out.println("Mời bạn nhập ngày sinh");
-        int dayBirth = scanner.nextInt();
-        System.out.println("Mời bạn chuyên nghành");
+        System.out.print("Mời bạn nhập ngày sinh:");
+        int dayBirth = Integer.parseInt(scanner.nextLine());
+        System.out.print("Mời bạn chuyên nghành:");
         String specialize = scanner.nextLine();
-        Teacher teacher = new Teacher(code, name, gender,dayBirth, specialize);
+        Teacher teacher = new Teacher(code, name, gender ,dayBirth, specialize);
         return teacher;
     }
 
@@ -82,54 +82,6 @@ public class TeacherService implements ITeacherService {
 
     }
 
-    @Override
-    public void editTeacher() {
-        System.out.println("Mời bạn nhập id sinh viên  cần edit");
-        String id = scanner.nextLine();
-        int choice;
-        for (int i = 0; i < teacherList.size(); i++) {
-            if (teacherList.get(i).getName().equals(id)) {
-                System.out.println("Sinh viên bạn muốn edit là" + teacherList.get(i).getName());
-                System.out.println("__");
-                ;
-                System.out.println("Bạn muốn thay đổi gì");
-                System.out.println("1.thay đổi id");
-                System.out.println("2.thay đổi Tên");
-                System.out.println("3.thay đổi Gioi tinh");
-                System.out.println("4.thay đổi ngày sinh");
-                System.out.println("5.thay đổi chuyên nghành");
-                System.out.println("6.exit");
-                System.out.println("________");
-                System.out.println("Mời bạn nhập thông tin cần thay đổi");
-                choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                        String editId = scanner.nextLine();
-                        teacherList.get(choice - 1).setCode(editId);
-                        break;
-                    case 2:
-                        String editName = scanner.nextLine();
-                        teacherList.get(choice - 1).setName(editName);
-                        break;
-                    case 3:
-                        Boolean editGender = scanner.nextBoolean();
-                        teacherList.get(choice - 1).setGender(editGender);
-                        break;
-                    case 4:
-                        int dayBirth = scanner.nextInt();
-                        teacherList.get(choice - 1).setDateBirth(dayBirth);
-                        break;
-                    case 5:
-                        String specialize = scanner.nextLine();
-                        teacherList.get(choice-1).setSpecialize(specialize);
-                    case 6:
-                        System.exit(6);
-                    default:
-                        System.out.println("Không tìm thấy sinh viên cần edit");
-                }
-            }
-            break;
-        }
-    }
+
 
 }
