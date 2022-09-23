@@ -12,4 +12,5 @@ public interface IStudentService {
 
     void editStudent();
 
+    void sortStudent();
 }

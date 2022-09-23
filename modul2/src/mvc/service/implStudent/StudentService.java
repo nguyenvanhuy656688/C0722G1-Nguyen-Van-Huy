@@ -3,6 +3,7 @@ package mvc.service.implStudent;
 import mvc.model.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,7 +34,7 @@ public class StudentService implements IStudentService {
         double score = Double.parseDouble(scanner.nextLine());
         System.out.print("Mời bạn nhập ngày sinh:");
         int dayBirth = Integer.parseInt(scanner.nextLine());
-        mvc.model.Student student = new mvc.model.Student(code, name, gender,dayBirth, nameClass, score);
+        mvc.model.Student student = new mvc.model.Student(code, name, gender, dayBirth, nameClass, score);
         return student;
     }
 
@@ -149,7 +150,6 @@ public class StudentService implements IStudentService {
         }
     }
 
-
     public Student findStudent1() {
         System.out.print("Nhập id học sinh bạn muốn thao tác: ");
         String findChoice = scanner.nextLine();
@@ -162,4 +162,25 @@ public class StudentService implements IStudentService {
         return null;
     }
 
+
+    @Override
+    public void sortStudent() {
+        for (int i = 0; i < studentList.size(); i++) {
+            for (int j = 0; j < studentList.size() - 1 - i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j+1).getName()) > 0) {
+                    Collections.swap(studentList, j, j + 1);
+                }
+                if (studentList.get(j).getName().compareTo(studentList.get(j+1).getName())==0 ) {
+                    if (studentList.get(j).getCode().compareTo(studentList.get(j+1).getCode())<0) {
+                        Student temp = studentList.get(j);
+                        studentList.set(j + 1, studentList.get(j));
+                        studentList.set(j, temp);
+                    }
+                }
+            }
+        }
+        for (Student student : studentList) {
+            System.out.println(student);
+        }
+    }
 }

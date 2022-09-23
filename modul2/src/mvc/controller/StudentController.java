@@ -16,7 +16,8 @@ import java.util.Scanner;
                     "3.Xóa học sinh\n" +
                     "4.Tìm học sinh\n" +
                     "5.Chỉnh sửa thông tin học sinh\n" +
-                    "6.Thoát\n" +
+                    "6.sắp xếp học sinh theo thứ tự tăng dần dựa theo tên(ASCII) nếu tên bằng nhau thì sắp xếp theo id giảm dần \n" +
+                    "7.Thoát\n" +
                     "Mời bạn chọn:");
 
             int choice = Integer.parseInt(scanner.nextLine());
@@ -37,6 +38,9 @@ import java.util.Scanner;
                     iStudentService.editStudent();
                     break;
                 case 6:
+                    iStudentService.sortStudent();
+                    break;
+                case 7:
                     return;
             }
 
