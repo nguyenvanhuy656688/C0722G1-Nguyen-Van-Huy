@@ -2,7 +2,7 @@ package mvc.service.implStudent;
 
 public interface IStudentService {
 
-    void addStudent();
+    void addStudent() throws StudentException;
 
      void displayAllStudent();
 

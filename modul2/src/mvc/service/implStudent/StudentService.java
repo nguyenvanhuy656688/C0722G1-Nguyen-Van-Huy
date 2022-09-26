@@ -11,11 +11,33 @@ public class StudentService implements IStudentService {
     static Scanner scanner = new Scanner(System.in);
     private static List<mvc.model.Student> studentList = new ArrayList<>();
 
-    public mvc.model.Student infoStudent() {
-        System.out.print("Mời bạn nhập mã học sinh: ");
-        String code = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên học sinh: ");
-        String name = scanner.nextLine();
+    public mvc.model.Student infoStudent() throws StudentException {
+        String code;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập mã học sinh: ");
+                code = scanner.nextLine();
+                if(!code.matches("[a-zA-Z0-9]{3,6}"))
+                    throw new StudentException("Nhập sai");
+                break;
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai r, mời nhập lại");
+                e.getStackTrace();
+            }
+        }
+        String name;
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập tên học sinh: ");
+                name = scanner.nextLine();
+                if(!code.matches("[a-zA-Z0-9]{3,6}"))
+                    throw new StudentException("Nhập sai");
+                break;
+            }catch (Exception e){
+                System.out.println("Bạn nhập sai r , mời nhập lại");
+                e.getStackTrace();
+            }
+        }
         System.out.print("Mời bạn nhập giới tính học sinh: ");
         String tempGender = scanner.nextLine();
         Boolean gender = null;
@@ -28,12 +50,45 @@ public class StudentService implements IStudentService {
             gender = true;
             System.out.println("Gioi tinh 3");
         }
-        System.out.print("Mời bạn nhập tên lớp: ");
-        String nameClass = scanner.nextLine();
-        System.out.print("Mời bạn nhập điểm của học sinh: ");
-        double score = Double.parseDouble(scanner.nextLine());
-        System.out.print("Mời bạn nhập ngày sinh:");
-        int dayBirth = Integer.parseInt(scanner.nextLine());
+        String nameClass;
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập tên lớp: ");
+                 nameClass = scanner.nextLine();
+                 break;
+            }catch (Exception e){
+                System.out.println("Mời nhập lại");
+                e.getStackTrace();
+            }
+        }
+        double score;
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập điểm của học sinh: ");
+                score = Double.parseDouble(scanner.nextLine());
+                if (score>9.9 || score<0){
+                    throw new StudentException("Đã nhập sai");
+                }
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("sai định dạng , nhập lại!");
+                e.getStackTrace();
+            }
+        }
+        int dayBirth;
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập ngày sinh:");
+                dayBirth= Integer.parseInt(scanner.nextLine());
+                if (dayBirth>31 || dayBirth<1){
+                    throw new StudentException("Đã nhập sai");
+                }
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("sai ngày , mời nhập lại");
+            }
+        }
+
         mvc.model.Student student = new mvc.model.Student(code, name, gender, dayBirth, nameClass, score);
         return student;
     }
@@ -44,7 +99,7 @@ public class StudentService implements IStudentService {
         }
     }
 
-    public void addStudent() {
+    public void addStudent() throws StudentException{
         mvc.model.Student student = this.infoStudent();
         studentList.add(student);
         System.out.println("Thêm mới thành công");
@@ -165,22 +220,26 @@ public class StudentService implements IStudentService {
 
     @Override
     public void sortStudent() {
+        System.out.println("Nhâp tên cần sắp xếp: ");
         for (int i = 0; i < studentList.size(); i++) {
-            for (int j = 0; j < studentList.size() - 1 - i; j++) {
-                if (studentList.get(j).getName().compareTo(studentList.get(j+1).getName()) > 0) {
-                    Collections.swap(studentList, j, j + 1);
-                }
-                if (studentList.get(j).getName().compareTo(studentList.get(j+1).getName())==0 ) {
-                    if (studentList.get(j).getCode().compareTo(studentList.get(j+1).getCode())<0) {
-                        Student temp = studentList.get(j);
-                        studentList.set(j + 1, studentList.get(j));
-                        studentList.set(j, temp);
+            for (int j = studentList.size() - 1; j > i; j--) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j - 1).getName()) > 0) {
+                    Student temp = studentList.get(j);
+                    studentList.set(j, studentList.get(j - 1));
+                    studentList.set(j - 1, temp);
+                } else if (studentList.get(j).getName().compareTo(studentList.get(j - 1).getName()) == 0) {
+                    System.out.println("ok");
+                    if (studentList.get(j).getCode().compareTo(studentList.get(j - 1).getCode()) > 0) {
+                        System.out.println("ok");
+                        Student temp1 = studentList.get(j);
+                        studentList.set(j, studentList.get(j - 1));
+                        studentList.set(j - 1, temp1);
                     }
                 }
             }
         }
-        for (Student student : studentList) {
-            System.out.println(student);
+        for (Student s : studentList) {
+            System.out.println(s);
         }
     }
 }

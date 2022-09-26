@@ -1,6 +1,7 @@
 package mvc.controller;
 
 import mvc.service.implStudent.IStudentService;
+import mvc.service.implStudent.StudentException;
 import mvc.service.implStudent.StudentService;
 
 import java.util.Scanner;
@@ -8,7 +9,7 @@ import java.util.Scanner;
  public class StudentController {
     static IStudentService iStudentService = new StudentService();
     static Scanner scanner = new Scanner(System.in);
-    public static void menuStudent() {
+    public static void menuStudent() throws StudentException {
         while (true) {
             System.out.print("Chọn danh sách học sinh\n" +
                     "1.Thêm học sinh\n" +

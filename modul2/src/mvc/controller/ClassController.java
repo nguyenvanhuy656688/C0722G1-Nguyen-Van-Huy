@@ -2,13 +2,15 @@ package mvc.controller;
 
 
 
+import mvc.service.implStudent.StudentException;
+
 import java.util.Scanner;
 
 public class ClassController {
     private static Scanner scanner = new Scanner(System.in);
 
 
-    public static void menuClass() {
+    public static void menuClass() throws StudentException {
         while (true) {
             System.out.print("Chào mừng bạn đến với chương trình quản lý Codegym\n" +
                     "1. Học sinh\n" +
