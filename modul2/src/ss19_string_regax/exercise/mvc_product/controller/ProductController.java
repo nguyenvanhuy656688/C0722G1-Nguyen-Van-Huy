@@ -3,6 +3,7 @@ package ss19_string_regax.exercise.mvc_product.controller;
 
 import ss19_string_regax.exercise.mvc_product.Service.IProductService;
 import ss19_string_regax.exercise.mvc_product.Service.ProductService;
+import ss19_string_regax.exercise.mvc_product.utils.ProductException;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class ProductController {
     static Scanner scanner = new Scanner(System.in);
     static IProductService iProductService = new ProductService();
 
-    public static void menuProductService() throws IOException {
+    public static void menuProductService() throws IOException, ProductException {
         while (true) {
             System.out.println("Mời bạn nhập lựa chọn: \n" +
                     "1.Thêm sp\n" +

@@ -1,13 +1,15 @@
 package ss19_string_regax.exercise.mvc_product.model;
 
+import java.time.LocalDate;
+
 public class Product {
-    private Integer code;
+    private String code;
     private String name;
     private String manufacturer;
     private Integer price;
-    private String expiry;
+    private LocalDate expiry;
 
-    public Product(Integer code, String name, String manufacturer, Integer price,String expiry) {
+    public Product(String code, String name, String manufacturer, Integer price, LocalDate expiry) {
         this.code = code;
         this.name = name;
         this.manufacturer = manufacturer;
@@ -18,11 +20,11 @@ public class Product {
     public Product() {
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -50,11 +52,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getExpiry() {
+    public LocalDate getExpiry() {
         return expiry;
     }
 
-    public void setExpiry(String expiry) {
+    public void setExpiry(LocalDate expiry) {
         this.expiry = expiry;
     }
 

@@ -1,8 +1,11 @@
 package ss19_string_regax.exercise.mvc_product.Service;
 
 import ss19_string_regax.exercise.mvc_product.model.Product;
+import ss19_string_regax.exercise.mvc_product.utils.ProductException;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,22 +13,66 @@ import java.util.Scanner;
 public class ProductService implements IProductService {
     static Scanner scanner = new Scanner(System.in);
     static List<Product> productList = new ArrayList<>();
-    public Product info(){
-        System.out.println("Nhập id sp!");
-        Integer code = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập tên sp!");
-        String name = scanner.nextLine();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM//yyyy");
+    public Product info() throws ProductException {
+        String code;
+        while (true) {
+            try {
+                System.out.println("Nhập id sp!");
+                code = scanner.nextLine();
+                ProductException.idCheck(code);
+                break;
+            }catch (ProductException e){
+                System.out.println( e.getMessage());
+            }
+        }
+        String name;
+        while (true){
+            try{
+                System.out.println("Nhập tên sp!");
+                name = scanner.nextLine();
+                ProductException.nameCheck(name);
+                break;
+            }catch (ProductException e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+
         System.out.println("Nhập hãng sx!");
         String manufacturer = scanner.nextLine();
-        System.out.println("Nhập giá!");
-        Integer price = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập ngày sản xuất dd//mm/yyyy:");
-        String expiry = scanner.nextLine();
-        Product product = new Product(code,name,manufacturer,price,expiry);
+
+        String price;
+        while (true){
+            try{
+                System.out.println("Nhập giá!");
+                price = scanner.nextLine();
+                if(!price.matches("[1-9][0-9]{3,}")){
+                    throw new ProductException("Sai định dạng");
+                }
+                break;
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+        LocalDate expiry;
+        while (true){
+            try {
+                System.out.println("Nhập ngày sản xuất dd//mm/yyyy:");
+                 expiry = LocalDate.parse(scanner.nextLine(),formatter);
+                 ProductException.expiryCheck(expiry,formatter);
+                 break;
+            }catch (ProductException e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+        Product product = new Product(code,name,manufacturer,Integer.parseInt(price),expiry);
         return product;
     }
     @Override
-    public void addProduct() throws IOException {
+    public void addProduct() throws IOException, ProductException {
         productList = readFile();
         Product product = this.info();
         productList.add(product);
@@ -46,7 +93,7 @@ public class ProductService implements IProductService {
     public void remove() throws IOException {
         productList = readFile();
         System.out.println("Nhập mã sp cần xóa");
-        Integer code = Integer.parseInt(scanner.nextLine());
+        String code = scanner.nextLine();
         String choose;
         boolean flag = false;
         for (int i = 0; i < productList.size(); i++) {
@@ -82,7 +129,7 @@ public class ProductService implements IProductService {
         }
     }
     public List<Product> readFile() throws IOException {
-        File file = new File("src\\ss17_io_binary\\exercise\\product\\data\\product.csv");
+        File file = new File("src\\ss19_string_regax\\exercise\\mvc_product\\data\\input.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         productList = new ArrayList<>();
@@ -90,13 +137,13 @@ public class ProductService implements IProductService {
         String[] arr;
         while ((line = bufferedReader.readLine()) != null) {
             arr = line.split(",");
-            productList.add(new Product(Integer.parseInt(arr[0]),arr[1],arr[2],Integer.parseInt(arr[3]),arr[4]));
+            productList.add(new Product(arr[0],arr[1],arr[2],Integer.parseInt(arr[3]),LocalDate.parse(arr[4])));
         }
         bufferedReader.close();
         return productList;
     }
     public void writeFile(List<Product> productList) throws IOException {
-        File file = new File("src\\ss17_io_binary\\exercise\\product\\data\\product.csv");
+        File file = new File("src\\ss19_string_regax\\exercise\\mvc_product\\data\\input.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
         for (Product product : productList) {
             bufferedWriter.write(product.toString());
