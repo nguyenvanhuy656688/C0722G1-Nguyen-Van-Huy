@@ -15,16 +15,18 @@ public class PromotionManagementController {
                 "3.\tReturn main menu\n" +
                 "------>choose:");
 
-        int choose = Integer.parseInt(scanner.nextLine());
+        String choose = scanner.nextLine();
         switch (choose){
-            case 1:
+            case "1":
                 iPromotionService.displayListCustomeService();
                 break;
-            case 2:
+            case "2":
                 iPromotionService.displayListCustomeVoucher();
                 break;
-            case 3:
+            case "3":
                 System.exit(3);
+            default:
+                System.out.println("Nhập sai , mời nhập lại");
         }
     }
 }
