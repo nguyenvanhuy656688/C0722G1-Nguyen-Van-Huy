@@ -3,13 +3,14 @@ package case_study_furama.controller;
 import case_study_furama.service.impl_customer.CustomerService;
 import case_study_furama.service.impl_customer.ICustomerService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CustomerManagementController {
     static Scanner scanner = new Scanner(System.in);
     static ICustomerService iCustomerService = new CustomerService();
 
-    public static void menuCustomer() {
+    public static void menuCustomer() throws IOException {
         while (true) {
             System.out.print("You can choose:\n" +
                     "1.\tDisplay list customers-Hiển thị danh sách khách hàng\n" +

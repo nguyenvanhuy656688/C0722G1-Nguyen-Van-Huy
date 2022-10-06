@@ -1,9 +1,11 @@
 package case_study_furama.service.impl_employer;
 
+import java.io.IOException;
+
 public interface IEmployerService {
-    void displayList();
+    void displayList() throws IOException;
 
-    void addEmployer();
+    void addEmployer() throws IOException;
 
-    void editCustome();
+    void editEmployer() throws IOException;
 }

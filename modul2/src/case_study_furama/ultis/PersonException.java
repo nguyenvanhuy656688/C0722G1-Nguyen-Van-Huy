@@ -1,5 +1,7 @@
 package case_study_furama.ultis;
 
+import java.time.LocalDate;
+
 public class PersonException extends Exception {
     public PersonException(String message) {
         super(message);
@@ -19,7 +21,6 @@ public class PersonException extends Exception {
             throw new PersonException("Ngày/Tháng/Năm ko hợp lệ, mời nhập lại");
         }
         System.out.println("Nhập dữ liệu thành công");
-
     }
 
     public static void genderCheck(String gender) throws PersonException {
@@ -45,9 +46,33 @@ public class PersonException extends Exception {
     }
 
     public  static void emailCheck(String email) throws PersonException {
-        if(!email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)$")){
+        if(!email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]{1,10}[.][a-z]{1,6}$")){
             throw new PersonException("Sai định dạng email");
         }
         System.out.println("Nhập thành công");
+    }
+
+    public static void idCustomerCheck(String id) throws PersonException {
+        if(!id.matches("[A][0-9]{4}")){
+            throw new PersonException("sai định dạng id khách");
+        }
+        System.out.println("Nhập thành công");
+    }
+
+    public static void idEmployerCheck(String id) throws PersonException {
+        if(!id.matches("[B][0-9]{4}")){
+            throw new PersonException("sai định dạng id nhân viên");
+        }
+        System.out.println("Nhập thành công");
+    }
+
+    public static void customerAgeCheck(LocalDate birthday) throws PersonException {
+        LocalDate presentDate = LocalDate.now().plusYears(-18);
+        LocalDate maxDate = LocalDate.now().plusYears(-100);
+        if (!birthday.isBefore(presentDate)) {
+            throw new PersonException("Customer must not be under 18 years old, please try again.");
+        } else if (!birthday.isAfter(maxDate)) {
+            throw new PersonException("Customer must not be over 100 years old, please try again.");
+        } else System.out.println("Input Date of Birth Succeeded");
     }
 }

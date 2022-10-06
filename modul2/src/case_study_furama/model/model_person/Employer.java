@@ -1,12 +1,14 @@
 package case_study_furama.model.model_person;
 
+import java.time.LocalDate;
+
 public class Employer extends Person {
     private String idEmployer;
     private String level;
     private String locus;
     private String wage;
 
-    public Employer(String name, String dayBirth, String gender, String idCard, String numberPhone, String email, String idEmployer, String level, String locus,String wage) {
+    public Employer(String name, LocalDate dayBirth, String gender, String idCard, String numberPhone, String email, String idEmployer, String level, String locus, String wage) {
         super(name, dayBirth, gender, idCard, numberPhone, email);
         this.idEmployer = idEmployer;
         this.level = level;
@@ -63,11 +65,9 @@ public class Employer extends Person {
 
     @Override
     public String toString() {
-        return "Employer{" +
-                "level='" + level + '\'' +
+        return  super.toString()+
+                ", level='" + level + '\'' +
                 ", locus='" + locus + '\'' +
-                ", wage='" + wage + '\'' +
-                super.toString()+
-                '}';
+                ", wage='" + wage + '\'' ;
     }
 }

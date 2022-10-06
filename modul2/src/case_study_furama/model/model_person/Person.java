@@ -1,14 +1,16 @@
 package case_study_furama.model.model_person;
 
+import java.time.LocalDate;
+
 public class Person {
     private String name;
-    private String dayBirth;
+    private LocalDate dayBirth;
     private String gender;
     private String idCard;
     private String numberPhone;
     private String email;
 
-    public Person(String name, String dayBirth, String gender, String idCard, String numberPhone, String email) {
+    public Person(String name, LocalDate dayBirth, String gender, String idCard, String numberPhone, String email) {
         this.name = name;
         this.dayBirth = dayBirth;
         this.gender = gender;
@@ -28,11 +30,11 @@ public class Person {
         this.name = name;
     }
 
-    public String getDayBirth() {
+    public LocalDate getDayBirth() {
         return dayBirth;
     }
 
-    public void setDayBirth(String dayBirth) {
+    public void setDayBirth(LocalDate dayBirth) {
         this.dayBirth = dayBirth;
     }
 
@@ -70,13 +72,12 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return
                 "name='" + name + '\'' +
                 ", dayBirth='" + dayBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", idCard='" + idCard + '\'' +
                 ", numberPhone='" + numberPhone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'' ;
     }
 }

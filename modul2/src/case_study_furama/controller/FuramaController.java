@@ -1,11 +1,14 @@
 package case_study_furama.controller;
 
+import case_study_furama.ultis.FacilityException;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FuramaController {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void displayMainMenu() {
+    public static void displayMainMenu() throws FacilityException, IOException {
         while (true) {
             System.out.print("You can choose:\n" +
                     "1.\tEmployee Management-Quản lý nhân sự\n" +

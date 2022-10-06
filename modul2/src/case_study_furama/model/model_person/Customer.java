@@ -1,11 +1,13 @@
 package case_study_furama.model.model_person;
 
+import java.time.LocalDate;
+
 public class Customer extends Person {
     private String idCustomer;
     private String typeCustomer;
     private String address;
 
-    public Customer(String name, String dayBirth, String gender, String idCard, String numberPhone, String email, String idCustomer, String typeCustomer, String address) {
+    public Customer(String name, LocalDate dayBirth, String gender, String idCard, String numberPhone, String email, String idCustomer, String typeCustomer, String address) {
         super(name, dayBirth, gender, idCard, numberPhone, email);
         this.idCustomer = idCustomer;
         this.typeCustomer = typeCustomer;
@@ -18,7 +20,7 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    public Customer(){
+    public Customer() {
 
     }
 
@@ -48,11 +50,9 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "idCustomer='" + idCustomer + '\'' +
+        return  super.toString() +
+                ", idCustomer='" + idCustomer + '\'' +
                 ", typeCustomer='" + typeCustomer + '\'' +
-                ", address='" + address + '\'' +
-                super.toString()+
-                '}';
+                ", address='" + address + '\'';
     }
 }

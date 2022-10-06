@@ -1,6 +1,11 @@
 package case_study_furama.service.impl_customer;
 
+import case_study_furama.model.model_facility.Villa;
 import case_study_furama.model.model_person.Customer;
+import case_study_furama.ultis.PersonException;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,47 +13,133 @@ import java.util.Scanner;
 public class CustomerService implements ICustomerService {
     static Scanner scanner = new Scanner(System.in);
     static List<Customer> customerList = new ArrayList<>();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public  Customer infoCustomer() {
-        System.out.println("Nhập id ");
-        String id = scanner.nextLine();
-        System.out.println("Nhập daybirth");
-        String db = scanner.nextLine();
-        System.out.println("Nhập gender");
-        String gender = scanner.nextLine();
-        System.out.println("Nhập id card");
-        String idCard = scanner.nextLine();
-        System.out.println("Nhập SĐT");
-        String phone = scanner.nextLine();
-        System.out.println("Nhâp email");
-        String email = scanner.nextLine();
-        System.out.println("Nhập id khách");
-        String idEmployer = scanner.nextLine();
-        System.out.println("Nhập loại khác");
-        String type = scanner.nextLine();
+    public Customer infoCustomer() {
+        String name;
+        while (true) {
+            try {
+                System.out.println("Nhập tên khách");
+                name = scanner.nextLine();
+                PersonException.nameCheck(name);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai, mời nhập lại");
+            }
+        }
+
+        LocalDate dateOfBirth;
+        while (true) {
+            try {
+                System.out.println("Nhập ngày tháng năm khách hàng");
+                dateOfBirth = LocalDate.parse(scanner.nextLine(), formatter);
+                PersonException.customerAgeCheck(dateOfBirth);
+                break;
+            } catch (PersonException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        String gender;
+        while (true) {
+            try {
+                System.out.println("Nhập gender: Nam or Nữ , nam or nữ");
+                gender = scanner.nextLine();
+                PersonException.genderCheck(gender);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai, mời nhập lại");
+            }
+        }
+
+        String idCard;
+        while (true) {
+            try {
+                System.out.println("Nhập id card");
+                idCard = scanner.nextLine();
+                PersonException.idCardCheck(idCard);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai mời nhập lại");
+            }
+        }
+        String phone;
+        while (true) {
+            try {
+                System.out.println("Nhập SĐT");
+                phone = scanner.nextLine();
+                PersonException.phoneCheck(phone);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai, mời nhập lại");
+            }
+        }
+        String email;
+        while (true) {
+            try {
+                System.out.println("Nhâp email");
+                email = scanner.nextLine();
+                PersonException.emailCheck(email);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai r, mời nhập lại");
+            }
+        }
+
+        String idEmployer;
+        while (true) {
+            try {
+                System.out.println("Nhập id khách BXXXX vs X là số");
+                idEmployer = scanner.nextLine();
+                PersonException.idEmployerCheck(idEmployer);
+                break;
+            } catch (PersonException e) {
+                System.out.println("Nhập sai, nhập lại");
+            }
+        }
+
+        String type;
+        while (true) {
+            try {
+                System.out.println("Nhập loại khách");
+                type = scanner.nextLine();
+                if (!type.matches("(VIP|Normal)")) {
+                    throw new Exception("Nhập sai r, nhập lại");
+                }
+                System.out.println("Nhập thành công");
+                break;
+            } catch (Exception e) {
+                System.out.println("Nhập sai r, nhập lại");
+            }
+        }
+
         System.out.println("Nhập địa chỉ khách:");
         String address = scanner.nextLine();
-        Customer customer = new Customer(id, db, gender, idCard, phone, email, idEmployer, type, address);
+
+        Customer customer = new Customer(name, dateOfBirth, gender, idCard, phone, email, idEmployer, type, address);
         return customer;
     }
 
     @Override
-    public void displayListCustome() {
-        for (Customer customer:customerList) {
+    public void displayListCustome() throws IOException {
+        customerList = readFile();
+        for (Customer customer : customerList) {
             System.out.println(customer);
             System.out.println("Danh sách khách hàng");
         }
     }
 
     @Override
-    public void addNewCustome() {
+    public void addNewCustome() throws IOException {
+        customerList = readFile();
         Customer customer = this.infoCustomer();
         customerList.add(customer);
+        writeFile(customerList);
         System.out.println("Thêm thành công");
     }
 
     @Override
-    public void editCustome() {
+    public void editCustome() throws IOException {
+        customerList = readFile();
         Customer customerEdit = this.findCustomer();
         if (customerEdit == null) {
             System.out.println("Không tìm thấy học sinh muốn sửa thông tin");
@@ -82,8 +173,8 @@ public class CustomerService implements ICustomerService {
                         break;
                     case "3":
                         System.out.println("Bạn muốn sửa ngày sinh lại như thế nào");
-                        String newBirthday = scanner.nextLine();
-                        customerList.get(positionEdit).setDayBirth(newBirthday);
+                        LocalDate dateOfBirth = LocalDate.parse(scanner.nextLine(), formatter);
+                        customerList.get(positionEdit).setDayBirth(dateOfBirth);
                         System.out.println("Đã sửa ngày sinh thành công");
                         break;
                     case "4":
@@ -119,6 +210,7 @@ public class CustomerService implements ICustomerService {
         }
 
     }
+
     public Customer findCustomer() {
         System.out.print("Nhập id học sinh bạn muốn thao tác: ");
         String findChoice = scanner.nextLine();
@@ -129,5 +221,34 @@ public class CustomerService implements ICustomerService {
             }
         }
         return null;
+    }
+
+    private List<Customer> readFile() throws IOException {
+        File file = new File("src\\case_study_furama\\data\\customer.csv");
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        List<Customer> customerList = new ArrayList<>();
+        String line;
+        String[] arr;
+        while ((line = bufferedReader.readLine()) != null) {
+            arr = line.split(",");
+            customerList.add(new Customer(arr[0], LocalDate.parse(arr[1]), arr[2], arr[3], arr[4], arr[5],arr[6],arr[7],arr[8]));
+        }
+        bufferedReader.close();
+        return customerList;
+    }
+
+    public void writeFile(List<Customer> customerList) throws IOException {
+        File file = new File("src\\case_study_furama\\data\\customer.csv");
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+        for (Customer customer : customerList) {
+            bufferedWriter.write(getInfo(customer));
+            bufferedWriter.newLine();
+        }
+        bufferedWriter.close();
+    }
+
+    public String getInfo(Customer customer) {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", customer.getName(),customer.getDayBirth(),customer.getGender(),customer.getIdCard(),customer.getNumberPhone(),customer.getEmail(),customer.getIdCustomer(),customer.getTypeCustomer(),customer.getAddress());
     }
 }

@@ -3,12 +3,13 @@ package case_study_furama.controller;
 import case_study_furama.service.impl_employer.EmployerService;
 import case_study_furama.service.impl_employer.IEmployerService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class EmployeeManagementController {
     static IEmployerService iEmployerService = new EmployerService();
 
-    public static void menuEmployer() {
+    public static void menuEmployer() throws IOException {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("You can choose:\n" +
@@ -27,7 +28,7 @@ public class EmployeeManagementController {
                     iEmployerService.addEmployer();
                     break;
                 case "3":
-                    iEmployerService.editCustome();
+                    iEmployerService.editEmployer();
                 case "4":
                     System.exit(4);
                 default:

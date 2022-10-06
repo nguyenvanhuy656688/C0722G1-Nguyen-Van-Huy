@@ -1,13 +1,15 @@
 package case_study_furama.model.model_facility;
 
 public class Facility {
+    private String codeService;
     private String nameService;
-    private String areaUsable;
+    private Double areaUsable;
     private Integer costRental;
     private Integer maximumPeople;
     private String typeRental;
 
-    public Facility(String nameService, String areaUsable, Integer costRental, Integer maximumPeople, String typeRental) {
+    public Facility(String codeService,String nameService, Double areaUsable, Integer costRental, Integer maximumPeople, String typeRental) {
+        this.codeService = codeService;
         this.nameService = nameService;
         this.areaUsable = areaUsable;
         this.costRental = costRental;
@@ -18,6 +20,14 @@ public class Facility {
     public Facility() {
     }
 
+    public String getCodeService() {
+        return codeService;
+    }
+
+    public void setCodeService(String codeService) {
+        this.codeService = codeService;
+    }
+
     public String getNameService() {
         return nameService;
     }
@@ -26,11 +36,11 @@ public class Facility {
         this.nameService = nameService;
     }
 
-    public String getAreaUsable() {
+    public Double getAreaUsable() {
         return areaUsable;
     }
 
-    public void setAreaUsable(String areaUsable) {
+    public void setAreaUsable(Double areaUsable) {
         this.areaUsable = areaUsable;
     }
 
@@ -61,8 +71,9 @@ public class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                "nameService='" + nameService + '\'' +
-                ", areaUsable='" + areaUsable + '\'' +
+                "codeService='" + codeService + '\'' +
+                ", nameService='" + nameService + '\'' +
+                ", areaUsable=" + areaUsable +
                 ", costRental=" + costRental +
                 ", maximumPeople=" + maximumPeople +
                 ", typeRental='" + typeRental + '\'' +

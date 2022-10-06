@@ -2,11 +2,18 @@ package case_study_furama.model.model_facility;
 
 public class Villa extends Facility {
     private  Integer standardRoom;
-    private Integer areaPool;
+    private Double areaPool;
     private Integer floorNumber;
 
 
-    public Villa(Integer standardRoom, Integer areaPool, Integer floorNumber) {
+    public Villa(String codeService,String nameService, Double areaUsable, Integer costRental, Integer maximumPeople, String typeRental, Integer standardRoom, Double areaPool, Integer floorNumber) {
+        super(codeService,nameService, areaUsable, costRental, maximumPeople, typeRental);
+        this.standardRoom = standardRoom;
+        this.areaPool = areaPool;
+        this.floorNumber = floorNumber;
+    }
+
+    public Villa(Integer standardRoom, Double areaPool, Integer floorNumber) {
         this.standardRoom = standardRoom;
         this.areaPool = areaPool;
         this.floorNumber = floorNumber;
@@ -23,11 +30,11 @@ public class Villa extends Facility {
         this.standardRoom = standardRoom;
     }
 
-    public Integer getAreaPool() {
+    public Double getAreaPool() {
         return areaPool;
     }
 
-    public void setAreaPool(Integer areaPool) {
+    public void setAreaPool(Double areaPool) {
         this.areaPool = areaPool;
     }
 

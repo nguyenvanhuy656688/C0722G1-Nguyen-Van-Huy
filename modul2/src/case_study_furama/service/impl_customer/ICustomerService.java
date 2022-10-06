@@ -1,9 +1,11 @@
 package case_study_furama.service.impl_customer;
 
+import java.io.IOException;
+
 public interface ICustomerService {
-    void displayListCustome();
+    void displayListCustome() throws IOException;
 
-    void addNewCustome();
+    void addNewCustome() throws IOException;
 
-    void editCustome();
+    void editCustome() throws IOException;
 }
