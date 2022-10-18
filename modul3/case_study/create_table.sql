@@ -12,7 +12,7 @@ create table trinh_do(
 create table bo_phan(
                      ma_bo_phan int primary key,
                      ten_bo_phan varchar(45));
-                     
+					
 create table nhan_vien(
                      ma_nhan_vien int primary key auto_increment,
                      ho_ten varchar(45),
