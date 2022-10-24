@@ -189,7 +189,7 @@ from nhan_vien
 join trinh_do on trinh_do.ma_trinh_do = nhan_vien.ma_trinh_do
 join bo_phan on bo_phan.ma_bo_phan = nhan_vien.ma_bo_phan
 join hop_dong on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
-where year(hop_dong.ngay_lam_hop_dong) between 2020 and 2021
+where year(hop_dong.ngay_lam_hop_dong) between 2020 and 2021 group by nhan_vien.ma_nhan_vien having count(hop_dong.ma_hop_dong) <= 3 order by nhan_vien.ma_nhan_vien
 ;
 
 #16. Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
@@ -266,5 +266,54 @@ union
 select khach_hang.ma_khach_hang,khach_hang.ho_ten,khach_hang.email,
 	   khach_hang.so_dien_thoai,khach_hang.ngay_sinh,khach_hang.dia_chi 
        FROM khach_hang;
+#21.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Đà Nẵng” và 
+-- đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”.
+
+create view v_nhan_vien as
+select nv.*,
+       hd.ngay_lam_hop_dong
+from hop_dong hd 
+join nhan_vien nv on hd.ma_nhan_vien = nv.ma_nhan_vien
+where nv.dia_chi LIKE '%Đà Nẵng%'
+and month(hd.ngay_lam_hop_dong) = 4
+and year(hd.ngay_lam_hop_dong) = 2021;
+
+# 22.Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
+SET sql_safe_updates = 0;
+update v_nhan_vien
+set  dia_chi = 'Liên Chiểu'
+where (
+SELECT*from (
+SELECT nhan_vien.ma_nhan_vien from v_nhan_vien)
+ as a);
+-- dia_chi = regexp_replace(dia_chi, 'Đà Nẵng', 'Liên Chiểu')
+
+#23.	Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó với 
+-- ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+DELIMITER //
+CREATE PROCEDURE sp_xoa_khach_hang(IN p_id INT)
+BEGIN
+delete from khach_hang
+WHERE khach_hang.ma_khach_hang = p_id;
+end//
+DELIMITER //;
+CALL sp_xoa_khach_hang(5) ;
+
+-- 24.	Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với
+--  yêu cầu sp_them_moi_hop_dong phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung,
+--  với nguyên tắc không được trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+DELIMITER //
+create procedure sp_them_moi_hop_dong( ma_hop_dong int, ngay_lam_hop_dong DATETIME, ngay_ket_thuc  DATETIME, tien_dat_coc DOUBLE, ma_nhan_vien int, ma_khach_hang int, ma_dich_vu INT)
+BEGIN
+insert into hop_dong
+values(ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
+end //
+DELIMITER // ;
+call sp_them_moi_hop_dong(1000, '2020-09-25', '2022-09-25', 1540000, 1, 1, 1);
+
+
+
+
+
 
 
