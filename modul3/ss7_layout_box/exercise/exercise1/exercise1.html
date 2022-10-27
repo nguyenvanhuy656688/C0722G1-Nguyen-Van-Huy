@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        #menu{
+            height: 30px;
+            padding:0;
+            margin:0;
+            background-color: black;
+            border: 5px solid #CDCDCD;
+        }
+
+        #menu ul, #menu li{
+            padding:0;
+            margin:0;
+        }
+        #menu li{
+            position: relative;
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding:0;
+        }
+        #menu li a {
+            width: 100px;
+            height: 30px;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            background-color: black;
+            color: white;
+
+        }
+
+        #menu ul ul li a {
+            width: 200px;
+            text-align: left;
+            padding-left: 10px;
+
+        }
+        #menu li a:hover{
+            background-color: red;
+        }
+        #menu ul ul{
+            position: absolute;
+            top: 30px;
+            left: 15px;
+            visibility: hidden;
+        }
+
+        #menu ul li:hover ul{
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+<div id="menu" >
+    <ul style="flex-wrap: wrap">
+        <li>
+            <a href="#">Garena</a>
+
+        </li>
+        <li><a href="#">Các Trò chơi</a>
+        <ul>
+            <li>
+                <a href="#">Liên minh</a>
+                <a href="#">Fifa</a>
+                <a href="#">black soul</a>
+            </li>
+        </ul>
+        </li>
+        <li><a href="#">Hỗ trợ khách</a>
+            <ul>
+                <li>
+                    <a href="#">Tài khoản</a>
+                    <a href="#">Chính sách</a>
+                    <a href="#">Liên Hệ</a>
+                    <a href="#">Tư vấn</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Tài khoản</a>
+            <ul>
+                <li>
+                    <a href="#">Bảo mật</a>
+                    <a href="#">Hồ sơ</a>
+                    <a href="#">Loại tài khoản</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Liên Hệ</a>
+            <ul>
+                <li>
+                    <a href="#">email</a>
+                    <a href="#">Số điện thoại</a>
+                </li>
+            </ul>
+        </li>
+        <li class="class" style="padding-left: 50% ; "><a href="#">Login</a></li>
+    </ul>
+</div>
+<div id="sidebar1"><br><br>
+    <ul >
+        <li style="font-size: 20px"><a href="#">link</a></li><br>
+        <li style="font-size: 20px"><a href="#">link</a></li><br>
+        <li style="font-size: 20px"><a href="#">link</a></li>
+    </ul>
+</div>
+<div id="main">
+    <h2 style="text-align: center"><strong>Thơ</strong></h2>
+    <p style="text-indent: 30px">
+        Thơ là hình thức nghệ thuật dùng từ trong ngôn ngữ làm chất liệu, và sự chọn lọc từ cũng như tổ hợp của chúng được
+        sắp xếp dưới hình thức lôgíc nhất định tạo nên hình ảnh hay gợi cảm âm thanh có tính thẩm mỹ cho người đọc, người nghe.
+        Từ thơ thường được đi kèm với từ câu để chỉ một câu thơ, hay với từ bài để chỉ một bài thơ. Một câu thơ là một hình thức
+        câu cô đọng, truyền đạt một hoặc nhiều hình ảnh, có ý nghĩa cho người đọc, và hoàn chỉnh trong cấu trúc ngữ pháp.
+        Một câu thơ có thể đứng nguyên một mình. Một bài thơ là tổ hợp của các câu thơ. Tính cô đọng trong số lượng từ,
+        tính tượng hình và dư âm thanh nhạc trong thơ biến nó thành một hình thức nghệ thuật độc đáo, tách biệt hẳn khỏi
+        các hình thức nghệ thuật khác.
+
+    </p>
+    <div style="text-align: center">
+
+        <hr width="60%">
+        <h2 style="text-align: center">Từ ấy</h2>
+            <span>Từ ấy trong tôi bừng nắng hạ</span>
+        <br>
+            <span>Mặt trời chân lí chói qua tim</span>
+        <br>
+            <span>Hồn tôi là một vườn hoa lá</span>
+        <br>
+            <span>Rất đậm hương và rộn tiếng chim.</span>
+    </div>
+</div>
+<div id="sidebar2" >
+    <ul>
+        <li>ADS</li>
+        <br>
+        <li>ADS</li>
+    </ul>
+</div>
+<div id="footer">
+    <h2 style="color: azure;text-align: center">Footer</h2>
+</div>
+</body>
+</html>

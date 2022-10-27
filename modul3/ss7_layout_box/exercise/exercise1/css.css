@@ -1,0 +1,102 @@
+body {
+    margin: 0px;
+}
+
+#header {
+    background-color: black;
+    height: 50px;
+    width: 100%;
+}
+
+#header ul, #header li {
+    padding: 0;
+    margin: 0;
+}
+
+#header li {
+    position: relative;
+    float: left;
+    list-style: none;
+    margin: 0 ;
+    padding: 0;
+}
+
+#header li a {
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    color: white;
+    background-color: black;
+}
+
+#header ul ul li a {
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#header li a:hover {
+    background-color: blue;
+}
+#header ul ul{
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    visibility: hidden;
+}
+#header ul li:hover ul{
+    visibility: visible;
+}
+
+#sidebar1 {
+    background-color: bisque;
+    height: 600px;
+    width: 20%;
+    float: left;
+}
+
+#main {
+    background-color: white;
+    height: 600px;
+    width: 60%;
+    float: left;
+    box-sizing: content-box;
+}
+
+#sidebar2 {
+    background-color: bisque;
+    height: 600px;
+    width: 20%;
+    float: left;
+    box-sizing: content-box;
+}
+
+#footer {
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    clear: both;
+}
+#login{
+    float: right;
+    color: white;
+    text-decoration: none;
+
+}
+.class:active{
+    color: brown;
+}
+#sidebar2 li{
+    width: 90%;
+    margin-left: 0%;
+    margin-right: 5%;
+    margin-top: 5%;
+    background-color: aqua;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    border-radius: 15px;
+    list-style: none;
+}
