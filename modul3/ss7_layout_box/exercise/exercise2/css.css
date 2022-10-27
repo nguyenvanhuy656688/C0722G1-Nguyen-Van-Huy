@@ -71,7 +71,7 @@
     /*Các thẻ div (col)  không đủ chỗ chứa trên 1 hàng thì rớt xuống*/
     flex-wrap: wrap;
 }
-span{
+p{
     width: 90%;
     margin-left: 0%;
     margin-right: 5%;
