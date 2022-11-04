@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../bootstrap-5.2.2-dist/css/bootstrap.css">
     <script src="../../bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
     <script src="../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
+    <script src="../../bootstrap-5.2.2-dist/js/bootstrap.esm.js"></script>
 
 
 </head>
@@ -100,12 +101,12 @@
 </nav>
 <div style="height: 10% ;text-align: center;color: #0d6056;width: 100%" class="row">
     <div class="col-sm-12 col-md-10 ">
-        <h2 style="text-align: center">Customer Manager</h2>
+        <h2 style="text-align: center">Quản lý khách hàng</h2>
     </div>
     <div class="col-sm-12 col-md-2 ">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            ADD New
+            Thêm mới
         </button>
 
         <!-- Modal -->
@@ -176,19 +177,19 @@
 
 </div>
 <table class="table table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name customer</th>
-        <th scope="col">Day of Birth</th>
-        <th scope="col">Gender</th>
-        <th scope="col">ID Card</th>
-        <th scope="col">Phone Number</th>
+    <thead style="background-color: yellow">
+    <tr style="text-align: center;">
+        <th scope="col">STT</th>
+        <th scope="col">Tên khách</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">CCCD/CMND</th>
+        <th scope="col">SDT</th>
         <th scope="col">Email</th>
-        <th scope="col">Address</th>
-        <th scope="col">Customer Type ID</th>
-        <th><button type="button" class="btn btn-outline-primary">Edit</button></th>
-        <th ><button type="button" class="btn btn-outline-danger">Delete</button></th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Tên loại khách</th>
+        <th colspan="2" scope="col">Chỉnh sửa</th>
+
     </tr>
     </thead>
     <tbody>
@@ -201,9 +202,9 @@
         <td>0945423362</td>
         <td>thihao07@gmail.com</td>
         <td>56 Nguyễn Hoàng, Đà Nẵng</td>
-        <td>5</td>
-        <th><button type="button" class="btn btn-outline-primary">Edit</button></th>
-        <th ><button type="button" class="btn btn-outline-danger">Delete</button></th>
+        <td>Diamond</td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button></td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal1">Xóa</button></td>
     </tr>
     <tr>
         <th scope="row">2</th>
@@ -214,10 +215,9 @@
         <td>0954333333</td>
         <td>xuandieu98@gmail.com</td>
         <td>22 Thái Phiên, Quảng Trị</td>
-        <td>3</td>
-        <th><button type="button" class="btn btn-outline-primary">Edit</button></th>
-        <th ><button type="button" class="btn btn-outline-danger">Delete</button></th>
-
+        <td>Diamond</td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button></td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal1">Xóa</button></td>
     </tr>
     <tr>
         <th scope="row">3</th>
@@ -228,9 +228,9 @@
         <td>0373213122</td>
         <td>nghenhan2702@gmail.com</td>
         <td>K323/12 Ông Ích Khiêm, Vinh</td>
-        <td>1</td>
-        <th><button type="button" class="btn btn-outline-primary">Edit</button></th>
-        <th ><button type="button" class="btn btn-outline-danger">Delete</button></th>
+        <td>Diamond</td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button></td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal1">Xóa</button></td>
     </tr>
     </tbody>
 </table>
@@ -283,19 +283,36 @@
         </div>
     </nav>
 </div>
-<div class="modal fade" class="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" class="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                Bạn muốn sửa thông tin gì nào 😊
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huy</button>
-                <button type="button" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Ấn nhầm ý </button>
+                <button type="button" class="btn btn-primary">uk, tui mún sửa</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel1">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc muốn xóa khách hàng này chứ :-(
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">để suy nghĩ lại</button>
+                <button type="button" class="btn btn-primary">Xóa</button>
             </div>
         </div>
     </div>
