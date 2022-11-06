@@ -1,37 +1,44 @@
 package service.impl;
 
 import model.Product;
+import repository.impl.IProductRepository;
+import repository.impl.ProductRepository;
 
 import java.util.List;
 
 public class ProductService implements IProductService {
+    IProductRepository iProductRepository = new  ProductRepository();
     @Override
     public List<Product> findAll() {
-        return null;
+        return iProductRepository.displayList();
     }
 
     @Override
-    public Product findByName(String name) {
-        return null;
+    public List<Product> findByName(String name) {
+         return iProductRepository.finByName(name);
     }
 
     @Override
-    public void update(String name, String price) {
+    public void update(String name, Product product) {
+        iProductRepository.edit(name,product);
 
     }
 
-    @Override
-    public Product findById(int id) {
-        return null;
-    }
 
     @Override
     public void delete(String name) {
+        iProductRepository.delete( name);
 
     }
 
     @Override
     public void add(Product product) {
+        iProductRepository.add(product);
 
+    }
+
+    @Override
+    public Product findByName1(String name) {
+        return iProductRepository.finByName1(name);
     }
 }

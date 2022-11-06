@@ -51,7 +51,7 @@ public class ProductServlet extends HttpServlet {
         String type = request.getParameter("type");
         String unit = request.getParameter("unit");
         String size = request.getParameter("size");
-        Product product = this.productService.findByName(name);
+        Product product = this.productService.findByName1(name);
         RequestDispatcher dispatcher ;
         if (product == null){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
@@ -61,7 +61,7 @@ public class ProductServlet extends HttpServlet {
             product.setType(type);
             product.setUnit(unit);
             product.setSize(size);
-            this.productService.update(name,price);
+            this.productService.update(name,product);
             request.setAttribute("product",product);
             request.setAttribute("messenger","Product information was updated");
             dispatcher = request.getRequestDispatcher("product/edit.jsp");
@@ -79,15 +79,22 @@ public class ProductServlet extends HttpServlet {
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        Product product = productService.findByName(name);
+        Product product = productService.findByName1(name);
         this.productService.findByName(name);
         request.setAttribute("product",product);
+        try {
+            request.getRequestDispatcher("view/product/view.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        Product products =  this.productService.findByName(name);
+        Product products =  this.productService.findByName1(name);
         this.productService.findByName(name);
         request.setAttribute("products", products);
         try {
@@ -114,7 +121,7 @@ public class ProductServlet extends HttpServlet {
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        Product product = this.productService.findByName(name);
+        Product product = this.productService.findByName1(name);
         this.productService.delete(name);
         try {
             response.sendRedirect("/product");

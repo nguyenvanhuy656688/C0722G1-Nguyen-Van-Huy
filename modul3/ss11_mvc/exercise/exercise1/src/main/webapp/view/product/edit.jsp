@@ -10,7 +10,19 @@
 <head>
     <title>Title</title>
 </head>
-<body>
+<h1>Edit Product</h1>
+<a href="/product">Back list</a>
 
-</body>
+<c:if test="${message != null}">
+    <span style="color: blue">${message}</span>
+</c:if>
+
+<form method="post">
+    <pre>Name:        <input type="text" name="name" value="${product.getName()}"></pre>
+    <pre>Price:       <input type="text" name="price" value="${product.getPrice()}"></pre>
+    <pre>Description: <input type="text" name="description" value="${product.getType()}"></pre>
+    <pre>Manufacturer:<input type="text" name="manufacturer" value="${product.Unit()}"></pre>
+    <pre>Manufacturer:<input type="text" name="manufacturer" value="${product.Size()}"></pre>
+    <pre>             <button>Edit Product</button></pre>
+</form>
 </html>
