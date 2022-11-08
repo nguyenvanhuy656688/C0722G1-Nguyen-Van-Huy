@@ -45,6 +45,7 @@ public class UserServlet extends HttpServlet {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+                break;
             case "search":
                 search(request,response);
                 break;
@@ -81,6 +82,7 @@ public class UserServlet extends HttpServlet {
                     break;
                 default:
                     listUser(request, response);
+//                    search(request,response);
                     break;
             }
         } catch (SQLException ex) {
@@ -139,9 +141,9 @@ public class UserServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response){
-        String countrySearch = request.getParameter("country");
-        List<User> userList = this.iUserService.searchByCountry(countrySearch);
-        request.setAttribute("userList", userList);
+        String country = request.getParameter("country");
+        List<User> userList = this.iUserService.searchByCountry(country);
+        request.setAttribute("listUser", userList);
         try {
             request.getRequestDispatcher("view/list.jsp").forward(request,response);
         } catch (ServletException | IOException e) {

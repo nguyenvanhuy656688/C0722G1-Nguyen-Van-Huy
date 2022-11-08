@@ -44,6 +44,6 @@ public class UserService implements IUserService{
 
     @Override
     public List<User> searchByCountry(String countrySearch) {
-        return iUserRepository.searchByCountry(countrySearch);
+        return iUserRepository.searchByCountry(countrySearch==null? "":countrySearch);
     }
 }
