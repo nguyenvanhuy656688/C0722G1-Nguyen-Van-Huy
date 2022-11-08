@@ -1,7 +1,9 @@
 package controller;
 
 import model.User;
-import service.UserDAO;
+import repository.UserRepository;
+import service.IUserService;
+import service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +17,12 @@ import java.util.List;
 
 @WebServlet(name = "UserServlet" , urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
+    private IUserService iUserService = new UserService();
     private static final long serialVersionUID = 1L;
-    private UserDAO userDAO;
+    private UserRepository userDAO;
 
     public void init(){
-        userDAO = new UserDAO();
+        userDAO = new UserRepository();
     }
 
 
@@ -42,6 +45,8 @@ public class UserServlet extends HttpServlet {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+            case "search":
+                search(request,response);
                 break;
         }
 
@@ -83,6 +88,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+
     private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<User> listUser = userDAO.selectAllUsers();
@@ -105,7 +111,6 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
         request.setAttribute("user", existingUser);
         dispatcher.forward(request, response);
-
     }
 
 
@@ -131,5 +136,16 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response){
+        String countrySearch = request.getParameter("country");
+        List<User> userList = this.iUserService.searchByCountry(countrySearch);
+        request.setAttribute("userList", userList);
+        try {
+            request.getRequestDispatcher("view/list.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

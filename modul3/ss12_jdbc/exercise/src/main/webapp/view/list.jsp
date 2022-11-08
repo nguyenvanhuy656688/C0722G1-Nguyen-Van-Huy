@@ -17,6 +17,10 @@
     <h2>
         <a href="/users?action=create">Add New User</a>
     </h2>
+    <h2><form action="/users?action=search" method="post">
+        <pre>Search:   <input type="text" name="country"></pre>
+        <pre>          <button>Search</button></pre>
+    </form></h2>
 </center>
 <div align="center">
     <table border="1" cellpadding="5">
