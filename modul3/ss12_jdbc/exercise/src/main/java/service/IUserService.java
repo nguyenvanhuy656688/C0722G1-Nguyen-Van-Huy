@@ -5,15 +5,15 @@ import model.User;
 import java.util.List;
 
 public interface IUserService {
-    public User selectUser(int id);
+     User selectUser(int id);
 
-    public List<User> selectAllUsers();
+     List<User> selectAllUsers();
 
-    public void insertUser(User user);
+     void insertUser(User user);
 
-    public boolean isDeleteUser(int id);
+     boolean isDeleteUser(int id);
 
-    public boolean isUpdateUser(User user);
+     boolean isUpdateUser(User user);
 
-    public List<User> searchByCountry(String countrySearch);
+     List<User> searchByCountry(String countrySearch);
 }
