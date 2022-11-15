@@ -12,11 +12,11 @@ public interface ICustomerService {
 
     boolean edit(Customer customer);
 
-    void create(Customer customer);
+    boolean create(Customer customer);
 
     List<Customer> displayAll();
 
     List<Customer> search(int id);
 
-    Customer showFormEdit(int id);
+    Customer findById(int id);
 }

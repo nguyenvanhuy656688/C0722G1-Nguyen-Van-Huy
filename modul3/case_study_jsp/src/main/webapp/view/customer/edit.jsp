@@ -23,74 +23,66 @@
 
 </center>
 
-    <form method="post">
-        <table border="1px">
-            <tr>
-                <td>
-                    <pre>Customer Type:</pre>
-                </td>
-                <td>
-                    <select name="customerTypeId">
-                        <option value="1">Diamond</option>
-                        <option value="2">Platinium</option>
-                        <option value="3">Gold</option>
-                        <option value="4">Silver</option>
-                        <option value="5">Member</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Name:</pre>
-                </td>
-                <td><input type="text" name="name" value="${customer.name()}"></td>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Birthday:</pre>
-                </td>
-                <td><input type="date" name="dateOfBirth" value="${customer.dateOfBirth()}" ></td>
-            </tr>
-            </tr>
-            <tr>
-                <td>
-                    <pre>ID Card:  </pre>
-                </td>
-                <td><input type="text" name="idCard" value="${customer.idCard()}"></td>
-            </tr>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Gender:</pre>
-                </td>
-                <td><input type="radio" name="gender" value="true">Nam <input type="radio" value="false" name="gender"> Nữ</td>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Phone Number:</pre>
-                </td>
-                <td><input type="text" name="phoneNumber" value="${customer.phoneNumber()}"></td>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Email:</pre>
-                </td>
-                <td><input type="text" name="email" value="${customer.email()}"></td>
-            </tr>
-            <tr>
-                <td>
-                    <pre>Address:</pre>
-                </td>
-                <td><input type="text" name="address" value="${customer.address()}"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" value="edit"/></td>
-            </tr>
-        </table>
+<center>
+    <form  method="post" style="align-content: center">
+    <div class="col-md-6">
+        <label class="form-label">Customer Type</label>
+        <select name="customerTypeId" class="form-select">--%>
+            <c:forEach var="customerType" items="${customerTypeList}" >
+                <option value="${customerType.getId()}">${customerType.getCustomerName()}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Name:</label>
+        <input type="text" class="form-control" name="name" value="${customer.getName()}"></td>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Birthday:</label>
+        <input type="date" class="form-control" name="dateOfBirth" value="${customer.getDateOfBirth()}" ></td>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">ID Card: </label>
+        <input type="text" class="form-control" name="idCard" value="${customer.getIdCard()}">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Phone Number</label>
+        <input type="text" name="phoneNumber" class="form-control" placeholder="Phone Number" value="${customer.getPhoneNumber()}">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Address</label>
+        <input type="text" placeholder="Address" class="form-control" name="address" value="${customer.getAddress()}">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Email:</label>
+        <input type="text" placeholder="Email" class="form-control" name="email" value="${customer.getEmail()}">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Gender</label>
+        <br>
+        <div class="form-check form-check-inline col-md-3" >
+            <label><input class="form-check-input" type="radio" name="gender" ${customer.isGender()== true?"checked":""}>Male</label>
+        </div>
+        <div class="form-check form-check-inline col-md-3">
+            <label><input class="form-check-input" type="radio"  name="gender" ${customer.isGender()== false?"checked":""}>Female</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <br>
+        <input type="submit" value="edit" class="btn btn-primary form-control">
+    </div>
     </form>
+    <center>
+        <h2>
+            <c:if test="${message != null}">
+                <span style="color: darkred">${message}</span>
+            </c:if>
+        </h2>
+    </center>
     <a href="/customer">
         <button type="button">Back List Customer</button>
     </a>
+</center>
 
 </body>
 </html>

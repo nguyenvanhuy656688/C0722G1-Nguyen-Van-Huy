@@ -24,70 +24,69 @@
         <a href="/customer">List All Customer</a>
     </h2>
 </center>
-<div align="center">
-    <form method="post">
-        <table style="border-style:hidden;" width="200px" bgcolor="#c4e4cd">
-            <caption>
-                <h2>Add New Customer</h2>
-            </caption>
-            <tr>
-                <th>Customer customer_type:</th>
-                <td>
-                    <input type="text" name="customer_type" id="customer_type" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer name:</th>
-                <td>
-                    <input type="text" name="name" id="name" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer birthday:</th>
-                <td>
-                    <input type="text" name="birthday" id="birthday" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer id_card:</th>
-                <td>
-                    <input type="text" name="id_card" id="id_card" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer gender:</th>
-                <td>
-                    <input type="text" name="gender" id="gender" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer phone_number:</th>
-                <td>
-                    <input type="text" name="phone_number" id="phone_number" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer email:</th>
-                <td>
-                    <input type="text" name="email" id="email" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Customer address:</th>
-                <td>
-                    <input type="text" name="address" id="addres" size="45"/>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
-                </td>
-            </tr>
-        </table>
-    </form>
+<form class="row" action="/customer?action=create" method="post">
+    <div class="col-md-6">
+        <label class="form-label">Name Customer</label>
+        <input type="text" name="name" class="form-control" placeholder="Name Customer">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Day of Birth</label>
+        <input type="date" name="dateOfBirth" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Customer Type</label>
+        <select name="customerTypeId" class="form-select">
+           <c:forEach var="customerType" items="${customerTypeList}" >
+               <option value="${customerType.getId()}">${customerType.getCustomerName()}</option>
+           </c:forEach>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">ID Card</label>
+        <input type="text" name="idCard" class="form-control" placeholder="ID Card">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Phone Number</label>
+        <input type="text" required pattern="[0][1-9][0-9]{8}" TITLE="Mời nhập lại!" name="phoneNumber" class="form-control" placeholder="Phone Number">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Address</label>
+        <input type="text" name="address" class="form-control" placeholder="Address">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Gender</label>
+        <br>
+        <div class="form-check form-check-inline col-md-3">
+            <label>
+                <input type="radio" class="form-check-input"  value="true" name="gender" checked>
+            </label>
+            <label class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline col-md-3">
+            <label>
+                <input type="radio" class="form-check-input" value="false" name="gender">
+            </label>
+            <label class="form-check-label">Female</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <br>
+        <button class="btn btn-primary form-control">Save</button>
+    </div>
+</form>
 </div>
+<center>
+    <h2>
+        <c:if test="${message != null}">
+            <span style="color: darkblue" class="alert-info">${message}</span>
+        </c:if>
+    </h2>
+</center>
 </body>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -1,6 +1,7 @@
 package repository.impl_customer;
 
 import model.Customer;
+import model.CustomerType;
 import repository.BaseRepository;
 
 import java.sql.Connection;
@@ -18,7 +19,10 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String DELETE_USERS_SQL = "delete from customer where id = ?;";
     private static final String UPDATE_USERS_SQL = "update customer set customer_type_id = ?,`name`= ?, date_of_birth =?,gender =?," +
             "id_card=?,phone_number=?,email=?,address=?  where id = ?;";
-    private static final String SEARCH_USERS_BY_ID = "select * from customer where id = ?;";
+    private static final String SEARCH_USERS_BY_ID = "select c.*, ct.name_type as customer_type_name from\n" +
+            "customer c join customer_type ct on c.customer_type_id = ct.id where c.id = ?;";
+    private static final String SELECT_ALL_BY_TYPE="select c.*, ct.name_type as customer_type_name from\n" +
+            "customer c join customer_type ct on c.customer_type_id = ct.id;";
     @Override
     public boolean deleteById(int id) {
         boolean rowDeleted = false;
@@ -85,10 +89,11 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public void create(Customer customer) {
+    public boolean create(Customer customer) {
+        boolean rowCreate = false;
         System.out.println(INSERT_USERS_SQL);
-        try (Connection connection = BaseRepository.getConnectDB();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+        Connection connection = BaseRepository.getConnectDB();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setInt(1, customer.getCustomerTypeId());
             preparedStatement.setString(2, customer.getName());
             preparedStatement.setString(3, customer.getDateOfBirth());
@@ -98,11 +103,11 @@ public class CustomerRepository implements ICustomerRepository {
             preparedStatement.setString(7, customer.getEmail());
             preparedStatement.setString(8, customer.getAddress());
             System.out.println(preparedStatement);
-            preparedStatement.executeUpdate();
+            rowCreate = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
            e.getMessage();
         }
-
+        return rowCreate;
     }
 
     @Override
@@ -113,7 +118,7 @@ public class CustomerRepository implements ICustomerRepository {
         try (Connection connection = BaseRepository.getConnectDB();
 
              // Step 2: Tạo kết nối vs câu lệnh
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_BY_TYPE)) {
             System.out.println(preparedStatement);
 
             // Step 3: hứng câu truy vấn
@@ -130,7 +135,8 @@ public class CustomerRepository implements ICustomerRepository {
                 String phoneNumber = rs.getString("phone_number");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                users.add(new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address));
+                String customerTypeName = rs.getString("customer_type_name");
+                users.add(new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address, new CustomerType(customerTypeName)));
             }
         } catch (SQLException e) {
            e.printStackTrace();
@@ -158,7 +164,8 @@ public class CustomerRepository implements ICustomerRepository {
                 String phoneNumber = resultSet.getString("phone_number");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
-                customer.add(new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address));
+                String customerTypeName = resultSet.getString("customer_type_name");
+                customer.add(new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address,new CustomerType(customerTypeName)));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -168,7 +175,7 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public Customer showFormEdit(int id) {
+    public Customer findById(int id) {
         Customer customer = null;
 
         try (Connection connection = BaseRepository.getConnectDB();

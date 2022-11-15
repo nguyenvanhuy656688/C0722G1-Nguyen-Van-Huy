@@ -24,8 +24,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void create(Customer customer) {
-        iCustomerRepository.create(customer);
+    public boolean create(Customer customer) {
+        return iCustomerRepository.create(customer);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public Customer showFormEdit(int id) {
-        return iCustomerRepository.showFormEdit(id);
+    public Customer findById(int id) {
+        return iCustomerRepository.findById(id);
     }
 }

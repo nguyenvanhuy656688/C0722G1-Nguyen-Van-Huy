@@ -10,8 +10,43 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private String address;
+    private CustomerType customerType;
+
+    public Customer(int id, String name, String dateOfBirth, boolean gender, String idCard,
+                    String phoneNumber, String email, String address, CustomerType customerType) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.customerType = customerType;
+    }
 
     public Customer() {
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    public Customer(int id, int customerTypeId, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, CustomerType customerType) {
+        this.id = id;
+        this.customerTypeId = customerTypeId;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.customerType = customerType;
     }
 
     public Customer(int id, int customerTypeId, String name, String dateOfBirth, boolean gender, String idCard,

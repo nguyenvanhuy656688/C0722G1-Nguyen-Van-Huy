@@ -13,6 +13,6 @@
 
   </head>
   <body>
-  <c:redirect url="/customer"></c:redirect>
+  <c:redirect url="/furama"></c:redirect>
   </body>
 </html>

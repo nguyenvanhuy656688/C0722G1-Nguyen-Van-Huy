@@ -96,30 +96,30 @@
     </div>
 </nav>
 <section class="navbar d-flex justify-content-center" id="navbar">
-    <div class="col-sm-12 col-md-10 ">
+    <div class="col-sm-12 col-md-11 ">
         <h2 style="text-align: center">Quản lý khách hàng</h2>
     </div>
+    <%--Hiển Thị về Trang chủ --%>
+    <div>
+    <li class="list__item d-flex justify-content-center align-items-center"><button class="btn btn-secondary"><a href="/customer?action=customer">->Danh sách</a></button>
+    </div>
+
     <div  class="wrapper h-100 d-flex nav-item" style="margin-left: 95px">
         <ul class="list d-flex text-bg-light">
-            <div>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="/customer?action=customer">List Customer</a>
-             </div>
-            <div>
 
+           </li>
+            <li class="list__item d-flex justify-content-center align-items-center font-monospace " style="font-size: 25px">
+                <a href="/customer?action=create">Thêm khách hàng</a>
             </li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="/customer?action=create">Add Customer</a></li></div>
-<%--            <li class="list__item d-flex justify-content-center align-items-center"><a href="/employee?action=list">Employee</a></li>--%>
-<%--            <li class="list__item d-flex justify-content-center align-items-center"><a href="/customer">Customer</a></li>--%>
-<%--            <li class="list__item d-flex justify-content-center align-items-center"><a href="/service">Service</a>--%>
-            </li>
-<%--            <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract">Contract</a></li>--%>
+
         </ul>
+        <div>
         <form action="/customer" method="get" style="display: flex;color: #0dcaf0" >
             <input type="hidden" name="action" value="search">
             <input class="form-control w-auto mx-2" type="text" placeholder="Search by ID..." name="IdSearch">
-            <button class="btn btn-outline-success mx-2" type="submit" style="color: white"
+            <button class="btn btn-outline-success mx-2" type="submit" style="color: black"
                     style="margin-right: 0!important;">Search</button>
-        </form>
+        </form></div>
     </div>
     <table id="tableCustomer" class="table table-bordered" style="text-align: center" border="2">
         <thead style="background-color: yellow">
@@ -141,53 +141,26 @@
         <c:forEach var="customer" items="${customerList}" varStatus="status">
             <tr><td>${status.count}</td>
 <%--                <td>${customer.getId()}</td>--%>
-                <td>${customer.getCustomerTypeId()}</td>
+                <td>${customer.customerType.customerName}</td>
                 <td>${customer.getName()}</td>
                 <td>${customer.getDateOfBirth()}</td>
                 <td>
                   <label> <c:if test="${customer.isGender()}">
-                        Nam</label>
+                        Male</label>
                     <label></c:if>
                     <c:if test="${!customer.isGender()}">
-                        Nữ
+                        Female
                     </c:if></label>
                 </td>
                 <td>${customer.getIdCard()}</td>
                 <td>${customer.getPhoneNumber()}</td>
                 <td>${customer.getEmail()}</td>
                 <td>${customer.getAddress()}</td>
+
+                <!-- Edit -->
                 <td>
-                        <%--                    <!-- Button trigger modal EDIT -->--%>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal1${customer.getId()}">
-                       Edit
-                    </button>
-
-                                            <!-- Modal -->
-                    <div class="modal fade" id="exampleModal1${customer.getId()}" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel1" style="color: #000">Thay đổi thông
-                                        tin</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" style="color: #000 ; text-decoration-color: white " >
-                                    Bạn có muốn thay đổi thông tin <strong class="text-danger">${customer.getName()}</strong>
-                                    không ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <a href="/customer?action=edit&id=${customer.getId()}" class="btn btn-secondary">Thay Đổi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="btn btn-success btn btn-sm" href="/customer?action=edit&id=${customer.getId()}">Edit</a>
                 </td>
-
                 <td>
                     <!-- Button trigger modal DELETE -->
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${customer.getId()}">

@@ -12,13 +12,14 @@ public class Employer {
     private String address;
     private int position;
     private int educationDegreeId;
+    private int division;
     private String username;
 
     public Employer() {
     }
 
     public Employer(int customerTypeId, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber,
-                    String email, String address, int position, int educationDegreeId, String username) {
+                    String email, String address, int position, int educationDegreeId,int division, String username) {
         this.customerTypeId = customerTypeId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -29,11 +30,12 @@ public class Employer {
         this.address = address;
         this.position = position;
         this.educationDegreeId = educationDegreeId;
+        this.division = division;
         this.username = username;
     }
 
     public Employer(int id, int customerTypeId, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber,
-                    String email, String address, int position, int educationDegreeId, String username) {
+                    String email, String address, int position, int educationDegreeId,int division, String username) {
         this.id = id;
         this.customerTypeId = customerTypeId;
         this.name = name;
@@ -45,6 +47,7 @@ public class Employer {
         this.address = address;
         this.position = position;
         this.educationDegreeId = educationDegreeId;
+        this.division = division;
         this.username = username;
     }
 
@@ -134,6 +137,14 @@ public class Employer {
 
     public void setEducationDegreeId(int educationDegreeId) {
         this.educationDegreeId = educationDegreeId;
+    }
+
+    public int getDivision() {
+        return division;
+    }
+
+    public void setDivision(int division) {
+        this.division = division;
     }
 
     public String getUsername() {
