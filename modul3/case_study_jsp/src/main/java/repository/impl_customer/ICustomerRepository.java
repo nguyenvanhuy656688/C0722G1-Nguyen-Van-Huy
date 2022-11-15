@@ -15,7 +15,7 @@ public interface ICustomerRepository {
 
     List<Customer> displayAll();
 
-    List<Customer> search(int idSearch);
+    List<Customer> search(int idSearch,String nameSearch,String addressSearch);
 
     Customer findById(int id);
 }

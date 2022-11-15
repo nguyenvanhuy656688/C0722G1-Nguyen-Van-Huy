@@ -116,10 +116,16 @@
         <div>
         <form action="/customer" method="get" style="display: flex;color: #0dcaf0" >
             <input type="hidden" name="action" value="search">
-            <input class="form-control w-auto mx-2" type="text" placeholder="Search by ID..." name="IdSearch">
+            <input class="form-control w-auto mx-2" type="text" placeholder="Search by  Id..." name="IdSearch">
+            <input class="form-control w-auto mx-2" type="text" placeholder="Search by  Name..." name="nameSearch">
+            <input class="form-control w-auto mx-2" type="text" placeholder="Search by Address..." name="addressSearch">
+<%--            <input class="btn btn-outline-success mx-2" type="submit" style="color: black" value="Search"--%>
+<%--                   style="margin-right: 0!important;">--%>
+<%--            <input class="form-control w-auto mx-2" type="text" placeholder="Search by ID..." name="IdSearch">--%>
             <button class="btn btn-outline-success mx-2" type="submit" style="color: black"
                     style="margin-right: 0!important;">Search</button>
-        </form></div>
+        </form>
+        </div>
     </div>
     <table id="tableCustomer" class="table table-bordered" style="text-align: center" border="2">
         <thead style="background-color: yellow">

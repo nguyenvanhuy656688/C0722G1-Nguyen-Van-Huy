@@ -143,8 +143,10 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("IdSearch"));
-        List<Customer> customer = customerService.search(id);
+        int IdSearch = Integer.parseInt(request.getParameter("IdSearch"));
+        String nameSearch = request.getParameter("nameSearch");
+        String addressSearch = request.getParameter("addressSearch");
+        List<Customer> customer = customerService.search(IdSearch,nameSearch,addressSearch);
         request.setAttribute("customerList",customer);
         try {
             request.getRequestDispatcher("view/customer/list.jsp").forward(request,response);

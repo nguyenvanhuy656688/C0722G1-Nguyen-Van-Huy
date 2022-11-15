@@ -20,7 +20,7 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String UPDATE_USERS_SQL = "update customer set customer_type_id = ?,`name`= ?, date_of_birth =?,gender =?," +
             "id_card=?,phone_number=?,email=?,address=?  where id = ?;";
     private static final String SEARCH_USERS_BY_ID = "select c.*, ct.name_type as customer_type_name from\n" +
-            "customer c join customer_type ct on c.customer_type_id = ct.id where c.id = ?;";
+            "customer c join customer_type ct on c.customer_type_id = ct.id where c.id like ? and c.`name` like ? and  c.address like ?;";
     private static final String SELECT_ALL_BY_TYPE="select c.*, ct.name_type as customer_type_name from\n" +
             "customer c join customer_type ct on c.customer_type_id = ct.id;";
     @Override
@@ -145,12 +145,14 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public List<Customer> search(int idSearch) {
+    public List<Customer> search(int idSearch,String nameSearch,String addressSearch) {
         List<Customer> customer = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USERS_BY_ID);
-            preparedStatement.setInt(1,idSearch);
+            preparedStatement.setInt(1,idSearch );
+            preparedStatement.setString(2,"%" + nameSearch + "%");
+            preparedStatement.setString(3,"%" + addressSearch + "%");
             System.out.println(preparedStatement);
             ResultSet resultSet = preparedStatement.executeQuery();
 

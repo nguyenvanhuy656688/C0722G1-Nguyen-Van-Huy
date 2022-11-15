@@ -16,7 +16,7 @@ public interface ICustomerService {
 
     List<Customer> displayAll();
 
-    List<Customer> search(int id);
+    List<Customer> search(int id,String name ,String address);
 
     Customer findById(int id);
 }
