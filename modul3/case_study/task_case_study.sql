@@ -10,10 +10,13 @@ WHERE
 #3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”
 select *from khach_hang
 WHERE
-			YEAR(CURDATE()) - YEAR(ngay_sinh) >= 18
-            AND YEAR(CURDATE()) - YEAR(ngay_sinh) <= 50
-            AND( dia_chi LIKE '%Quảng Trị')
-            OR (dia_chi LIKE '%Đà Nẵng');
+				YEAR(CURDATE()) - YEAR(ngay_sinh) >= 18
+            AND 
+				YEAR(CURDATE()) - YEAR(ngay_sinh) <= 50
+            AND
+				( dia_chi LIKE '%Quảng Trị')
+            OR 
+				(dia_chi LIKE '%Đà Nẵng');
 #4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng(Diamond)
 SELECT 
     khach_hang.ma_khach_hang,
@@ -283,8 +286,8 @@ SET sql_safe_updates = 0;
 update v_nhan_vien
 set  dia_chi = 'Liên Chiểu'
 where (
-SELECT*from (
-SELECT nhan_vien.ma_nhan_vien from v_nhan_vien)
+select*from (
+select nhan_vien.ma_nhan_vien from v_nhan_vien)
  as a);
 -- dia_chi = regexp_replace(dia_chi, 'Đà Nẵng', 'Liên Chiểu')
 
@@ -293,9 +296,9 @@ SELECT nhan_vien.ma_nhan_vien from v_nhan_vien)
 DELIMITER //
 CREATE PROCEDURE sp_xoa_khach_hang(IN p_id INT)
 BEGIN
-delete from khach_hang
+DELETE FROM khach_hang
 WHERE khach_hang.ma_khach_hang = p_id;
-end//
+END//
 DELIMITER //;
 CALL sp_xoa_khach_hang(5) ;
 
@@ -304,12 +307,30 @@ CALL sp_xoa_khach_hang(5) ;
 --  với nguyên tắc không được trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
 DELIMITER //
 create procedure sp_them_moi_hop_dong( ma_hop_dong int, ngay_lam_hop_dong DATETIME, ngay_ket_thuc  DATETIME, tien_dat_coc DOUBLE, ma_nhan_vien int, ma_khach_hang int, ma_dich_vu INT)
-BEGIN
+begin
 insert into hop_dong
 values(ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
 end //
 DELIMITER // ;
 call sp_them_moi_hop_dong(1000, '2020-09-25', '2022-09-25', 1540000, 1, 1, 1);
+
+-- 25.	Tạo Trigger có tên tr_xoa_hop_dong khi xóa bản ghi trong bảng hop_dong thì hiển thị tổng số lượng bản ghi còn lại có trong bảng hop_dong ra giao diện console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+DELIMITER //
+CREATE TRIGGER tr_xoa_hop_dong 
+AFTER DELETE ON hop_dong
+FOR EACH ROW
+BEGIN
+INSERT INTO `history`(tong_record_con_lai, delete_day) 
+SELECT count(hop_dong.ma_hop_dong), now()
+FROM hop_dong;
+END //
+DELIMITER ;
+SELECT *FROM history;
+    SELECT * FROM hop_dong;
+DELETE FROM hop_dong 
+WHERE ma_hop_dong = 2;
+DROP TRIGGER tr_xoa_hop_dong;
 
 
 
