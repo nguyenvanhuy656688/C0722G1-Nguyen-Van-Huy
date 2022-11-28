@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -18,12 +19,11 @@
     <span style="color: darkred">${message}</span>
 </c:if>
 
-<form action="/product?action=add" method="post">
+<form action="/product?action=create" method="post">
     <pre>Name:          <input type="text" name="name"></pre>
     <pre>Price:        <input type="text" name="price"></pre>
-    <pre>Type:       <input type="text" name="type"></pre>
-    <pre>Unit: <input type="text" name="unit"></pre>
-    <pre>Size:<input type="text" name="size"></pre>
+    <pre>Description: <input type="text" name="description"></pre>
+    <pre>Manufacture:<input type="text" name="manufacture"></pre>
     <pre>             <button>Save</button></pre>
 </form>
 

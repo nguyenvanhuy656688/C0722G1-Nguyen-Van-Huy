@@ -7,7 +7,7 @@ import java.util.List;
 public interface ICustomerRepository {
     boolean deleteById(int id);
 
-    List<Customer> displayADelete();
+//    List<Customer> displayADelete();
 
     boolean edit(Customer customer);
 

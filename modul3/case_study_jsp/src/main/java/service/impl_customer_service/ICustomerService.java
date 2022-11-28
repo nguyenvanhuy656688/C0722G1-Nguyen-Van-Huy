@@ -8,7 +8,7 @@ public interface ICustomerService {
 
     boolean deleteById(int id);
 
-    List<Customer> displayADelete();
+//    List<Customer> displayADelete();
 
     boolean edit(Customer customer);
 

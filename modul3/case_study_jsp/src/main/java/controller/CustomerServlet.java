@@ -39,7 +39,7 @@ public class CustomerServlet extends HttpServlet {
     private void delete(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         customerService.deleteById(id);
-        List<Customer> customerList = customerService.displayADelete();
+        List<Customer> customerList = customerService.displayAll();
         request.setAttribute("customerList",customerList);
 
         try {
@@ -101,7 +101,6 @@ public class CustomerServlet extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-
 
     }
 

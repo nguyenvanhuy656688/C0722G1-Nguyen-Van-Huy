@@ -1,3 +1,4 @@
+drop database if exists demo;
 CREATE DATABASE if not exists demo ;
 USE demo;
 
@@ -49,10 +50,9 @@ BEGIN
 
 DELIMITER ;
 
-DELIMITER $$
+DELIMITER //
 create procedure select_user()
 begin
 select * from user;
-end;//
-delimiter
-
+end //
+delimiter ;

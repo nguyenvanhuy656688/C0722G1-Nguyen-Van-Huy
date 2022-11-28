@@ -73,7 +73,7 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Nhân viên</a></li>
+                            <li><a class="dropdown-item" href="">Nhân viên</a></li>
                             <li><a class="dropdown-item" href="/customer">khách hàng</a></li>
                             <li><hr class="dropdown-divider"></li>
                         </ul></div>
@@ -82,122 +82,100 @@
                     <a class="nav-link" href="http://localhost:63342/modul3/case_study_web/furama.html?_ijt=fq0o9cog8uo49p2hptn9922rhh" style="font-weight: 700">Dịch vụ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-weight: 700">Hội nghị và sự kiện</a>
+                    <a class="nav-link" href="#" style="font-weight: 700">Hạ tầng</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link "href="#"   style="font-weight: 700">Spa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link "href="#"  style="font-weight: 700">Giải trí</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link "href="#"  style="font-weight: 700">Điểm đến</a>
-                </li>
-                <li class="nav-item">
-                    <div class="btn btn-group"><button type="button" class="btn btn-danger nav-link">ưu đãi</button>
-                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" alt="">Nhà nghỉ</a></li>
-                            <li><a class="dropdown-item" href="#">Phòng ăn</a></li>
-                            <li><a class="dropdown-item" href="#" alt="">Bể bơi</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                        </ul></div>
-                    <!--                    <a class=" "href="#"  style="font-weight: 700">Ưu đãi</a>-->
+                    <a class="nav-link "href="#"   style="font-weight: 700">Hợp đồng</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div style="height: 10% ;text-align: center;color: #0d6056;width: 100%" class="row">
-    <div class="col-sm-10 col-md-10"><strong style="text-align: center; justify-content: center ; font-size: 50px">
+    <div class="col-sm-12 col-md-12"><strong style="text-align: center; justify-content: center ; font-size: 50px">
         Chào mừng bạn đến với Furama Resort
     </strong></div>
 
-    <div class="col-sm-2 col-md-2 " style="justify-content: center">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Thêm mới
-        </button>
+<%--    <div class="col-sm-2 col-md-2 " style="justify-content: center">--%>
+<%--        <!-- Button trigger modal -->--%>
+<%--        <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#exampleModal">--%>
+<%--            Thêm mới--%>
+<%--        </button>--%>
 
-        <!-- Modal -->
-        <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nhập thông tin</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div  class="modal-body">
+<%--        <!-- Modal -->--%>
+<%--        <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+<%--            <div class="modal-dialog">--%>
+<%--                <div class="modal-content">--%>
+<%--                    <div class="modal-header">--%>
+<%--                        <h5 class="modal-title" id="exampleModalLabel">Nhập thông tin</h5>--%>
+<%--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--                    </div>--%>
+<%--                    <div  class="modal-body">--%>
 
-                        <form>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập ID</label>
-                                <input type="text" class="form-control" aria-describedby="idlHelp">
-                                <!--                                    hiển thị khi nhập sai form-->
-                                <!--                                    <div id="idlHelp" class="form-text">We'll never share your email with anyone else.</div>-->
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Diện Tích</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Gía</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Số người tối đa</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Loại Thuê</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập dịch vụ thuê</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Tiêu Chuẩn Phòng</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Tên</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Tên</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label  class="form-label">Nhập Tên</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save Facility New</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--                        <form>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập ID</label>--%>
+<%--                                <input type="text" class="form-control" aria-describedby="idlHelp">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Diện Tích</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Gía</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Số người tối đa</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Loại Thuê</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập dịch vụ thuê</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Tiêu Chuẩn Phòng</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                            <div class="mb-3">--%>
+<%--                                <label  class="form-label">Nhập Tên</label>--%>
+<%--                                <input type="text" class="form-control">--%>
+<%--                            </div>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
+<%--                    <div class="modal-footer">--%>
+<%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+<%--                        <button type="button" class="btn btn-primary">Save Facility New</button>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 </div>
 
-<div class="row" style="height: 70%">
+<div class="row" style="height: 100%">
     <div class="col-md-4 col-lg-2">
-        <ul class="list-group vh-100" style="border: 2px solid #7952b3 ;background-color: #0dcaf0">
-            <li><a class="dropdown-item" href="#"><img style="width: 100%" src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg" alt=""></a></li>
-            <div><p style="text-align: center"><strong>Phòng nghỉ</strong></p></div>
-            <li><a class="dropdown-item" href="#"><img style="width: 100%" src="https://pix10.agoda.net/hotelImages/10953/-1/0e899b3e41830a0f7088b7b99c0d14cb.jpg?ca=9&ce=1&s=1024x768" alt=""></a></li>
-            <div><p style="text-align: center"><strong>Phòng ăn</strong></p></div>
-            <li><a class="dropdown-item" href="#"><img style="width: 100%;" src="https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Pool-1047x563.jpg" alt=""></a></li>
-            <div><p style="text-align: center"><strong>Bể bơi</strong></p></div>
-            <br>
-            <li><hr class="dropdown-divider"></li>
+        <ul class="list-group vh-100 " style="border: 2px solid #7952b3 ;background-color: #0dcaf0 ; height: 110%">
+            <div class="row">
+                <li><a class="dropdown-item" href="#"><img style="width: 100%" src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg" alt=""></a></li>
+                <div class="col"><p style="text-align: center"><strong>Phòng nghỉ</strong></p></div>
+            </div>
+            <div class="row">
+                <li><a class="dropdown-item" href="#"><img style="width: 100%" src="https://pix10.agoda.net/hotelImages/10953/-1/0e899b3e41830a0f7088b7b99c0d14cb.jpg?ca=9&ce=1&s=1024x768" alt=""></a></li>
+                <div class="col"><p style="text-align: center"><strong>Phòng ăn</strong></p></div>
+            </div>
+            <div class="row">
+                <li><a class="dropdown-item" href="#"><img style="width: 100%" src="https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Pool-1047x563.jpg" alt=""></a></li>
+                <div class="col"><p style="text-align: center"><strong>Bể bơi</strong></p></div>
+            </div>
+            <div class="row">
+                <li><a class="dropdown-item" href="#"><img style="width: 100%" src=https://gamek.mediacdn.vn/133514250583805952/2020/4/9/12-15864246090451926057692.png></a></li>
+                <div class="col"><p style="text-align: center"><strong>Girl áo tắm</strong></p></div>
+            </div>
         </ul>
     </div>
     <div class="col-md-8 col-lg-10">
@@ -205,11 +183,11 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img  src="https://vtr.org.vn/FileManager/Anh%20web%202019/Thang%2010/2131/furama%20resort%20(2).jpg"
+                        <img style="height: 100%;width: 50%"  src="https://vtr.org.vn/FileManager/Anh%20web%202019/Thang%2010/2131/furama%20resort%20(2).jpg"
                               class="d-block w-100">
                     </div>
                     <div class="carousel-item active">
-                        <img height="50%" src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
+                        <img style="height: 100%;width: 50%"  height="50%" src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
                              class="d-block w-100">
                     </div>
                 </div>

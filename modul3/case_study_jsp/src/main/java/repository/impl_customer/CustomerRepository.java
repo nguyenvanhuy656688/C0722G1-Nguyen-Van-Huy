@@ -37,32 +37,6 @@ public class CustomerRepository implements ICustomerRepository {
         return rowDeleted;
     }
 
-    @Override
-    public List<Customer> displayADelete() {
-        List<Customer> customers = new ArrayList<>();
-        // Step 1: Establishing a Connection
-        try (Connection connection = BaseRepository.getConnectDB();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
-            System.out.println(preparedStatement);
-
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int customerTypeId = rs.getInt("customer_type_id");
-                String name = rs.getString("name");
-                String dateOfBirth = rs.getString("date_of_birth");
-                boolean gender = rs.getBoolean("gender");
-                String idCard = rs.getString("id_card");
-                String phoneNumber = rs.getString("phone_number");
-                String email = rs.getString("email");
-                String address = rs.getString("address");
-                customers.add(new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address));
-            }
-        } catch (SQLException e) {
-            e.getMessage();
-        }
-        return customers;
-    }
 
     @Override
     public boolean edit(Customer customer) {

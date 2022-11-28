@@ -62,7 +62,8 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="http://localhost:63342/modul3/case_study_web/customer/customer.html?_ijt=gi0be2rfmsb8hspfg48vgln06c">Khách hàng</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:63342/modul3/case_study_web/customer/customer.html?_ijt=gi0be2rfmsb8hspfg48vgln06c"></a></li>
+
                             <li><a class="dropdown-item" href="http://localhost:63342/modul3/case_study_web/employer/employer.html?_ijt=hr37nimmgv70bd1e24cdgmvob4">Nhân viên</a></li>
                             <li><hr class="dropdown-divider"></li>
                         </ul></div>
@@ -119,11 +120,7 @@
                                  class="d-block w-100">
                         </div>
                         <div class="carousel-item active">
-                            <img src="https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10024652-bc18297d4573af8399677d30a0363d4e.jpeg?tr=q-40,c-at_max,w-1280,h-720&_src=imagekit"
-                                 class="d-block w-100">
-                        </div>
-                        <div class="carousel-item active">
-                            <img src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
+                            <img height="50%" src="https://phulong.com/UploadFiles/Images/FURAMA%2020%20NAM.jpg"
                                  class="d-block w-100">
                         </div>
                     </div>
@@ -140,114 +137,258 @@
                 </div>
             </nav>
 
-        <div> 
-        <table class="table table-striped">
+        <h1 style="text-align: center;">List Contract</h1>
+        <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Dịch vụ</th>
-                <th scope="col">Khách hàng</th>
-                <th scope="col">Ngày bắt đầu</th>
-                <th scope="col">Ngày kết thúc</th>
-                <th scope="col">Tiền đặt cọc</th>
-                <th scope="col">Tổng tiền</th>
-                <th scope="col">Các dịch vụ đi kèm</th>
+                <th scope="col">STT</th>
+                <th scope="col">Facility</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Start Day</th>
+                <th scope="col">End Day</th>
+                <th scope="col">Deposit</th>
+                <th scope="col">Total</th>
+                <th scope="col">Attach Facility</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <th scope="row">1</th>
                 <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
+                <td>Nguyen Thi Hao</td>
+                <td>2020-12-08</td>
+                <td>2020-12-08</td>
+                <td>đ0</td>
+                <td>đ1000000</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add-contract">
+                        +
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#attach-facility">
+                        List Attach Facility
                     </button>
                 </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
+                <td>Villa Beach Front</td>
+                <td>Truong Dinh Nghe</td>
+                <td>2020-07-14</td>
+                <td>2020-07-21</td>
+                <td>đ200000</td>
+                <td>đ2000000</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add-contract">
+                        +
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#attach-facility">
+                        List Attach Facility
                     </button>
                 </td>
             </tr>
             <tr>
                 <th scope="row">3</th>
-                <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
+                <td>House Princess 01</td>
+                <td>Duong Van Quan</td>
+                <td>2021-03-15</td>
+                <td>2021-03-17</td>
+                <td>đ50000</td>
+                <td>đ1500000</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add-contract">
+                        +
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#attach-facility">
+                        List Attach Facility
                     </button>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td>Room Twin 01</td>
-                <td>Nguyễn Thị Hào</td>
-                <td>08/12/2020</td>
-                <td>20/12/2020</td>
-                <td>5000000</td>
-                <td>10000000</td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Các dịch vụ đi kèm
-                    </button>
-                </td>
-            </tr>
+
+
             </tbody>
-        </table> </div>
-    </div>
+        </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="add-contract" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add-contractLabel">Contract</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row">
+                            <div class="col-md-12">
+                                <label class="form-label">Start Day</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">End Day</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Deposit</label>
+                                <input type="text" class="form-control" placeholder="Deposit">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Total money</label>
+                                <input type="text" class="form-control bg-secondary">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Customer rent facility</label>
+                                <select name="customer_rent_facility" id="customer-rent-facility" class="form-select">
+                                    <option>Choose customer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Facility</label>
+                                <select name="facility" id="facility" class="form-select">
+                                    <option>Choose facility</option>
+                                    <option>Villa Beach Front</option>
+                                    <option>House Princess 01</option>
+                                    <option>Room Twin 01</option>
+                                    <option>Villa No Beach Front</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add-contract-detail">
+                                    +
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger btnCreate">Create Contract</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Attach Facility -->
+        <div class="modal fade" id="attach-facility" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="attach-facilityLabel">List Attach Facility</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Cost</th>
+                                <th scope="col">Unit</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Karaoke</td>
+                                <td>đ10000</td>
+                                <td>Hour</td>
+                                <td>Comfort-Present</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Rent Bicycle</td>
+                                <td>đ20000</td>
+                                <td>Pcs</td>
+                                <td>1 car damaged</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Rent Bike</td>
+                                <td>đ10000</td>
+                                <td>Pcs</td>
+                                <td>Good</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Buffet breakfast</td>
+                                <td>đ50000</td>
+                                <td>Meal</td>
+                                <td>Full of food, dessert</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Buffet lunch</td>
+                                <td>đ100000</td>
+                                <td>Meal</td>
+                                <td>Full of food, dessert</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>Buffet dinner</td>
+                                <td>đ100000</td>
+                                <td>Meal</td>
+                                <td>Full of food, dessert</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Contract Detail -->
+        <div class="modal fade" id="add-contract-detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add-contract-detailLabel">Contract Detail</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row">
+                            <div class="col-md-12">
+                                <label class="form-label">Id</label>
+                                <input type="text" class="form-control" placeholder="Id">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Contract</label>
+                               ` <input type="text" class="form-control" placeholder="Contract">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Contract</label>
+                                <select name="contract" id="contract" class="form-select">
+                                    <option>Please choose</option>
+                                    <option>Karaoke</option>
+                                    <option>Rent Bicycle</option>
+                                    <option>Rent Bike</option>
+                                    <option>Buffet breakfast</option>
+                                    <option>Buffet lunch</option>
+                                    <option>Buffet dinner</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Quantity</label>
+                                <input type="number" class="form-control" placeholder="Quantity">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger btnCreate">Create Contract Detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </div>
 <div style="margin-top: 30px "; class="footer">
@@ -315,39 +456,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Bạn muốn sửa thông tin gì nào 😊
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Ấn nhầm ý </button>
-                <button type="button" class="btn btn-primary">uk, tui mún sửa</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="myModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel1">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Bạn có chắc muốn xóa khách hàng này chứ :-(
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">để suy nghĩ lại</button>
-                <button type="button" class="btn btn-primary">Xóa</button>
-            </div>
-        </div>
-    </div>
+
 </div>
 </body>
 </html>

@@ -16,7 +16,8 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 </head>
@@ -84,13 +85,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link "href="#"   style="font-weight: 700">Hợp đồng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link "href="#"  style="font-weight: 700">Giải trí</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link "href="#"  style="font-weight: 700">Điểm đến</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -119,9 +113,6 @@
             <input class="form-control w-auto mx-2" type="text" placeholder="Search by  Id..." name="IdSearch">
             <input class="form-control w-auto mx-2" type="text" placeholder="Search by  Name..." name="nameSearch">
             <input class="form-control w-auto mx-2" type="text" placeholder="Search by Address..." name="addressSearch">
-<%--            <input class="btn btn-outline-success mx-2" type="submit" style="color: black" value="Search"--%>
-<%--                   style="margin-right: 0!important;">--%>
-<%--            <input class="form-control w-auto mx-2" type="text" placeholder="Search by ID..." name="IdSearch">--%>
             <button class="btn btn-outline-success mx-2" type="submit" style="color: black"
                     style="margin-right: 0!important;">Search</button>
         </form>

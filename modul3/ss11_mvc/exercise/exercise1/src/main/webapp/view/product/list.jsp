@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>List Product</title>
@@ -13,30 +14,36 @@
 </head>
 <body>
 <h1>Management Product</h1>
-<a href="/product?action=add">Add New</a>
-<a href="/product?action=search">Search</a>
+<a href="/product?action=create">Add New</a>
+<div>
+    <form action="/product" method="post" style="display: flex ; flex-wrap: wrap">
+        <input type="hidden" value="search" name="action">
+        <input type="text" placeholder="Search By Name..." name="name">
+        <button type="submit" style="color: black ; width: 60px ; height: 50px">Search</button>
+    </form>
+</div>
 <table class="table">
     <thead>
     <tr>
+        <th scope="col">STT</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
-        <th scope="col">Type</th>
-        <th scope="col">Unit</th>
-        <th scope="col">Size</th>
+        <th scope="col">Description</th>
+        <th scope="col">Manufacture</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="product" items="${productList}">
+    <c:forEach var="product" items="${productList}" varStatus="status">
         <tr>
-            <th scope="row"><a href="/product?action=view&id=${product.getName()}">${product.getId()}</a></th>
+            <td>${status.count}</td>
+            <td>${product.getName()}</td>
             <td>${product.getPrice()}</td>
-            <td>${product.getType()}</td>
-            <td>${product.getUnit()}</td>
-            <td>${product.getSize()}</td>
-            <td><a href="/product?action=edit&id=${product.getName()}">Edit</a></td>
-            <td><a href="/product?action=delete&id=${product.getName()}">Delete</a></td>
+            <td>${product.getDescription()}</td>
+            <td>${product.getManufacture()}</td>
+            <td><a href="/product?action=edit&id=${product.getId()}">Edit</a></td>
+            <td><a href="/product?action=delete&name=${product.getName()}">Delete</a></td>
         </tr>
     </c:forEach>
 

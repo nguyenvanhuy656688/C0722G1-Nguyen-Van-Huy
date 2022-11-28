@@ -8,27 +8,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-  <title>hucute</title>
-  <style type="text/css">
-  .login {
-  height:180px; width:230px;
-  margin:0;
-  padding:20px;
-  border:1px #CCC solid;
-  }
-  .login input {
-  padding:5%; margin:5%
-  }
-  </style>
+  <title></title>
+<%--  <style type="text/css">--%>
+<%--  .login {--%>
+<%--  height:180px; width:300px;--%>
+<%--  margin:0;--%>
+<%--  padding:20px;--%>
+<%--  border:1px #CCC solid;--%>
+<%--  }--%>
+<%--  .login input {--%>
+<%--  padding:5%; margin:5%--%>
+<%--  }--%>
+<%--  </style>--%>
   </head>
-
 <body>
-<form method="post" action="${pageContext.request.contextPath}/login">
+<form method="post" action="/login">
   <div class="login">
-    <h2>Login</h2>
-    <input type="text" name="username" size="30"  placeholder="username" />
-    <input type="password" name="password" size="30" placeholder="password" />
-    <input type="submit" value="Sign in"/>
+    <h2>Calculator</h2>
+    <label>List Price:</label>
+    <input type="text" name="list_price"  placeholder="list_price" />
+    <lable>Discount Percent:</lable>
+    <input type="text" name="discount_percent"  placeholder="discount_percent" />
+    <input type="submit" value="Tính tiền"/>
   </div>
 </form>
 </body>

@@ -1,5 +1,9 @@
 package service;
 
+import model.User;
+
+import java.util.List;
+
 public class UserService implements IUserService {
     private IUserRepository iUserRepository = new UserRepository();
 

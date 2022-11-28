@@ -13,10 +13,10 @@ public class CustomerService implements ICustomerService {
         return iCustomerRepository.deleteById(id);
     }
 
-    @Override
-    public List<Customer> displayADelete() {
-        return iCustomerRepository.displayADelete();
-    }
+//    @Override
+//    public List<Customer> displayADelete() {
+//        return iCustomerRepository.displayADelete();
+//    }
 
     @Override
     public boolean edit(Customer customer) {

@@ -26,17 +26,17 @@
         <th> Anh </th>
     </tr>
     </thead>
-    <c:forEach var="customer" items="${customers}" varStatus="status">
-    <tbody>
-    <tr>
-        <td>${status.count}</td>
-       <td>${customer.getName()}</td>
-       <td>${customer.getDayBirth()}</td>
-       <td>${customer.getAddress()}</td>
-       <td><img src="${customer.getImage()}"></td>
 
-    </tr>
-    </tbody>
+    <c:forEach items="${customers}" var="customer" varStatus="status">
+        <tbody>
+        <tr>
+            <td>${status.count}</td>
+            <td>${customer.getName()}</td>
+            <td>${customer.getDayBirth()}</td>
+            <td>${customer.getAddress()}</td>
+            <td><img  src="${customer.getImage()}"></td>
+        </tr>
+        </tbody>
     </c:forEach>
 </table>
 

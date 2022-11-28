@@ -46,9 +46,10 @@ foreign key (division_id) references division(id),
 foreign key (username) references  user(usename)
 );
 create table customer_type (
-id int primary key auto_increment ,
-name varchar(45)
+id int primary key ,
+name_type varchar(45)
 );
+select * from customer_type;
 create table customer (
 id int primary key auto_increment,
 customer_type_id int ,
@@ -113,7 +114,7 @@ foreign key (attach_facility_id) references attach_facility(id),
 foreign key (contract_id) references contract(id)
 );
 
-INSERT INTO customer_type values (1, 'Diamond'),
+INSERT INTO customer_type(id, name_type) values (1, 'Diamond'),
 						      (2, 'Platinium'),
 							  (3, 'Gold'),
 						      (4, 'Silver'),
@@ -128,3 +129,7 @@ INSERT INTO customer values (1,5,'Nguyễn Thị Hào','1970-11-07',0,643431213,
 						      (8,3,'Nguyễn Thị Hào','1999-04-08',0,965656433,0763212345,'haohao99@gmail.com','55 Nguyễn Văn Linh, Kon Tum'),
 						      (9,1,'Trần Đại Danh','1994-07-01',1,432341235,0643343433,'danhhai99@gmail.com','24 Lý Thường Kiệt, Quảng Ngãi'),
 						      (10,2,'Nguyễn Tâm Đắc','1989-07-01',1,344343432,0987654321,'dactam@gmail.com','22 Ngô Quyền, Đà Nẵng');
+                              
+select c.*, ct.name_type as customer_type_name from
+customer c join customer_type ct on c.customer_type_id = ct.id;
+select c.*, ct.name_type as customer_type_name from customer c join customer_type ct on c.customer_type_id = ct.id where c.id = 4;

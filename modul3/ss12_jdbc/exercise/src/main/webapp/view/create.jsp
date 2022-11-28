@@ -20,9 +20,9 @@
 </center>
 <div align="center">
     <form method="post">
-        <table border="1" cellpadding="5">
+        <table border="1" style="border-style:hidden;" width="200px" bgcolor="#c4e4cd" cellpadding="5">
             <caption>
-                <h2>Add New User</h2>
+                <h2>Add New Customer</h2>
             </caption>
             <tr>
                 <th>User Name:</th>
