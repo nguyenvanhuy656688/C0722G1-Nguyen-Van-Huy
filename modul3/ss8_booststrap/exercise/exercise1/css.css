@@ -3,3 +3,11 @@
     width: 400px;
     height: 10%;
 }
+
+.sile{
+    width: 30rem;
+    float: left ;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: content-box;
+}
