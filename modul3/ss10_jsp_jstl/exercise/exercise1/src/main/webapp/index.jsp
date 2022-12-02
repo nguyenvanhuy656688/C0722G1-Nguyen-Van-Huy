@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
-    <title>Customer List</title>
+    <title>Index</title>
   </head>
   <body>
   <c:redirect url="/customer"></c:redirect>
