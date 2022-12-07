@@ -50,7 +50,7 @@
 </center>
 
 <center>
-    <form  method="post" style="align-content: center">
+    <form  method="post" style="align-content: center" action="/customer?action=edit" >
         <input type="hidden" class="form-control" name="id" value="${customer.getId()}"></td>
         <div class="col-md-6">
             <label class="form-label">Customer Type</label>
