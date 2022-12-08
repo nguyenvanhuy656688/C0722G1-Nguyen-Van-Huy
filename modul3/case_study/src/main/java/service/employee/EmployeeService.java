@@ -17,4 +17,24 @@ public class EmployeeService implements IEmployeeService {
     public boolean create(Employee employee) {
         return iEmployeeRepository.create(employee);
     }
+
+    @Override
+    public boolean edit(Employee employee) {
+        return iEmployeeRepository.edit(employee);
+    }
+
+    @Override
+    public Employee EditById(int id) {
+        return iEmployeeRepository.editById(id);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        iEmployeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> search(int idSearch, String nameSearch, String addressSearch) {
+        return iEmployeeRepository.search(idSearch,nameSearch,addressSearch);
+    }
 }

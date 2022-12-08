@@ -59,7 +59,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/customer?action=customer">Khách hàng</a></li>
-                            <li><a class="dropdown-item" href="/customer?action=customer">Nhân viên</a></li>
+                            <li><a class="dropdown-item" href="/employee?action=employee">Nhân viên</a></li>
                             <hr>
                         </ul>
                     </div>

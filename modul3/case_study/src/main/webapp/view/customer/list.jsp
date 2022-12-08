@@ -61,7 +61,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/customer?action=customer">Khách hàng</a></li>
-                            <li><a class="dropdown-item" href="/customer?action=customer">Nhân viên</a></li>
+                            <li><a class="dropdown-item" href="/employee?action=employee">Nhân viên</a></li>
                             <hr>
                         </ul>
                     </div>
@@ -118,7 +118,7 @@
 
 <div>
     <table id="tableCustomer" class="table table-bordered" style="text-align: center" border="2">
-        <thead>
+        <thead style="background-color: yellow">
         <tr>
             <th>STT</th>
             <th>Customer Type</th>

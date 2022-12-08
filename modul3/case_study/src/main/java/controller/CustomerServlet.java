@@ -43,9 +43,9 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         Customer customer = new Customer(id,name,dateOfBirth,gender,idCard,phoneNumber,email,address,customerType);
         boolean check = iCustomerService.edit(customer);
-        String mess = "Thêm mới thành công";
+        String mess = "Chỉnh sửa thành công";
         if (!check){
-            mess = "Thêm mới không thành công";
+            mess = "Chỉnh sửa không thành công";
         }
         request.setAttribute("mess",mess);
         try {
