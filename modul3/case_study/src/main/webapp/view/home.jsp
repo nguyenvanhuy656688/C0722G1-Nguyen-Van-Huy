@@ -70,7 +70,7 @@
                        style="font-weight: 700">Dịch vụ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-weight: 700">Hạ tầng</a>
+                    <a class="nav-link" href="/facility" style="font-weight: 700">Hạ tầng</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#" style="font-weight: 700">Hợp đồng</a>
