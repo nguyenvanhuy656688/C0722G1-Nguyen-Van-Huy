@@ -12,4 +12,29 @@ public class FacilityService implements IFacilityService {
     public List<Facility> list() {
         return iFacilityRepository.list();
     }
+
+    @Override
+    public void add(Facility facility) {
+
+    }
+
+    @Override
+    public void edit(Facility facility) {
+
+    }
+
+    @Override
+    public Facility showFormEdit(int id) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
+
+    @Override
+    public List<Facility> search(String name, String descriptionOther) {
+        return null;
+    }
 }

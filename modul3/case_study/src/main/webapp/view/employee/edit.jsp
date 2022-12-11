@@ -108,11 +108,11 @@
         <div class="col-md-6">
             <label class="form-label">Username</label>
             <select name="username" class="form-select">
-                <option value="1">1.nhanvien1</option>
-                <option value="2">2.nhanvien2</option>
-                <option value="3">2.nhanvien3</option>
-                <option value="4">2.nhanvien4</option>
-                <option value="5">2.nhanvien5</option>
+                <option value="nhanvien1">1.nhanvien1</option>
+                <option value="nhanvien2">2.nhanvien2</option>
+                <option value="nhanvien3">3.nhanvien3</option>
+                <option value="nhanvien4">4.nhanvien4</option>
+                <option value="nhanvien5">5.nhanvien5</option>
             </select>
         </div>
         <div class="col-md-6">
