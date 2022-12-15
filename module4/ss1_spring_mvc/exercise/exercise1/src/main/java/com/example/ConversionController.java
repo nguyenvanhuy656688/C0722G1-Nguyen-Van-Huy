@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/convert")
-public class ConvertController {
+public class ConversionController {
     @GetMapping("")
     public String convert(Model model,String money,String unit){
         double money1 = Double.parseDouble(money);
