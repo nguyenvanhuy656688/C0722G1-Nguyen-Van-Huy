@@ -20,19 +20,19 @@ public class CalculateController {
         int result;
         String mess = "Kết quả là:";
         switch (calculate){
-            case "calculate1":
+            case "+":
                 result = numberOne + numberTwo;
                 mess = mess + result;
                 break;
-            case "calculate2":
+            case "-":
                 result = numberOne - numberTwo;
                 mess = mess+ result;
                 break;
-            case "calculate3":
+            case "*":
                 result =  numberOne * numberTwo;
                 mess =  mess + result;
                 break;
-            case "calculate4":
+            case "/":
                 result = numberOne/numberTwo;
                 mess = mess + result;
                 break;

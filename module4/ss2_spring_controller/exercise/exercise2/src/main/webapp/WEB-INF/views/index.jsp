@@ -15,10 +15,10 @@
     <lable for="1">Number 1</lable>
     <input id="1" type="number" name="number1" placeholder="Nhập số">
     <select name="calculate">
-        <option value="calculate1">+</option>
-        <option value="calculate2">-</option>
-        <option value="calculate3">*</option>
-        <option value="calculate4">/</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
     </select>
     <lable for="2">Number 2</lable>
     <input type="number" id="2" name="number2" placeholder="Nhập số">
