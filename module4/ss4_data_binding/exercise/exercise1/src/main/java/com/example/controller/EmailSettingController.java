@@ -1,5 +1,7 @@
-package com.example;
+package com.example.controller;
 
+import com.example.service.EmailSettingService;
+import com.example.service.IEmailSettingService;
 import com.example.model.EmailSetting;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @Controller
 public class EmailSettingController {
-    IEmailSettingService iEmailSettingService = new EmailSettingService();
+    private static IEmailSettingService iEmailSettingService = new EmailSettingService();
     @RequestMapping("/list")
     public String showList(Model model){
         List<EmailSetting> emailSettings = iEmailSettingService.display();
