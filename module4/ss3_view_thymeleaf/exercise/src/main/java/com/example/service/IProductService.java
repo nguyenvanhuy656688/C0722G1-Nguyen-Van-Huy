@@ -7,12 +7,12 @@ import java.util.List;
 public interface IProductService {
     List<Product> list();
 
-    Object deleteById(int id);
+    Product deleteById(int id);
 
-    Object showById(int id);
+    Product showById(int id);
 
     void save(Product product);
 
-    Object editById(int id,Product product);
+    Product editById(int id,Product product);
 
 }

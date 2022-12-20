@@ -22,12 +22,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Object deleteById(int id) {
+    public Product deleteById(int id) {
         return productMap.remove(id);
     }
 
     @Override
-    public Object showById(int id) {
+    public Product showById(int id) {
         return productMap.get(id);
     }
 
@@ -37,7 +37,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Object editById(int id,Product product) {
+    public Product editById(int id,Product product) {
         return productMap.put(id,product);
     }
 
