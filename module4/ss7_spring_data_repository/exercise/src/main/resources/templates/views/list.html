@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<head th:insert="~{layout::head}"></head>-->
+<body>
+
+<h1 style="text-align: center">List Blog</h1>
+<p>
+    <a th:href="@{/blog/create}">
+        <button>Add new Product</button>
+    </a>
+</p>
+<form action="/blog/search" class="d-flex">
+    <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<table id = "customers" border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>content</th>
+        <th colspan="2" style="text-align: center">Update</th>
+        <th>Detail</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="blog, status : ${blogList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${blog.name}"></td>
+        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.content}"></td>
+        <td><a th:href="@{/blog/{id}/edit(id=${blog.getId()})}"><button>Edit</button></a></td>
+        <td><a th:href="@{/blog/{id}/delete(id=${blog.getId()})}"><button>Delete</button></a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${blog.getId()})}"><button>view</button></a></td>
+    </tr>
+    </tbody>
+</table>
+<!--<div th:insert="~{layout::footer}"></div>-->
+</body>
+</html>
