@@ -14,4 +14,6 @@ public interface IBlogService {
     void save(Blog blog);
 
     Optional<Blog> findById(int id);
+
+    List<Blog> listSearchByName(String name);
 }

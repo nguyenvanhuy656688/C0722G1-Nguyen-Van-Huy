@@ -25,9 +25,11 @@ public class BlogController {
     }
 
     @GetMapping("/{id}/delete")
-    public String delete(@PathVariable int id) {
+    public String delete(@PathVariable int id, Model model) {
         iBlogService.deleteById(id);
-        return "redirect:/blog/";
+        List<Blog> blogList = iBlogService.findAll();
+        model.addAttribute("blogList",blogList);
+        return "views/list";
     }
 
     @GetMapping("/create")
@@ -37,9 +39,11 @@ public class BlogController {
     }
 
     @PostMapping("/create")
-    public String create(Blog blog ){
+    public String create(Blog blog ,Model model){
         iBlogService.save(blog);
-        return "redirect:/blog/";
+        List<Blog> blogList = iBlogService.findAll();
+        model.addAttribute("blogList",blogList);
+        return "views/list";
     }
 
     @GetMapping("/{id}/edit")
@@ -49,15 +53,24 @@ public class BlogController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("blog") Blog blog){
+    public String edit(@ModelAttribute("blog") Blog blog,Model model){
         iBlogService.save(blog);
-        return "redirect:/blog/";
+        List<Blog> blogList = iBlogService.findAll();
+        model.addAttribute("blogList",blogList);
+        return "views/list";
     }
 
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("blog", iBlogService.findById(id));
         return "views/view";
+    }
+
+    @GetMapping("/blog/search")
+    public String searchByName(@RequestParam(name = "search",defaultValue = "")String name,Model model){
+        List<Blog> blogList = iBlogService.listSearchByName(name);
+        model.addAttribute("blogList",blogList);
+        return "views/list";
     }
 
 

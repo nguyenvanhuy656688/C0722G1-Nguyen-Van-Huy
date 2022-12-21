@@ -31,4 +31,9 @@ public class BlogService implements IBlogService{
     public Optional<Blog> findById(int id) {
         return iBlogRepository.findById(id);
     }
+
+    @Override
+    public List<Blog> listSearchByName(String name) {
+        return iBlogRepository.listSearchByName(name);
+    }
 }
