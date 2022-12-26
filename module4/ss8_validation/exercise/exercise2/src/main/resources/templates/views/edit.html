@@ -7,7 +7,7 @@
 <body>
 <div></div>
 <div id="form">
-    <form th:action="@{/song/edit}" th:object="${userDto}" method="post" >
+    <form th:action="@{/song/edit}" th:object="${songDto}" method="post" >
         <div>
             <input type="hidden" th:field="*{id}">
         </div>
@@ -30,5 +30,6 @@
         <input type="submit" value="Save"/>
     </form>
 </div>
+<h2 th:text="${mess}"></h2>
 </body>
 </html>

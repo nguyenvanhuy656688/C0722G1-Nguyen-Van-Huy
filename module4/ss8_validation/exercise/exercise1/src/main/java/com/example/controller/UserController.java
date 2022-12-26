@@ -36,10 +36,6 @@ public class UserController {
     @PostMapping("/create")
     public String create(@Validated @ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
        new UserDto().validate(userDto,bindingResult);
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("mess","thêm không thành công");
-            return "views/create";
-        }
         User user = new User();
         BeanUtils.copyProperties(userDto,user);
         iUserService.save(user);
