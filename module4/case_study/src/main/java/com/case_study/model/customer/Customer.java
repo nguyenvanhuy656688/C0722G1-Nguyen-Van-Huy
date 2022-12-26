@@ -18,7 +18,6 @@ public class Customer {
     private CustomerType customerType;
 
 
-
     public Customer() {
     }
 

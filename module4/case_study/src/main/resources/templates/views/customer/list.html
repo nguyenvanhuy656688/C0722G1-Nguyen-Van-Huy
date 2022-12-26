@@ -129,14 +129,7 @@
                 <td th:text="${customer.customerType.name}"></td>
                 <td th:text="${customer.name}"></td>
                 <td th:text="${customer.dateOfBirth}"></td>
-                <td>
-                    <label th:if="${customer.isGender()}">
-                       <span th:text="${Male}">Male</span>
-                    </label>
-                    <label th:if="${!customer.isGender()}">
-                        <span th:text="${Female}">Female</span>
-                    </label>
-                </td>
+                <td th:text="${customer.isGender()}"></td>
                 <td th:text="${customer.idCard}"></td>
                 <td th:text="${customer.phoneNumber}"></td>
                 <td th:text="${customer.email}"></td>
@@ -181,8 +174,15 @@
         </tbody>
     </table>
 </div>
+<!--       phân trang-->
+<div style="text-align: right; align-content: center ; align-items: center">
+<a th:href="@{/customer(page=${customerList.number - 1})}" th:if="${customerList.hasPrevious()}"><button class="btn btn-outline-danger">Trang trước</button></a>
+<span class="btn" th:text="${customerList.number + 1 + '/' + customerList.totalPages}"></span>
+<a th:href="@{/customer(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}"><button class="btn btn-outline-danger">Trang tiếp theo</button>
+</a>
+</div>
 
-
+<!--<div th:insert="~{layout::footer}"></div>-->
 <div style="margin-top: 30px " ; class="footer">
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="col-md-6" ; style="margin-left: 20px">

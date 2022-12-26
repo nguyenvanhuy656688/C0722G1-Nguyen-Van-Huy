@@ -5,6 +5,50 @@
     <title>Title</title>
 </head>
 <body>
+<h2>Add Customer</h2>
+<p>
+    <a th:href="@{/customer}">
+        Back to list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customer/create}" th:object="${customer}" method="post" >
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Author</label>
+            <input type="text" th:field="*{dateOfBirth}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{gender}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{idCard}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{phoneNumber}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{email}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{address}"/>
+        </div>
 
+        <lable th:for="1">Customer Type</lable>
+        <select th:id="1" th:field="*{customerType}">
+            <option th:each="category : ${customerTypeList}" th:value="${customerType.id}" th:text="${customerType.name}"></option>
+        </select>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
 </body>
 </html>
