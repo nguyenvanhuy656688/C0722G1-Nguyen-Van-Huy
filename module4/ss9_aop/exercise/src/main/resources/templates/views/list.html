@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List Code</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <td>Stt</td>
+        <td>Name</td>
+        <td>TotalBook</td>
+        <td>Views</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="book,status : ${bookList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.totalBook}"></td>
+        <td>
+            <a th:href="@{/book/borrow/__${book.id}__}">View</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3 th:text="${mess}"></h3>
+
+</body>
+</html>
