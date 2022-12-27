@@ -10,8 +10,11 @@ public class Customer {
     private String name;
     private String dateOfBirth;
     private boolean gender;
+    @Column(columnDefinition = "varchar(50) unique")
     private String idCard;
+    @Column(columnDefinition = "varchar(50) unique")
     private String phoneNumber;
+    @Column(columnDefinition = "varchar(100) unique")
     private String email;
     private String address;
     @ManyToOne
