@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<h1>Detail Product</h1>
+<form th:action="@{/shop}" method="get">
+    <input type="hidden" th:field="${product.id}">
+    <lable>Name:</lable>
+    <lable th:text="${product.name}"></lable>
+    <br>
+    <lable>Price:</lable>
+    <lable th:text="${product.price}"></lable>
+    <br>
+    <lable>Description</lable>
+    <lable th:text="${product.description}"></lable>
+    <lable>Image</lable>
+    <lable><img th:src="${product.image}" ></lable>
+    <button type="submit" >Trở về</button>
+</form>
 </body>
 </html>

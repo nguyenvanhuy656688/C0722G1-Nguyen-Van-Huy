@@ -45,15 +45,12 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public ModelAndView listPage(Model model,@CookieValue(value = "idProduct",defaultValue = "=1") int id){
+    public ModelAndView listPage(Model model,@CookieValue(value = "idProduct",defaultValue = "-1") int id){
         if (id!= -1){
             model.addAttribute("historyProduct",iProductService.findById(id));
         }
-        return new ModelAndView("product/list","productList", iProductService.findById(id));
+        return new ModelAndView("product/list","productList", iProductService.findAll());
     }
-
-
-
 
 
 }

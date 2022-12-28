@@ -20,7 +20,7 @@
         <tr th:each="productMap:${cart.productMap}">
             <td th:text="${productMap.key.name}"></td>
             <td th:text="${productMap.key.price}"></td>
-            <td th:text="${productMap.key.image}"></td>
+            <td><img th:src="${productMap.key.image}"></td>
             <td th:text="${productMap.key.description}"></td>
             <td th:text="${productMap.value}"></td>
         </tr>
