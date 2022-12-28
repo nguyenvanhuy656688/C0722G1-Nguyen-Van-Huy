@@ -1,10 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
 </head>
 <body>
+<!--header-->
+<div th:replace="~{/views/layout::header}"></div>
+<!--content-->
+<h1 >Edit information Facility</h1>
+<p style="margin-left: 30%">
+    <a th:href="@{/facility}" class="btn btn-warning">Danh sách dịch vụ</a>
+</p>
+<form th:action="@{/facility/edit}" th:object="${facility}" method="post">
+    <div style="width: 50%;margin-left: 30%">
+        <div class="mb-3 mt-3">
+            <label th:for="name" class="form-label">Tên dịch vụ:</label>
+            <input type="text" class="form-control" th:field="*{name}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label th:for="area" class="form-label">Diện tích:</label>
+            <input type="text" class="form-control" placeholder="diện tích..." th:field="*{area}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label th:for="cost" class="form-label">Chi phí thuê:</label>
+            <input type="text" class="form-control" placeholder="chi phí thuê..." th:field="*{cost}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label th:for="maxPeople" class="form-label">Số lượng người</label>
+            <input type="text" class="form-control" placeholder="số lượng người..." th:field="*{maxPeople}">
+        </div>
+        <div class="mb-3 mt-3" id="standardRooms">
+            <label th:for="standardRoom" class="form-label">Tiêu chuẩn phòng:</label>
+            <input type="text" class="form-control" placeholder="tiêu chuẩn phòng..." th:field="*{standardRoom}">
+        </div>
+        <div class="mb-3 mt-3" id="desciption">
+            <label th:for="standardRoom" class="form-label">Mô tả:</label>
+            <input type="text" class="form-control" placeholder="mô tả chi tiết..." th:field="*{description}">
+        </div>
 
+        <div class="mb-3 mt-3" id="poolArea">
+            <label th:for="standardRoom" class="form-label">Diện tích hồ bơi:</label>
+            <input type="text" class="form-control" placeholder="diện tích hồ bơi..." th:field="*{pollArea}">
+        </div>
+        <div class="mb-3 mt-3" id="numberOfFloors">
+            <label th:for="standardRoom" class="form-label">Số tầng:</label>
+            <input type="text" class="form-control" placeholder="số tầng..." th:field="*{numberOfFloors}">
+        </div>
+        <div class="mb-3 mt-3" id="facilityFree">
+            <label th:for="standardRoom" class="form-label">Dịch vụ miễn phí:</label>
+            <input type="text" class="form-control" placeholder="dịch vụ miễn phí...
+" th:field="*{facilityFree}">
+        </div>
+
+        <select class="form-select" aria-label="Default select example" th:field="*{rentType}">
+            <option value="">Kiểu thuê</option>
+            <option th:each="facility:${rentTypeList}"
+                    th:value="${facility.id}"
+                    th:text="${facility.name}">
+            </option>
+        </select>
+
+        <select class="form-select" aria-label="Default select example" th:field="*{facilityType}"
+                id="typeFacility" onchange="selectFacilityType();">
+            <option value="">Loại dịch vụ</option>
+            <option th:each="facility:${facilityTypeList}"
+                    th:value="${facility.id}"
+                    th:text="${facility.name}">
+            </option>
+        </select>
+        <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </div>
+</form>
+
+<script>
+    function selectFacilityType() {
+        let x = document.getElementById("typeFacility").value
+        debugger
+        switch (x) {
+            case "1":
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRooms").style.display = "block";
+                document.getElementById("desciption").style.display = "block";
+                document.getElementById("numberOfFloors").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                break;
+            case "2":
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRooms").style.display = "block";
+                document.getElementById("desciption").style.display = "block";
+                document.getElementById("numberOfFloors").style.display = "block";
+                break;
+            case "3":
+                document.getElementById("standardRooms").style.display = "none";
+                document.getElementById("desciption").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
+            default:
+                document.getElementById("standardRooms").style.display = "block";
+                document.getElementById("desciption").style.display = "block";
+                document.getElementById("numberOfFloors").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
+        }
+    }
+</script>
+<!--footer-->
+<div th:replace="~{/views/layout::footer}"></div>
 </body>
 </html>

@@ -51,8 +51,8 @@ public class CustomerController {
     @GetMapping("/{id}/edit")
     public String showFormEdit(@PathVariable("id") int id, Model model){
         List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
-        model.addAttribute("categoryList",customerTypeList);
         model.addAttribute("customer",iCustomerService.findById(id));
+        model.addAttribute("customerTypeList",customerTypeList);
         return "views/customer/edit";
     }
 
