@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.common.EmptyBookException;
 import com.example.model.Book;
 import com.example.repository.IBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public int borrowBook(int id) throws Exception {
+    public int borrowBook(int id) throws EmptyBookException {
         Book book = findById(id).orElseThrow(()-> new IllegalArgumentException("not found"));
         if(book.getTotalBook()<=0)
-            throw new Exception();
+            throw new EmptyBookException();
         book.setTotalBook(book.getTotalBook()-1);
         int code= (int) Math.floor(((Math.random() * 89999) + 10000));
         book.setBookCode(code);

@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.common.EmptyBookException;
 import com.example.model.Book;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface IBookService {
 
     Optional<Book> findById(int id);
 
-    int borrowBook(int id) throws Exception;
+    int borrowBook(int id) throws EmptyBookException;
 }

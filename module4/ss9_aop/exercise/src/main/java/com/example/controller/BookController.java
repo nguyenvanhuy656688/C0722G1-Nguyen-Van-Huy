@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.common.EmptyBookException;
 import com.example.model.Book;
 import com.example.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,10 @@ public class BookController {
     }
 
     @PostMapping("/borrow")
-    public String borrowBook(int id, RedirectAttributes redirectAttributes) throws Exception {
+    public String borrowBook(@RequestParam int id, RedirectAttributes redirectAttributes) throws EmptyBookException {
         int code = iBookService.borrowBook(id);
         redirectAttributes.addFlashAttribute("mess", " mã sách mượn: " + code);
         return "redirect:/book";
-
     }
 
 
