@@ -1,9 +1,6 @@
 package com.case_study.model.facility;
 
-import com.case_study.model.Contract;
 import jakarta.persistence.*;
-
-import java.util.Set;
 
 @Entity
 public class Facility {

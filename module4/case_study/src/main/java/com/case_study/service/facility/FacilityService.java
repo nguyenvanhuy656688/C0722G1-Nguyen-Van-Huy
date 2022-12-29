@@ -37,6 +37,6 @@ public class FacilityService implements IFacilityService{
 
     @Override
     public Page<Facility> listSearchByNameAndEmailAndCustomerType(String name, String facilityTypeName, Pageable pageable) {
-        return null;
+        return iFacilityRepository.listSearchByNameAndEmailAndCustomerType(name,facilityTypeName,pageable);
     }
 }

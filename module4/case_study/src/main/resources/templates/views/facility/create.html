@@ -13,61 +13,15 @@
 <body>
 <div th:replace="~{/views/layout::header}"></div>
 
-
-<h1 >Add Facility</h1>
-<p style="margin-left: 30%">
-    <a th:href="@{/facility}" class="btn btn-warning">Danh sách dịch vụ</a>
+<p>
+    <a class="btn btn-outline-primary"th:href="@{/facility}" >Back to List</a>
 </p>
+<h1 style="text-align: center">Add Facility</h1>
+
 <form th:action="@{/facility/create}" th:object="${facility}" method="post">
-    <div style="width: 50%;margin-left: 30%">
-        <div class="mb-3 mt-3">
-            <label th:for="name" class="form-label">Tên dịch vụ:</label>
-            <input type="text" class="form-control" th:field="*{name}">
-        </div>
-        <div class="mb-3 mt-3">
-            <label th:for="area" class="form-label">Diện tích:</label>
-            <input type="text" class="form-control" placeholder="diện tích..." th:field="*{area}">
-        </div>
-        <div class="mb-3 mt-3">
-            <label th:for="cost" class="form-label">Chi phí thuê:</label>
-            <input type="text" class="form-control" placeholder="chi phí thuê..." th:field="*{cost}">
-        </div>
-        <div class="mb-3 mt-3">
-            <label th:for="maxPeople" class="form-label">Số lượng người</label>
-            <input type="text" class="form-control" placeholder="số lượng người..." th:field="*{maxPeople}">
-        </div>
-        <div class="mb-3 mt-3" id="standardRooms">
-            <label th:for="standardRoom" class="form-label">Tiêu chuẩn phòng:</label>
-            <input type="text" class="form-control" placeholder="tiêu chuẩn phòng..." th:field="*{standardRoom}">
-        </div>
-        <div class="mb-3 mt-3" id="desciption">
-            <label th:for="standardRoom" class="form-label">Mô tả:</label>
-            <input type="text" class="form-control" placeholder="mô tả chi tiết..." th:field="*{description}">
-        </div>
-
-        <div class="mb-3 mt-3" id="poolArea">
-            <label th:for="standardRoom" class="form-label">Diện tích hồ bơi:</label>
-            <input type="text" class="form-control" placeholder="diện tích hồ bơi..." th:field="*{pollArea}">
-        </div>
-        <div class="mb-3 mt-3" id="numberOfFloors">
-            <label th:for="standardRoom" class="form-label">Số tầng:</label>
-            <input type="text" class="form-control" placeholder="số tầng..." th:field="*{numberOfFloors}">
-        </div>
-        <div class="mb-3 mt-3" id="facilityFree">
-            <label th:for="standardRoom" class="form-label">Dịch vụ miễn phí:</label>
-            <input type="text" class="form-control" placeholder="dịch vụ miễn phí...
-" th:field="*{facilityFree}">
-        </div>
-
-        <select class="form-select" aria-label="Default select example" th:field="*{rentType}">
-            <option value="">Kiểu thuê</option>
-            <option th:each="facility:${rentTypeList}"
-                    th:value="${facility.id}"
-                    th:text="${facility.name}">
-            </option>
-        </select>
-
-        <select class="form-select" aria-label="Default select example" th:field="*{facilityType}"
+    <center>
+        <div class="col-md-6">
+        <select class="form-select" style="color: black ; background-color: yellow" aria-label="Default select example" th:field="*{facilityType}"
                 id="typeFacility" onchange="selectFacilityType();">
             <option value="">Loại dịch vụ</option>
             <option th:each="facility:${facilityTypeList}"
@@ -75,8 +29,57 @@
                     th:text="${facility.name}">
             </option>
         </select>
+        </div>
+        <div class="col-md-6">
+            <label th:for="name" class="form-label">Tên dịch vụ:</label>
+            <input type="text" class="form-control" th:field="*{name}">
+        </div>
+        <div class="col-md-6">
+            <label th:for="area" class="form-label">Diện tích:</label>
+            <input type="text" class="form-control" placeholder="diện tích..." th:field="*{area}">
+        </div>
+        <div class="col-md-6">
+            <label th:for="cost" class="form-label">Chi phí thuê:</label>
+            <input type="text" class="form-control" placeholder="chi phí thuê..." th:field="*{cost}">
+        </div>
+        <div class="col-md-6">
+            <label th:for="maxPeople" class="form-label">Số lượng người</label>
+            <input type="text" class="form-control" placeholder="số lượng người..." th:field="*{maxPeople}">
+        </div>
+        <div class="col-md-6" id="standardRooms">
+            <label th:for="standardRoom" class="form-label">Tiêu chuẩn phòng:</label>
+            <input type="text" class="form-control" placeholder="tiêu chuẩn phòng..." th:field="*{standardRoom}">
+        </div>
+        <div class="col-md-6" id="desciption">
+            <label th:for="standardRoom" class="form-label">Mô tả:</label>
+            <input type="text" class="form-control" placeholder="mô tả chi tiết..." th:field="*{description}">
+        </div>
+
+        <div class="col-md-6" id="poolArea">
+            <label th:for="standardRoom" class="form-label">Diện tích hồ bơi:</label>
+            <input type="text" class="form-control" placeholder="diện tích hồ bơi..." th:field="*{pollArea}">
+        </div>
+        <div class="col-md-6" id="numberOfFloors">
+            <label th:for="standardRoom" class="form-label">Số tầng:</label>
+            <input type="text" class="form-control" placeholder="số tầng..." th:field="*{numberOfFloor}">
+        </div>
+        <div class="col-md-6" id="facilityFree">
+            <label th:for="standardRoom" class="form-label">Dịch vụ miễn phí:</label>
+            <input type="text" class="form-control" placeholder="dịch vụ miễn phí" th:field="*{facilityFree}">
+        </div>
+        <br>
+        <div class="col-md-6"><lable class="form-label">Kiểu thuê</lable></div>
+        <div class="col-md-6"><select class="form-select" aria-label="Default select example" th:field="*{rentType}">
+
+            <option value="">Kiểu thuê</option>
+            <option th:each="facility:${rentTypeList}"
+                    th:value="${facility.id}"
+                    th:text="${facility.name}">
+            </option>
+        </select></div>
+
         <button type="submit" class="btn btn-primary">Xác nhận</button>
-    </div>
+    </center>
 </form>
 
 <script>

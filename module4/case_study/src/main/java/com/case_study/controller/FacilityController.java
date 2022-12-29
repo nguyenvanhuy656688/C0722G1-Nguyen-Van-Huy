@@ -34,9 +34,10 @@ public class FacilityController {
 
 
     @GetMapping("")
-    public String list(Model model, Pageable pageable){
+    public String list(Model model,@PageableDefault(size = 3) Pageable pageable){
         Page<Facility> facilityList = iFacilityService.findAll(pageable);
         model.addAttribute("facilityList",facilityList);
+        model.addAttribute("facilityTypeList",iFacilityTypeService.findAll());
         return "views/facility/list";
     }
 
@@ -78,7 +79,7 @@ public class FacilityController {
     }
 
     @PostMapping("/search")
-    public String searchByNameAndEmailAndCustomerType(String name,String facilityTypeName,Model model,@PageableDefault(size = 5) Pageable pageable){
+    public String searchByNameAndFacilityType(@RequestParam String name,@RequestParam String facilityTypeName,Model model,@PageableDefault(size = 5) Pageable pageable){
         Page<Facility> facilityList = iFacilityService.listSearchByNameAndEmailAndCustomerType(name,facilityTypeName,pageable);
         model.addAttribute("facilityList",facilityList);
         model.addAttribute("facilityTypeList",iFacilityTypeService.findAll());

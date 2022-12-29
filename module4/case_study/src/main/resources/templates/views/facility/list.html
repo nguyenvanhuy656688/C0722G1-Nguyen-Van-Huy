@@ -33,9 +33,9 @@
         <div>
             <form th:action="@{/facility/search}" method="post" style="display: flex;color: #0dcaf0">
                 <input class="form-control w-auto mx-2" type="text" placeholder="Search by  Id..." name="name">
-                <select class="form-control" name="customerTypeName" >
+                <select class="form-control" name="facilityTypeName" >
                     <option value="">Chọn loại Facility</option>
-                    <option th:each="facility: ${FacilityTypeList}" th:value="${facility.name}" th:text="${facility.name}" th:selected="${customerTypeName==customer.name}"></option>
+                    <option th:each="facility: ${facilityTypeList}" th:value="${facility.name}" th:text="${facility.name}" th:selected="${facilityTypeName==facility.name}"></option>
                 </select>
                 <button class="btn btn-outline-success mx-2" type="submit"
                         style="margin-right: 0!important; color: black" >Search
@@ -78,8 +78,6 @@
             <td th:text="${facility.pollArea}"></td>
             <td th:text="${facility.numberOfFloor}"></td>
             <td th:text="${facility.facilityFree}"></td>
-
-
 
             <td>
                 <a class="btn btn-success btn btn-sm"

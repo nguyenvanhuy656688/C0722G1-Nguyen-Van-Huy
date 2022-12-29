@@ -1,11 +1,9 @@
 package com.case_study.model.employee;
 
-import com.case_study.model.Contract;
 import com.case_study.model.user.User;
 import jakarta.persistence.*;
 
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 public class Employee {
