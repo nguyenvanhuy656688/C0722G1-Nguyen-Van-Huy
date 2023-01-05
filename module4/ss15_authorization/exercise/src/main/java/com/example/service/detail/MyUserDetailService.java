@@ -19,9 +19,6 @@ public class MyUserDetailService implements UserDetailsService {
     @Autowired
     private IUserRepository iUserRepository;
 
-//    @Autowire
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = iUserRepository.findByUsername(username);
@@ -30,13 +27,19 @@ public class MyUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException("User name: " + username + " not found");
         }
 
-        // Dựa vào list quyền trả về mình tạo đối tượng GrantedAuthority  của spring cho quyền đó
-        List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ADMIN");
+        List<String> roleNames = iUserRepository.getRoleNames(user.getId());
 
-        //Cuối cùng mình tạo đối tượng UserDetails của Spring và mình cung cấp cá thông số như tên , password và quyền
-        // Đối tượng userDetails sẽ chứa đựng các thông tin cần thiết về user từ đó giúp Spring Security quản lý được phân quyền như ta đã
-        // cấu hình trong bước 4 method configure
+        // Dựa vào list quyền trả về mình tạo đối tượng GrantedAuthority  của spring cho quyền đó
+
+        List<GrantedAuthority> grantList = new ArrayList<>();
+        if (roleNames != null) {
+            for (String role : roleNames) {
+                // ROLE_USER, ROLE_ADMIN,..
+                GrantedAuthority authority = new SimpleGrantedAuthority(role);
+                grantList.add(authority);
+            }
+        }
+
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(), grantList);
 
