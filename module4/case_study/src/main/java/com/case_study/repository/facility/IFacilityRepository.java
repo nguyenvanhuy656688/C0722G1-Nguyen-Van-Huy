@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface IFacilityRepository extends JpaRepository<Facility,Integer> {
-    @Query(value = "select c.* from `facility` c join `facility_type` ct on c.facility_type_id = ct.id  where c.name like %:name%  and ct.name like %:facilityTypeName%" ,nativeQuery = true )
+    @Query(value = "select c.* from `facility` c join `facility_type` ct on c.facility_type_id = ct.id  where c.name like %:name%  and ct.name = :facilityTypeName" ,nativeQuery = true )
     Page<Facility> listSearchByNameAndEmailAndCustomerType(@Param("name") String name,@Param("facilityTypeName") String facilityTypeName, Pageable pageable);
 }
