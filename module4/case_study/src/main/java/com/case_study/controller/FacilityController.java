@@ -1,5 +1,6 @@
 package com.case_study.controller;
 
+import com.case_study.dto.FacilityDto;
 import com.case_study.model.customer.Customer;
 import com.case_study.model.customer.CustomerType;
 import com.case_study.model.facility.Facility;
@@ -9,12 +10,15 @@ import com.case_study.service.facility.IFacilityService;
 import com.case_study.service.facility.IFacilityTypeService;
 import com.case_study.service.facility.IRentTypeService;
 import com.case_study.service.facility.RentTypeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,14 +51,18 @@ public class FacilityController {
         List<RentType> rentTypeList = iRentTypeService.findAll();
         model.addAttribute("rentTypeList",rentTypeList);
         model.addAttribute("facilityTypeList",facilityTypeList);
-        model.addAttribute("facility",new Facility());
+        model.addAttribute("facilityDto",new Facility());
         return "views/facility/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("facility") Facility facility ){
+    public String create(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult,Model model){
+        new FacilityDto().validate(facilityDto,bindingResult);
+        Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto,facility);
         iFacilityService.save(facility);
-        return "redirect:/facility";
+        model.addAttribute("mess","thêm mới thành công");
+        return "views/facility/create";
     }
 
     @GetMapping("{id}/delete")
@@ -73,9 +81,13 @@ public class FacilityController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("facility") Facility facility){
+    public String edit(@Validated @ModelAttribute("facility") FacilityDto facilityDto,BindingResult bindingResult,Model model){
+        new FacilityDto().validate(facilityDto,bindingResult);
+        Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto,facility);
         iFacilityService.save(facility);
-        return "redirect:/facility";
+        model.addAttribute("mess","chỉnh sửa thành công");
+        return "views/facility/edit";
     }
 
     @PostMapping("/search")

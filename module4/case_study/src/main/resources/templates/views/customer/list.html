@@ -63,7 +63,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="customer,status : ${customerList}">
+            <tr th:each="customer,status : ${customerList.content}">
                 <td th:text="${status.count}"></td>
                 <td th:text="${customer.customerType.name}"></td>
                 <td th:text="${customer.name}"></td>

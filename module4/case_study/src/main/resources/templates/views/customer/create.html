@@ -21,19 +21,18 @@
 <h2>Add Customer</h2>
 
 <div id="form">
-    <form th:action="@{/customer/create}" th:object="${customer}" method="post" >
+    <form th:action="@{/customer/create}" th:object="${customerDto}" method="post" >
         <input type="hidden" th:field="*{id}">
         <div class="col-md-6">
             <label class="form-label">Name</label>
             <input type="text" name="idCard" class="form-control" placeholder="Name" th:field="*{name}"/>
+            <p style="color: red" th:errors="*{name}"></p>
         </div>
 
         <div class="col-md-6">
             <label class="form-label">Date Of Birth</label>
             <input type="text" name="idCard" class="form-control" placeholder="Day of birth" th:field="*{dateOfBirth}"/>
         </div>
-
-
         <div class="col-md-6">
             <label class="form-label">Gender</label>
             <br>
@@ -54,21 +53,26 @@
         <div class="col-md-6">
             <label class="form-label">ID Card</label>
             <input type="text" name="idCard" class="form-control" placeholder="ID Card" th:field="*{idCard}"/>
+            <p style="color: red" th:errors="*{idCard}"></p>
+
         </div>
 
         <div class="col-md-6">
             <label class="form-label">Phone Number</label>
             <input type="text" name="idCard" class="form-control" placeholder="Phone number" th:field="*{phoneNumber}"/>
+            <p style="color: red" th:errors="*{phoneNumber}"></p>
         </div>
 
         <div class="col-md-6">
             <label class="form-label">Email</label>
             <input type="text" name="idCard" class="form-control" placeholder="Email" th:field="*{email}"/>
+            <p style="color:red;" th:errors="*{email}"></p>
         </div>
 
         <div class="col-md-6">
             <label class="form-label">Address</label>
             <input type="text" name="idCard" class="form-control" placeholder="Address" th:field="*{address}"/>
+            <p style="color:red;" th:errors="*{address}"></p>
         </div>
         <div class="col-md-6">
             <lable class="form-label " th:for="1">Customer Type</lable>
@@ -81,6 +85,7 @@
     </form>
 </div>
 </center>
+<h2 style="text-align: center;" th:text="${mess}"></h2>
 
 <div th:replace="/views/layout::footer"></div>
 </body>

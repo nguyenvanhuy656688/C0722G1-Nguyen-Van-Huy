@@ -1,16 +1,19 @@
 package com.case_study.controller;
 
+import com.case_study.dto.CustomerDto;
 import com.case_study.model.customer.Customer;
 import com.case_study.model.customer.CustomerType;
 import com.case_study.service.customer.ICustomerService;
 import com.case_study.service.customer.ICustomerTypeService;
-import jakarta.validation.constraints.Size;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,14 +41,24 @@ public class CustomerController {
     public String showFormCreate(Model model ){
         List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
         model.addAttribute("customerTypeList",customerTypeList);
-        model.addAttribute("customer",new Customer());
+        model.addAttribute("customerDto",new CustomerDto());
         return "views/customer/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("customer") Customer customer ){
+    public String create(@Validated @ModelAttribute("customerDto") CustomerDto customerDto , Pageable pageable, BindingResult bindingResult, Model model){
+        new CustomerDto().validate(customerDto,bindingResult);
+        new CustomerDto().checkExist(iCustomerService.findAll(pageable),customerDto,bindingResult);
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto,customer);
+        if (bindingResult.hasErrors()){
+            model.addAttribute("customerTypeList",iCustomerTypeService.findAll());
+            model.addAttribute("mess","Thêm mới không thành công");
+            return "views/customer/create";
+        }
         iCustomerService.save(customer);
-        return "redirect:/customer";
+        model.addAttribute("mess","Thêm mới thành công");
+        return "views/customer/create";
     }
 
     @GetMapping("/{id}/edit")
@@ -57,9 +70,10 @@ public class CustomerController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("customer") Customer customer){
+    public String edit(@ModelAttribute("customer") Customer customer,Model model){
         iCustomerService.save(customer);
-        return "redirect:/customer";
+        model.addAttribute("mess","Sửa thành công");
+        return "views/customer/edit";
     }
 
     @GetMapping("/{id}/delete")

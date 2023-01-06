@@ -1,16 +1,15 @@
-package com.case_study.model.contract;
+package com.case_study.dto;
 
 import com.case_study.model.customer.Customer;
 import com.case_study.model.employee.Employee;
 import com.case_study.model.facility.Facility;
-import jakarta.persistence.*;
+import jakarta.persistence.ManyToOne;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import java.util.Date;
 
-@Entity
-public class Contract {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDto implements Validator {
     private int id;
     private Date startDate;
     private Date endDate;
@@ -23,27 +22,17 @@ public class Contract {
     @ManyToOne
     private Employee employee;
 
-    public Contract() {
+    public ContractDto() {
     }
 
-    public Contract(int id, Date startDate, Date endDate, double deposit, double totalMoney, Customer customer, Facility facility, Employee employee) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.totalMoney = totalMoney;
-        this.customer = customer;
-        this.facility = facility;
-        this.employee = employee;
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
-    public double getTotalMoney() {
-        return totalMoney;
-    }
+    @Override
+    public void validate(Object target, Errors errors) {
 
-    public int setTotalMoney(double totalMoney) {
-        this.totalMoney = totalMoney;
-        return 0;
     }
 
     public int getId() {
@@ -76,6 +65,14 @@ public class Contract {
 
     public void setDeposit(double deposit) {
         this.deposit = deposit;
+    }
+
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
     public Customer getCustomer() {
