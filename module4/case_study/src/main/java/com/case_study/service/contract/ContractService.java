@@ -1,9 +1,8 @@
 package com.case_study.service.contract;
 
-import com.case_study.dto.ContractDto;
+import com.case_study.dto.IAttachFacilityDto;
 import com.case_study.dto.IContractDto;
 import com.case_study.model.contract.Contract;
-import com.case_study.model.customer.Customer;
 import com.case_study.repository.contract.IContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,6 +31,11 @@ public class ContractService implements IContractService{
     @Override
     public void save(Contract contract) {
          iContractRepository.save(contract);
+    }
+
+    @Override
+    public List<IAttachFacilityDto> listAttachFacility(int id) {
+        return iContractRepository.listAttachFacility(id);
     }
 
 
