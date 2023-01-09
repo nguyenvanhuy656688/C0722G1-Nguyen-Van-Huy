@@ -70,24 +70,28 @@
                         <label for="start_day" class="col-sm-3 col-form-label ">Ngày bắt đầu</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="start_day" th:field="*{startDate}">
+                            <p style="color: red" th:errors="*{startDate}"></p>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="end_day" class="col-sm-3 col-form-label">Ngày kết thúc</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="end_day" th:field="*{endDate}">
+                            <p style="color: red" th:errors="*{endDate}"></p>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="money" class="col-sm-3 col-form-label">Tiền đặt cọc</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="money" th:field="*{deposit}">
+                            <p style="color: red" th:errors="*{deposit}"></p>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="total" class="col-sm-3 col-form-label">Tổng tiền</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="total" th:field="*{totalMoney}">
+                            <p style="color: red" th:errors="*{totalMoney}"></p>
                          </div>
                     </div>
                     <div class="mb-3 row">
@@ -201,7 +205,6 @@
 </script>
 
 
-//
 <script>
     function listAttachFacility(id) {
         $.ajax({

@@ -40,8 +40,6 @@ public class ContractController {
     @Autowired
     private ICustomerService iCustomerService;
 
-    @Autowired
-    private IEmployeeService iEmployeeService;
 
     @Autowired
     private IContractDetailService iContractDetailService;
@@ -63,10 +61,15 @@ public class ContractController {
 
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute("contract") ContractDto contractDto, BindingResult bindingResult){
+    public String create(@Validated @ModelAttribute("contract") ContractDto contractDto, BindingResult bindingResult,Model model,Pageable pageable){
         new ContractDto().validate(contractDto,bindingResult);
         Contract contract = new Contract();
         BeanUtils.copyProperties(contractDto,contract);
+        if (bindingResult.hasErrors()){
+            model.addAttribute("customerList",iCustomerService.findAll(pageable));
+            model.addAttribute("facilityList",iFacilityService.findAll(pageable));
+            return "views/contract/list";
+        }
         iContractService.save(contract);
         return "redirect:/contract";
     }
