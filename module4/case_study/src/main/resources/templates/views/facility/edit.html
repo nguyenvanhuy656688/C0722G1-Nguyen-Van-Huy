@@ -36,44 +36,52 @@
         <div class="col-md-6">
             <label th:for="name" class="form-label">Tên dịch vụ:</label>
             <input type="text" class="form-control" th:field="*{name}">
+            <p style="color: red" th:errors="*{name}"></p>
         </div>
         <div class="col-md-6">
             <label th:for="area" class="form-label">Diện tích:</label>
             <input type="text" class="form-control" placeholder="diện tích..." th:field="*{area}">
+            <p style="color: red" th:errors="*{area}"></p>
         </div>
         <div class="col-md-6">
             <label th:for="cost" class="form-label">Chi phí thuê:</label>
             <input type="text" class="form-control" placeholder="chi phí thuê..." th:field="*{cost}">
+            <p style="color: red" th:errors="*{cost}"></p>
         </div>
         <div class="col-md-6">
             <label th:for="maxPeople" class="form-label">Số lượng người</label>
             <input type="text" class="form-control" placeholder="số lượng người..." th:field="*{maxPeople}">
+            <p style="color: red" th:errors="*{maxPeople}"></p>
         </div>
         <div class="col-md-6" id="standardRooms">
             <label th:for="standardRoom" class="form-label">Tiêu chuẩn phòng:</label>
             <input type="text" class="form-control" placeholder="tiêu chuẩn phòng..." th:field="*{standardRoom}">
+            <p style="color: red" th:errors="*{standardRoom}"></p>
         </div>
         <div class="col-md-6" id="desciption">
             <label th:for="standardRoom" class="form-label">Mô tả:</label>
             <input type="text" class="form-control" placeholder="mô tả chi tiết..." th:field="*{description}">
+            <p style="color: red" th:errors="*{description}"></p>
         </div>
 
         <div class="col-md-6" id="poolArea">
             <label th:for="standardRoom" class="form-label">Diện tích hồ bơi:</label>
             <input type="text" class="form-control" placeholder="diện tích hồ bơi..." th:field="*{pollArea}">
+            <p style="color: red" th:errors="*{pollArea}"></p>
         </div>
         <div class="col-md-6" id="numberOfFloors">
             <label th:for="standardRoom" class="form-label">Số tầng:</label>
             <input type="text" class="form-control" placeholder="số tầng..." th:field="*{numberOfFloor}">
+            <p style="color: red" th:errors="*{numberOfFloor}"></p>
         </div>
         <div class="col-md-6" id="facilityFree">
             <label th:for="standardRoom" class="form-label">Dịch vụ miễn phí:</label>
             <input type="text" class="form-control" placeholder="dịch vụ miễn phí" th:field="*{facilityFree}">
+            <p style="color: red" th:errors="*{facilityFree}"></p>
         </div>
         <br>
         <div class="col-md-6"><lable class="form-label">Kiểu thuê</lable></div>
         <div class="col-md-6"><select class="form-select" aria-label="Default select example" th:field="*{rentType}">
-
             <option value="">Kiểu thuê</option>
             <option th:each="facility:${rentTypeList}"
                     th:value="${facility.id}"

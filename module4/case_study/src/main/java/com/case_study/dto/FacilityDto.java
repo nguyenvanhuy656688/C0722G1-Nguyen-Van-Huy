@@ -1,11 +1,13 @@
 package com.case_study.dto;
 
+import com.case_study.model.customer.Customer;
+import com.case_study.model.facility.Facility;
 import com.case_study.model.facility.FacilityType;
 import com.case_study.model.facility.RentType;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -17,8 +19,8 @@ public class FacilityDto implements Validator {
     private String area;
     @NotEmpty(message = "Không được để trống")
     private String cost;
-    @Size(max = 20,min = 2, message = "nhập tối đa 20 người")
-    @NotEmpty(message = "Không được để trống")
+    @Min(value = 5, message = "Nhỏ nhất là 5")
+    @NotNull(message = "Không được để trống")
     private int maxPeople;
     @Pattern(regexp = "VIP|NORMAL")
     @NotEmpty(message = "Không được để trống")
@@ -26,9 +28,9 @@ public class FacilityDto implements Validator {
     @NotEmpty(message = "Không được để trống")
     private String description;
     @NotEmpty(message = "Không được để trống")
-    private String pollArea ;
+    private String pollArea;
     @NotEmpty(message = "Không được để trống")
-    @Size(max = 5, message = "nhập Tối đã 5 tầng")
+   @Min(value = 5,message = "tối thiểu 5 tầng")
     private String numberOfFloor;
     private String facilityFree;
     @ManyToOne
@@ -141,5 +143,12 @@ public class FacilityDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
 
+    }
+
+    public void checkExist(Page<Facility> facilityPage, FacilityDto facilityDto, Errors errors) {
+        for (Facility facility : facilityPage) {
+            if (facility.getName().equals(facilityDto.name))
+                errors.rejectValue("name", "name", "Tên dịch vụ đã tồn tại");
+        }
     }
 }

@@ -70,24 +70,37 @@ public class CustomerController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("customer") Customer customer,Model model){
+    public String edit(@ModelAttribute("customer") CustomerDto customerDto,Model model,BindingResult bindingResult,Pageable pageable){
+        new CustomerDto().validate(customerDto,bindingResult);
+        new CustomerDto().checkExist(iCustomerService.findAll(pageable),customerDto,bindingResult);
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto,customer);
+        if (bindingResult.hasErrors()){
+            model.addAttribute("customerTypeList",iCustomerTypeService.findAll());
+            model.addAttribute("mess","Thêm mới không thành công");
+            return "views/customer/create";
+        }
         iCustomerService.save(customer);
         model.addAttribute("mess","Sửa thành công");
         return "views/customer/edit";
     }
 
-    @GetMapping("/{id}/delete")
-    public String delete(@PathVariable int id) {
+    @PostMapping ("/delete")
+    public String delete(@RequestParam("deleteId") int id) {
         iCustomerService.deleteById(id);
         return "redirect:/customer";
     }
 
     @PostMapping("/search")
-    public String searchByNameAndEmailAndCustomerType(String name,String email,String customerTypeName,Model model,@PageableDefault(size = 5) Pageable pageable){
+    public String searchByNameAndEmailAndCustomerType(@RequestParam(defaultValue = "") String name,@RequestParam("") String email,@RequestParam(defaultValue = "") String customerTypeName,Model model,@PageableDefault(size = 5) Pageable pageable){
         Page<Customer> customerList = iCustomerService.listSearchByNameAndEmailAndCustomerType(name,email,customerTypeName,pageable);
         model.addAttribute("customerList",customerList);
         model.addAttribute("customerTypeList",iCustomerTypeService.findAll());
         model.addAttribute("customerTypeName",customerTypeName);
+        if (customerList.equals("")){
+            model.addAttribute("customerList",iCustomerService.findAll(pageable));
+            return "views/customer/list";
+        }
         return "views/customer/list";
     }
 

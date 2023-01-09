@@ -1,22 +1,32 @@
-package com.case_study.model.user;
-
-import com.case_study.model.employee.Employee;
+package com.case_study.user;
 import jakarta.persistence.*;
-
 import java.util.Set;
+
 
 @Entity
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String username;
     private String password;
+    private boolean isEnabled;
 
     @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_username"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> likedCourses;
 
-
     public User() {
+    }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -41,5 +51,13 @@ public class User {
 
     public void setLikedCourses(Set<Role> likedCourses) {
         this.likedCourses = likedCourses;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

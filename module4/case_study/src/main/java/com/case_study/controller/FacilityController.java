@@ -1,5 +1,6 @@
 package com.case_study.controller;
 
+import com.case_study.dto.CustomerDto;
 import com.case_study.dto.FacilityDto;
 import com.case_study.model.customer.Customer;
 import com.case_study.model.customer.CustomerType;
@@ -38,64 +39,71 @@ public class FacilityController {
 
 
     @GetMapping("")
-    public String list(Model model,@PageableDefault(size = 3) Pageable pageable){
+    public String list(Model model, @PageableDefault(size = 3) Pageable pageable) {
         Page<Facility> facilityList = iFacilityService.findAll(pageable);
-        model.addAttribute("facilityList",facilityList);
-        model.addAttribute("facilityTypeList",iFacilityTypeService.findAll());
+        model.addAttribute("facilityList", facilityList);
+        model.addAttribute("facilityTypeList", iFacilityTypeService.findAll());
         return "views/facility/list";
     }
 
     @GetMapping("/create")
-    public String showFormCreate(Model model ){
+    public String showFormCreate(Model model) {
         List<FacilityType> facilityTypeList = iFacilityTypeService.findAll();
         List<RentType> rentTypeList = iRentTypeService.findAll();
-        model.addAttribute("rentTypeList",rentTypeList);
-        model.addAttribute("facilityTypeList",facilityTypeList);
-        model.addAttribute("facilityDto",new Facility());
+        model.addAttribute("rentTypeList", rentTypeList);
+        model.addAttribute("facilityTypeList", facilityTypeList);
+        model.addAttribute("facilityDto", new Facility());
         return "views/facility/create";
     }
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult,Model model){
-        new FacilityDto().validate(facilityDto,bindingResult);
+    public String create(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult, Model model, Pageable pageable) {
+        new FacilityDto().validate(facilityDto, bindingResult);
+        new FacilityDto().checkExist(iFacilityService.findAll(pageable), facilityDto, bindingResult);
         Facility facility = new Facility();
-        BeanUtils.copyProperties(facilityDto,facility);
+        BeanUtils.copyProperties(facilityDto, facility);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("rentTypeList", iRentTypeService.findAll());
+            model.addAttribute("facilityTypeList", iFacilityTypeService.findAll());
+            model.addAttribute("mess", "Thêm mới không thành công");
+            return "views/facility/create";
+        }
         iFacilityService.save(facility);
-        model.addAttribute("mess","thêm mới thành công");
+        model.addAttribute("mess", "thêm mới thành công");
         return "views/facility/create";
     }
 
     @GetMapping("{id}/delete")
-    public String delete(@PathVariable("id") int id){
+    public String delete(@PathVariable("id") int id) {
         iFacilityService.deleteById(id);
         return "redirect:/facility";
     }
 
     @GetMapping("/{id}/edit")
-    public String showFormEdit(@PathVariable("id") int id, Model model){
+    public String showFormEdit(@PathVariable("id") int id, Model model) {
         List<RentType> rentTypeList = iRentTypeService.findAll();
-        model.addAttribute("facility",iFacilityService.findById(id).orElse(null));
-        model.addAttribute("rentTypeList",rentTypeList);
-        model.addAttribute("facilityTypeList",iFacilityTypeService.findAll());
+        model.addAttribute("facility", iFacilityService.findById(id).orElse(null));
+        model.addAttribute("rentTypeList", rentTypeList);
+        model.addAttribute("facilityTypeList", iFacilityTypeService.findAll());
         return "views/facility/edit";
     }
 
     @PostMapping("/edit")
-    public String edit(@Validated @ModelAttribute("facility") FacilityDto facilityDto,BindingResult bindingResult,Model model){
-        new FacilityDto().validate(facilityDto,bindingResult);
+    public String edit(@Validated @ModelAttribute("facility") FacilityDto facilityDto, BindingResult bindingResult, Model model) {
+        new FacilityDto().validate(facilityDto, bindingResult);
         Facility facility = new Facility();
-        BeanUtils.copyProperties(facilityDto,facility);
+        BeanUtils.copyProperties(facilityDto, facility);
         iFacilityService.save(facility);
-        model.addAttribute("mess","chỉnh sửa thành công");
+        model.addAttribute("mess", "chỉnh sửa thành công");
         return "views/facility/edit";
     }
 
     @PostMapping("/search")
-    public String searchByNameAndFacilityType(@RequestParam String name,@RequestParam String facilityTypeName,Model model,@PageableDefault(size = 5) Pageable pageable){
-        Page<Facility> facilityList = iFacilityService.listSearchByNameAndEmailAndCustomerType(name,facilityTypeName,pageable);
-        model.addAttribute("facilityList",facilityList);
-        model.addAttribute("facilityTypeList",iFacilityTypeService.findAll());
-        model.addAttribute("facilityTypeName",facilityTypeName);
+    public String searchByNameAndFacilityType(@RequestParam String name, @RequestParam String facilityTypeName, Model model, @PageableDefault(size = 5) Pageable pageable) {
+        Page<Facility> facilityList = iFacilityService.listSearchByNameAndEmailAndCustomerType(name, facilityTypeName, pageable);
+        model.addAttribute("facilityList", facilityList);
+        model.addAttribute("facilityTypeList", iFacilityTypeService.findAll());
+        model.addAttribute("facilityTypeName", facilityTypeName);
         return "views/facility/list";
     }
 

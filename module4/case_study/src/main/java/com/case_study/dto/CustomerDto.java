@@ -8,25 +8,21 @@ import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
 import java.time.LocalDate;
 import java.time.Period;
 
 public class CustomerDto implements Validator {
     private int id;
-    @NotEmpty(message = "không được để trống")
     private String name;
     private String dateOfBirth;
     private boolean gender;
     @Column(unique = true)
-    @NotEmpty(message = "Không được để trống")
     private String idCard;
-    @Column( unique = true)
-    @NotEmpty(message = "không được để trống")
+    @Column(unique = true)
     private String phoneNumber;
-    @Column( unique = true )
-    @NotEmpty(message = "không được để trống")
+    @Column(unique = true)
     private String email;
-    @NotEmpty(message = "không được để trống")
     private String address;
     @ManyToOne
     private CustomerType customerType;
@@ -37,14 +33,14 @@ public class CustomerDto implements Validator {
     }
 
 
-    public void checkExist(Page<Customer> customerList , CustomerDto customerDto, Errors errors){
-        for (Customer customer: customerList) {
+    public void checkExist(Page<Customer> customerList, CustomerDto customerDto, Errors errors) {
+        for (Customer customer : customerList) {
             if (customer.getEmail().equals(customerDto.email))
-                errors.rejectValue("email","email","Email đã tồn tại");
+                errors.rejectValue("email", "email", "Email đã tồn tại");
             if (customer.getPhoneNumber().equals(customerDto.phoneNumber))
-                errors.rejectValue("phoneNumber","phoneNumber","phoneNumber đã tồn tại");
+                errors.rejectValue("phoneNumber", "phoneNumber", "phoneNumber đã tồn tại");
             if (customer.getIdCard().equals(customerDto.idCard))
-                errors.rejectValue("idCard","idCard","idCard đã tồn tại");
+                errors.rejectValue("idCard", "idCard", "idCard đã tồn tại");
         }
     }
 
@@ -52,15 +48,17 @@ public class CustomerDto implements Validator {
     public void validate(Object target, Errors errors) {
         CustomerDto customerDto = (CustomerDto) target;
         //Name
-        if (!customerDto.getName().matches("^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽề\" +\n" +
+        if (customerDto.getName().matches("")) {
+            errors.rejectValue("name", "name", "Tên khách hàng không được để trống.");
+        } else if (!customerDto.getName().matches("^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽề\" +\n" +
                 "\"ềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\\\s\\\\W|_]+$"))
-            errors.rejectValue("name","name","Mời nhập tên đàng hoàng");
+            errors.rejectValue("name", "name", "Mời nhập tên đàng hoàng");
+
 
         //Day birth
         if (customerDto.dateOfBirth.matches("")) {
             errors.rejectValue("dateOfBirth", "dateOfBirth", "Vui lòng chọn ngày sinh");
-        }
-        else {
+        } else {
             LocalDate dayOfBirth = LocalDate.parse(customerDto.dateOfBirth);
             LocalDate now = LocalDate.now();
             Period checkAge = Period.between(dayOfBirth, now);
@@ -69,15 +67,23 @@ public class CustomerDto implements Validator {
             }
         }
         //Email
-        if (!customerDto.email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"))
-            errors.rejectValue("email","email","Mời nhập đúng định dạng");
+
+        if (customerDto.email.matches("")) {
+            errors.rejectValue("dateOfBirth", "dateOfBirth", "Vui lòng chọn ngày sinh");
+        } else if (!customerDto.email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"))
+            errors.rejectValue("email", "email", "Mời nhập đúng định dạng");
         //PhoneNumber
-        if (!customerDto.phoneNumber.matches("(84|0[3|5|7|8|9])+([0-9]{8})\\b"))
-            errors.rejectValue("phoneNumber","phoneNumber","Mời nhập đúng định dạng phoneNumber");
+        if (customerDto.phoneNumber.matches("")) {
+            errors.rejectValue("dateOfBirth", "dateOfBirth", "Vui lòng chọn ngày sinh");
+        } else if (!customerDto.phoneNumber.matches("(84|0[3|5|7|8|9])+([0-9]{8})\\b"))
+            errors.rejectValue("phoneNumber", "phoneNumber", "Mời nhập đúng định dạng phoneNumber");
         //IdCard
-        if (!customerDto.idCard.matches("[0-9]{9}|[0-9]{12}"))
-            errors.rejectValue("idCard","idCard","Mời nhập đúng định dạng");
+        if (customerDto.idCard.matches("")) {
+            errors.rejectValue("dateOfBirth", "dateOfBirth", "Vui lòng chọn ngày sinh");
+        } else if (!customerDto.idCard.matches("[0-9]{9}|[0-9]{12}"))
+            errors.rejectValue("idCard", "idCard", "Mời nhập đúng định dạng");
     }
+
 
     public int getId() {
         return id;
