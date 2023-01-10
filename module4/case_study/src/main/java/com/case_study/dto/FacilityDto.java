@@ -30,12 +30,10 @@ public class FacilityDto implements Validator {
     @NotEmpty(message = "Không được để trống")
     private String pollArea;
     @NotEmpty(message = "Không được để trống")
-   @Min(value = 5,message = "tối thiểu 5 tầng")
+    @Min(value = 5, message = "tối thiểu 5 tầng")
     private String numberOfFloor;
     private String facilityFree;
-    @ManyToOne
     private RentType rentType;
-    @ManyToOne
     private FacilityType facilityType;
 
 

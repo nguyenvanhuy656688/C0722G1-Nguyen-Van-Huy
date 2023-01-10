@@ -24,7 +24,6 @@ public class CustomerDto implements Validator {
     @Column(unique = true)
     private String email;
     private String address;
-    @ManyToOne
     private CustomerType customerType;
 
     @Override

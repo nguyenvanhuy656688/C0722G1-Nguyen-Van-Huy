@@ -15,11 +15,8 @@ public class ContractDto implements Validator {
     private Date endDate;
     private double deposit;
     private double totalMoney;
-    @ManyToOne
     private Customer customer;
-    @ManyToOne
     private Facility facility;
-    @ManyToOne
     private Employee employee;
 
     public ContractDto() {
@@ -32,30 +29,29 @@ public class ContractDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ContractDto contractDto =(ContractDto) target;
+        ContractDto contractDto = (ContractDto) target;
         //Định dạng ngày
-        if (contractDto.startDate.equals("")){
-            errors.rejectValue("startDate","startDate","Không được để trống");
+        if (contractDto.startDate.equals("")) {
+            errors.rejectValue("startDate", "startDate", "Không được để trống");
         }
-        if (contractDto.endDate.equals("")){
-            errors.rejectValue("endDate","endDate","Không được để trống");
+        if (contractDto.endDate.equals("")) {
+            errors.rejectValue("endDate", "endDate", "Không được để trống");
         }
         Date dateStart = contractDto.startDate;
         Date dateEnd = contractDto.endDate;
-        if ((dateStart.getYear() == dateEnd.getYear() && dateStart.getMonth()> dateEnd.getMonth())|| (dateStart.getYear()>endDate.getYear())){
-            errors.rejectValue("startDate","startDate","Vui lòng nhập đúng");
+        if ((dateStart.getYear() == dateEnd.getYear() && dateStart.getMonth() > dateEnd.getMonth()) || (dateStart.getYear() > endDate.getYear())) {
+            errors.rejectValue("startDate", "startDate", "Vui lòng nhập đúng");
         }
 
         //Đặt cọc
-        if (contractDto.getDeposit()<=0){
-            errors.rejectValue("deposit","deposit","Tiền đặt cọc phải lớn hơn 0");
-        }else {
+        if (contractDto.getDeposit() <= 0) {
+            errors.rejectValue("deposit", "deposit", "Tiền đặt cọc phải lớn hơn 0");
+        } else {
             String deposit = String.valueOf(contractDto.getDeposit());
-            if (deposit.equals("")){
-                errors.rejectValue("deposit","deposit","Vui lòng nhập tiền đặt cọc");
+            if (deposit.equals("")) {
+                errors.rejectValue("deposit", "deposit", "Vui lòng nhập tiền đặt cọc");
             }
         }
-
 
 
     }
