@@ -1,5 +1,6 @@
 package com.case_study.controller;
 
+import com.case_study.common.HandleException;
 import com.case_study.dto.ContractDetailDto;
 import com.case_study.dto.ContractDto;
 import com.case_study.dto.IContractDto;
@@ -61,7 +62,7 @@ public class ContractController {
 
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute("contract") ContractDto contractDto, BindingResult bindingResult,Model model,Pageable pageable){
+    public String create(@Validated @ModelAttribute("contract") ContractDto contractDto, BindingResult bindingResult,Model model,Pageable pageable) throws HandleException{
         new ContractDto().validate(contractDto,bindingResult);
         Contract contract = new Contract();
         BeanUtils.copyProperties(contractDto,contract);
@@ -75,7 +76,7 @@ public class ContractController {
     }
 
     @PostMapping("/createDetail")
-    public String createContractDetail(@ModelAttribute("contractDetail") ContractDetailDto contractDetailDto){
+    public String createContractDetail(@ModelAttribute("contractDetail") ContractDetailDto contractDetailDto) throws HandleException {
         ContractDetail contractDetail = new ContractDetail();
         contractDetail.setContract(contractDetailDto.getContract());
         contractDetail.setAttachFacility(contractDetailDto.getAttachFacility());
